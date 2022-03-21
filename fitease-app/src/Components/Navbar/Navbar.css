@@ -1,0 +1,30 @@
+nav {
+  z-index: 1000;
+}
+.navbarFlex {
+  display: flex;
+}
+.navLinksContainer {
+  margin: 0em 5em;
+}
+.navLinksContainer > li {
+  padding-left: 2em;
+}
+form.navbarFlexItem {
+  flex: 2;
+}
+
+ul.navbarFlexItem {
+}
+
+.loginSignupContainer .nav-link {
+  /*padding to button applied using bootstrap  */
+}
+.loginSignupContainer .nav-item {
+  margin-left: 10px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+}
