@@ -65,7 +65,7 @@ function Navbar({ isLoggedInUser }) {
   return (
     <nav className="navbar navbar-expand-lg py-3 navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand font-weight-bold" to="/">
+        <Link className="navbar-brand font-weight-bold px-5" to="/">
           FitEase
         </Link>
         <button
@@ -124,9 +124,50 @@ function Navbar({ isLoggedInUser }) {
                 </li>
               </>
             )}
+            {isLoggedInUser && (
+              <>
+                {" "}
+                <li className="nav-item ">
+                  <Link
+                    className="nav-link active underlineHover"
+                    aria-current="page"
+                    to="/"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item ">
+                  <Link
+                    className="nav-link active underlineHover"
+                    to="/products"
+                  >
+                    Features
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active underlineHover" to="/blogs">
+                    Blogs
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active underlineHover" to="/about">
+                    Success Stories
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active underlineHover" to="/about">
+                    Community
+                  </Link>
+                </li>
+                <li className=" nav-item">
+                  <Link className="nav-link active underlineHover" to="/">
+                    Account
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
-
-          <form className="d-flex navbarFlexItem mx-2">
+          {/*  <form className="d-flex navbarFlexItem mx-2">
             <input
               className="form-control me-2"
               type="search"
@@ -136,7 +177,7 @@ function Navbar({ isLoggedInUser }) {
             <button className="btn btn-success mx-5 px-5" type="submit">
               Search
             </button>
-          </form>
+          </form>*/}
 
           <div className="loginSignupContainer">
             <ul className="navbar-nav navbarFlexItem">

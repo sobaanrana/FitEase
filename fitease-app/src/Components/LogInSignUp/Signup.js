@@ -119,11 +119,12 @@ function Signup() {
           </Formik>
 
           <div id="formFooter">
-            <p>If already registered?</p>
-            <br />
-            <Link class="underlineHover" to="/user/login">
-              Login?
-            </Link>
+            <p>
+              If already registered ? <span />
+              <Link class=" link" to="/user/login">
+                Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>

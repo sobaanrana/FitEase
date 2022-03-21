@@ -31,7 +31,7 @@ function App() {
           <Route path="/blogs/:id" element={<SingleBlog />} />
           <Route path="/user/questionnaire" element={<Questionnaire />} />
         </Routes>
-        {/*<Footer />*/}
+        <Footer />
       </Router>
     </div>
   );

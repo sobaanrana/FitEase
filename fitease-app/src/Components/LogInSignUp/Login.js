@@ -123,7 +123,7 @@ function Login() {
             </Form>
 
             <div id="formFooter">
-              <a class="underlineHover" href="#">
+              <a class="link" href="#">
                 Forgot Password?
               </a>
             </div>

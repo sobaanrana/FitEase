@@ -18,13 +18,10 @@ function Footer() {
             <div class=" footerPara col-sm ">
               <h6>About</h6>
               <p class="text-justify">
-                Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative
-                to help the upcoming programmers with the code. Scanfcode
-                focuses on providing the most efficient code or snippets as the
-                code wants to be simple. We will help programmers build up
-                concepts in different programming languages that include C, C++,
-                Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and
-                Algorithm.
+                FitEase.com <i> an FYP Project </i> is an initiative to
+                introduce people around the globe with healthy lifestyfa. This
+                web based application recommends customized diet and exercise
+                plan to its user on the basis of their input parameters.
               </p>
             </div>
             <div class="footerLinks  col-sm ">
@@ -77,8 +74,8 @@ function Footer() {
           <div class="row lowerFooter">
             <div class="CopyrightText">
               <p class="copyright-text">
-                Copyright &copy; 2017 All Rights Reserved by
-                <a href="#">Scanfcode</a>.
+                Copyright &copy; 2022 All Rights Reserved by <spn> </spn>
+                <a href="/"> FitEase</a>.
               </p>
             </div>
 

@@ -9,8 +9,11 @@ function Landing() {
     <div className="LandingBG">
       {/* <img src={picture} style={{ maxWidth: "100%", height: "auto" }} />*/}
 
-      <button className="LandingButton" onClick={() => navigate("/user/login")}>
-        GET STARTED
+      <button
+        className="LandingButton"
+        onClick={() => navigate("/user/signup")}
+      >
+        GET STARTED <span>&#8594;</span>
       </button>
     </div>
   );
