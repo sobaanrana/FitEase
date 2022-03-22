@@ -1,0 +1,15 @@
+* Clean Folders 
+* Clean js/css files 
+* Finalize Navbar ui before/after login
+* Account user pic besides name
+* complete questionnaire + add foreign key (username and id to dbs instances)
+* complete about, contact, features, success stories, community pages
+* private routes on logging in
+* integrate Exercise Recommender in django and show to the frontend
+*
+*
+*
+*
+*
+*
+*
