@@ -59,20 +59,23 @@ function Blogs() {
     loadPosts();
   }, []);
   return (
-    <div className="posts">
-      {displayPosts}
-      <ReactPaginate
-        previousLabel={"Prev"}
-        nextLabel={"Next"}
-        pageCount={pageCount}
-        onPageChange={changePage}
-        containerClassName={"paginationBttns"}
-        previousLinkClassName={"previousBttn"}
-        nextLinkClassName={"nextBttn"}
-        disabledClassName={"paginationDisabled"}
-        activeClassName={"paginationActive"}
-      />
-    </div>
+    <>
+      <h2 className="mx-5 mt-5">Health and Fitness Articles</h2>
+      <div className="posts">{displayPosts}</div>
+      <div className="paginationDiv">
+        <ReactPaginate
+          previousLabel={"Prev"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationBttns"}
+          previousLinkClassName={"previousBttn"}
+          nextLinkClassName={"nextBttn"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
+        />
+      </div>
+    </>
   );
 }
 

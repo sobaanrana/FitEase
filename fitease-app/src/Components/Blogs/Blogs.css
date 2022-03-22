@@ -2,6 +2,7 @@
   flex: 9;
   display: flex;
   flex-wrap: wrap;
+  margin: 0.5em 6em;
   /*margin: 20px;*/
 }
 
@@ -33,4 +34,8 @@
 
 .paginationActive a {
   color: black;
+}
+
+.paginationDiv {
+  margin-bottom: 100px;
 }

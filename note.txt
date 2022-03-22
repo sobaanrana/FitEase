@@ -1,0 +1,11 @@
+Setting up django project
+ pip freeze > requirements.txt
+ pip install -r requirements.txt
+
+while installing any package 
+Getting Error
+
+return _bootstrap._gcd_import(name[level:], package, level) file "", line 1050, in _gcd_import file "", line 1027, in _find_and_load file "", line 1004, in _find_and_load_unlocked modulenotfounderror: no module named 'corsheaders'
+
+Run Command by specifying yopur python version
+ eg. python -m pip install djangorestframework
