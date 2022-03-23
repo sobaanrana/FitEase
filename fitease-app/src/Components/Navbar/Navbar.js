@@ -99,7 +99,7 @@ function Navbar({ isLoggedInUser }) {
                 <li className="nav-item ">
                   <Link
                     className="nav-link active underlineHover"
-                    to="/products"
+                    to="/features"
                   >
                     Features
                   </Link>
@@ -139,7 +139,7 @@ function Navbar({ isLoggedInUser }) {
                 <li className="nav-item ">
                   <Link
                     className="nav-link active underlineHover"
-                    to="/products"
+                    to="/features"
                   >
                     Features
                   </Link>

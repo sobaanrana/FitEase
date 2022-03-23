@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useState } from "react";
 import Questionnaire from "./Components/Questionnaire/Questionnaire";
+import Features from "./Components/Features/Features";
+import Contact from "./ContactUs/Contact";
 
 function App() {
   const [isLoggedInUser, setIsLoggedInUser] = useState(
@@ -30,6 +32,8 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<SingleBlog />} />
           <Route path="/user/questionnaire" element={<Questionnaire />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Router>
