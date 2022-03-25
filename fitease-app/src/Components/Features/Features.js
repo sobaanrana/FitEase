@@ -23,118 +23,226 @@ const fadeInUp = keyframes`
 `;
 
 const Features = () => (
-  <div className="container">
-    <h2 className="heading">Features</h2>
-    <div className="row ">
-      <div className="col-lg-4 col-md-6 mb-3 ">
-        <div className="feature-box f-boxed style-3">
-          <Reveal
-            className="onStep"
-            keyframes={fadeInUp}
-            delay={0}
-            duration={600}
-            triggerOnce
-          >
-            {/*    <FontAwesomeIcon
+  <div className="imgDiv">
+    <div className="container">
+      <h2 className="heading">Features</h2>
+      <div className="row ">
+        <div className="col-lg-4 col-md-6 mb-3 ">
+          <div className="feature-box f-boxed style-3">
+            <Reveal
+              className="onStep"
+              keyframes={fadeInUp}
+              delay={0}
+              duration={600}
+              triggerOnce
+            >
+              {/*    <FontAwesomeIcon
             icon={faFacebookF}
             className="bg-color-2 i-boxed icon_wallet"
           />
 
 <i></i>*/}
-          </Reveal>
-          <div className="text">
-            <Reveal
-              className="onStep"
-              keyframes={fadeInUp}
-              delay={100}
-              duration={600}
-              triggerOnce
-            >
-              <h4 className="">User Account</h4>
             </Reveal>
-            <Reveal
-              className="onStep"
-              keyframes={fadeInUp}
-              delay={200}
-              duration={600}
-              triggerOnce
-            >
-              <p className="">
-                User can regtister an acoount and will encounter a questionnaire
-                form to provide hius/her relevant input parameters.{" "}
-              </p>
-            </Reveal>
-          </div>
-          {/*<i className="wm icon_wallet"></i> */}
-        </div>
-      </div>
-
-      <div className="col-lg-4 col-md-6 mb-3">
-        <div className="feature-box f-boxed style-3">
-          <Reveal
-            className="onStep"
-            keyframes={fadeInUp}
-            delay={0}
-            duration={600}
-            triggerOnce
-          ></Reveal>
-          <div className="text">
-            <Reveal
-              className="onStep"
-              keyframes={fadeInUp}
-              delay={100}
-              duration={600}
-              triggerOnce
-            >
-              <h4 className="">Diet and Exercise</h4>
-            </Reveal>
-            <Reveal
-              className="onStep"
-              keyframes={fadeInUp}
-              delay={200}
-              duration={600}
-              triggerOnce
-            >
-              <p className="">
-                The user's input parameters are sued to recommend customized
-                diet and exercise plan, which can be implemented easily.
-              </p>
-            </Reveal>
+            <div className="text">
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>User Account</h4>
+              </Reveal>
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  User can regtister an acoount and will encounter a
+                  questionnaire form to provide his/her relevant input
+                  parameters.
+                </p>
+              </Reveal>
+            </div>
+            {/*<i className="wm icon_wallet"></i> */}
           </div>
         </div>
-      </div>
 
-      <div className="col-lg-4 col-md-6 mb-3">
-        <div className="feature-box f-boxed style-3">
-          <Reveal
-            className="onStep"
-            keyframes={fadeInUp}
-            delay={0}
-            duration={600}
-            triggerOnce
-          ></Reveal>
-          <div className="text">
+        <div className="col-lg-4 col-md-6 mb-3">
+          <div className="feature-box f-boxed style-3">
             <Reveal
               className="onStep"
               keyframes={fadeInUp}
-              delay={100}
+              delay={0}
               duration={600}
               triggerOnce
-            >
-              <h4 className="">Machine Learning</h4>
-            </Reveal>
+            ></Reveal>
+            <div className="text">
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>Diet and Exercise</h4>
+              </Reveal>
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  The user's input parameters are sued to recommend customized
+                  diet and exercise plan, which can be implemented easily.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-4 col-md-6 mb-3">
+          <div className="feature-box f-boxed style-3">
             <Reveal
               className="onStep"
               keyframes={fadeInUp}
-              delay={200}
+              delay={0}
               duration={600}
               triggerOnce
-            >
-              <p className="">
-                Authentic and relevant supervised and unsupervside machine
-                Learning algorithms are used for recommending and predictions.
-              </p>
-            </Reveal>
+            ></Reveal>
+            <div className="text">
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>Machine Learning</h4>
+              </Reveal>
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  Authentic and relevant supervised and unsupervside machine
+                  Learning algorithms are used for recommending and predictions.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-4 col-md-6 mb-3">
+          <div className="feature-box f-boxed style-3">
+            <Reveal
+              className="onStep"
+              keyframes={fadeInUp}
+              delay={0}
+              duration={600}
+              triggerOnce
+            ></Reveal>
+            <div className="text">
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>Machine Learning</h4>
+              </Reveal>
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  Authentic and relevant supervised and unsupervside machine
+                  Learning algorithms are used for recommending and predictions.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-4 col-md-6 mb-3">
+          <div className="feature-box f-boxed style-3">
+            <Reveal
+              className="onStep"
+              keyframes={fadeInUp}
+              delay={0}
+              duration={600}
+              triggerOnce
+            ></Reveal>
+            <div className="text">
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>Machine Learning</h4>
+              </Reveal>
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  Authentic and relevant supervised and unsupervside machine
+                  Learning algorithms are used for recommending and predictions.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-4 col-md-6 mb-3">
+          <div className="feature-box f-boxed style-3">
+            <Reveal
+              className="onStep"
+              keyframes={fadeInUp}
+              delay={0}
+              duration={600}
+              triggerOnce
+            ></Reveal>
+            <div className="text">
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>Machine Learning</h4>
+              </Reveal>
+              <Reveal
+                className="onStep"
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  Authentic and relevant supervised and unsupervside machine
+                  Learning algorithms are used for recommending and predictions.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
       </div>

@@ -9,3 +9,6 @@ return _bootstrap._gcd_import(name[level:], package, level) file "", line 1050, 
 
 Run Command by specifying yopur python version
  eg. python -m pip install djangorestframework
+
+
+ Need to add default value to the newly added filed if there is data present on the table already or just delete the db if there is not much data

@@ -67,13 +67,13 @@ const Contact = function () {
   }
 */
   return (
-    <div>
+    <div className="imgDiv">
       {/*<GlobalStyles />*/}
       <div className="mainbreadcumb">
         <div className="row">
           <div className="col-md-12 text-center">
             <h1>Contact Us</h1>
-            <p>Anim pariatur cliche reprehenderit</p>
+            <p>We are just a message away for your help.</p>
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@ const Contact = function () {
                   Message failed...
                 </div>*/}
                 <button type="button " class="btn btn-success btn-lg btn-block">
-                  Success
+                  Submit
                 </button>
               </form>
             </div>

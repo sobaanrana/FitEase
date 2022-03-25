@@ -10,16 +10,15 @@ html {
 }
 
 .imgDiv {
-  background-image: url(workout-bars-at-park.jpg);
+  background-image: url(bg-2.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-  background-size: 100%;
-  width: "100vw";
-  height: "100vh";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  background-size: cover;
+  width: 100vw;
+  min-height: 120vh;
+  margin-top: 0%;
+
+  /*display: block;
+  border: 1px solid red'*/
 }

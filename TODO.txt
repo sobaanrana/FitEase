@@ -3,13 +3,17 @@
 * Finalize Navbar ui before/after login
 * Account user pic besides name
 * complete questionnaire + add foreign key (username and id to dbs instances)
-* complete about, contact, features, success stories, community pages
+* complete about, contact, features, success stories,community, FAQ pages
+* Contact or navbar contact to backend
 * private routes on logging in
 * integrate Exercise Recommender in django and show to the frontend
+* Questionnaire - Age, gender, weight, height, lifestle, goal, bmi, bmr, calorie count
 *
 *
-*
-*
-*
-*
-*
+
+* https://www.thearmchaircritic.org/tech-journal/prevent-useeffects-callback-firing-during-initial-render
+* Stop useEffect on initial render and make it render only when a particular state change
+
+react- collapse
+accordian npm
+vercel
