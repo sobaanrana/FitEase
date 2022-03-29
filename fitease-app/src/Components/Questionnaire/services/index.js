@@ -12,3 +12,13 @@ export const postQuestionnaire = (data) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const getLoggedInUser = (id) => {
+  return fetch(`http://localhost:8000/api/user/${id}/`, {
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};

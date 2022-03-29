@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import classNames from "classnames";
 import { Field, Form, Formik } from "formik";
-import { postQuestionnaire } from "./services";
-import { useNavigate } from "react-router-dom";
+import { getLoggedInUser, postQuestionnaire } from "./services";
+import { useNavigate, useRoutes } from "react-router-dom";
 import { FaTransgenderAlt, FaWeight, FaStarOfLife } from "react-icons/fa";
 import { GiBodyHeight, GiStairsGoal } from "react-icons/gi";
 
@@ -17,6 +17,7 @@ const Questionnaire = () => {
   const [showDone, setShowDone] = useState(false);
   const [showSubmit, setShowSubmit] = useState(true);
   const [showNextPrevButtons, setShowNextPrevButtons] = useState(true);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   /*
@@ -135,22 +136,26 @@ const Questionnaire = () => {
         Calorie_Count = BMR * 1.9;
       }
     }
-    data = { ...data, BMI, BMR, Calorie_Count };
+    data = { ...data, Name: user.email, BMI, BMR, Calorie_Count };
     console.log(data);
     postQuestionnaire(data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
-  let initialRender = true;
 
+  const loggedInUser = () => {
+    const data = JSON.parse(localStorage.getItem("loggedInUser"));
+    //console.log(data?.user?.id);
+    getLoggedInUser(data?.user?.id)
+      .then((res) => {
+        setUser(res);
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
-    if (showDone) {
-      var timeout = setTimeout(() => {
-        console.log("useEffect timeout");
-        navigate("/");
-      }, 5000);
-    } // avoided useEffect on initial render - todo : use with useRef if Possible
-    return () => clearTimeout(timeout);
+    // avoided useEffect on initial render - todo : use with useRef if Possible
+    loggedInUser();
   }, [showDone]);
   return (
     <div className="imgDiv">
@@ -245,10 +250,17 @@ const Questionnaire = () => {
               )}
 
               <Formik
-                initialValues={{ age: "", weight: "", height: "" }}
+                initialValues={{
+                  Age: "",
+                  Gender: "",
+                  Weight: "",
+                  Height: "",
+                  Lifestyle: "",
+                  Goal: "",
+                }}
                 //validationSchema={validationSchema}
                 onSubmit={(values) => {
-                  console.log(values);
+                  console.log("Values       :", values);
                   onSubmitQuestionnaire(values);
                 }}
               >

@@ -79,7 +79,7 @@ const Contact = function () {
       </div>
       <section className="container my-5 mainContent">
         <div className="row">
-          <div className="col-lg-8 mb-3">
+          <div className="col-lg-8 col-sm-8 mb-3">
             <h3 className="my-5 font-weight-bold">Do you have any question?</h3>
             <div className="form-side">
               <form className="formcontact">

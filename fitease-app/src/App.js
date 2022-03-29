@@ -35,7 +35,7 @@ function App() {
           <Route path="/features" element={<Features />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-        <Footer />
+        {/* <Footer />*/}
       </Router>
     </div>
   );

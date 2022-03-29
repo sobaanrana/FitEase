@@ -8,7 +8,7 @@
 * private routes on logging in
 * integrate Exercise Recommender in django and show to the frontend
 * Questionnaire - Age, gender, weight, height, lifestle, goal, bmi, bmr, calorie count
-*
+* Navabr name is takren from local storage whihc is a security threat and shiuld be done by getting user by id and then display the name
 *
 
 * https://www.thearmchaircritic.org/tech-journal/prevent-useeffects-callback-firing-during-initial-render
