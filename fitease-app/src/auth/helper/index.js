@@ -40,6 +40,8 @@ export const login = (user) => {
 
 export const authenticate = (data, next) => {
   if (typeof window !== undefined) {
+    const { token, user } = data;
+    const { id } = user;
     localStorage.setItem("loggedInUser", JSON.stringify(data));
     //next(); // middleware as continue forward
   }

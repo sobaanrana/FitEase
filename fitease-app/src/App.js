@@ -14,6 +14,7 @@ import { useState } from "react";
 import Questionnaire from "./Components/Questionnaire/Questionnaire";
 import Features from "./Components/Features/Features";
 import Contact from "./ContactUs/Contact";
+import FAQs from "./Components/FAQs/FAQs";
 
 function App() {
   const [isLoggedInUser, setIsLoggedInUser] = useState(
@@ -34,8 +35,9 @@ function App() {
           <Route path="/user/questionnaire" element={<Questionnaire />} />
           <Route path="/features" element={<Features />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/faq" element={<FAQs />} />
         </Routes>
-        {/* <Footer />*/}
+        <Footer />
       </Router>
     </div>
   );

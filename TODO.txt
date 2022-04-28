@@ -1,3 +1,4 @@
+* set only token and id in the local storage after login while authenticating and then chnage user name in navabr and id in questioannaire
 * Clean Folders 
 * Clean js/css files 
 * Finalize Navbar ui before/after login

@@ -38,16 +38,16 @@ const Questionnaire = () => {
     setCount(2);
     setShowHeight(false);
   }*/
-  console.log("Count values is", count);
+  //console.log("Count values is", count);
 
   const gotoQuestion = (num) => {
-    console.log("Count values after function is called", count);
+    //console.log("Count values after function is called", count);
 
-    console.log("num is ", num);
+    //console.log("num is ", num);
 
     const newCount = count + num;
     setCount(newCount);
-    console.log("Count values after countr is set", count);
+    //console.log("Count values after countr is set", count);
     if (newCount == 0) {
       setShowAge(true);
       setGender(false);
@@ -136,7 +136,15 @@ const Questionnaire = () => {
         Calorie_Count = BMR * 1.9;
       }
     }
-    data = { ...data, Name: user.email, BMI, BMR, Calorie_Count };
+    console.log(user);
+    console.log(`http://localhost:8000/api/user/${user}/`);
+    data = {
+      ...data,
+      Name: `http://localhost:8000/api/user/${user}/`,
+      BMI,
+      BMR,
+      Calorie_Count,
+    };
     console.log(data);
     postQuestionnaire(data)
       .then((res) => console.log(res))
@@ -148,13 +156,18 @@ const Questionnaire = () => {
     //console.log(data?.user?.id);
     getLoggedInUser(data?.user?.id)
       .then((res) => {
-        setUser(res);
-        console.log(res);
+        setUser(data?.user?.id); // setting user id instead of a user details that can be set and used later
+        console.log("Res is ", res);
       })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
     // avoided useEffect on initial render - todo : use with useRef if Possible
+    if (showDone) {
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
+    }
     loggedInUser();
   }, [showDone]);
   return (
@@ -260,6 +273,9 @@ const Questionnaire = () => {
                 }}
                 //validationSchema={validationSchema}
                 onSubmit={(values) => {
+                  setShowDone(true);
+                  setShowSubmit(false);
+                  setShowNextPrevButtons(false);
                   console.log("Values       :", values);
                   onSubmitQuestionnaire(values);
                 }}
@@ -274,15 +290,13 @@ const Questionnaire = () => {
                       !showGoal && (
                         <div class="tab">
                           <h5>What's your Age?</h5>
-                          <p>
-                            <Field
-                              type="number"
-                              name="Age"
-                              placeholder="0"
-                              className="textInp"
-                            />
-                            {/*  <CustomErrorMsg name="age" />*/}{" "}
-                          </p>
+                          <Field
+                            type="number"
+                            name="Age"
+                            placeholder="0"
+                            className="textInp"
+                          />
+                          {/*  <CustomErrorMsg name="age" />*/}{" "}
                         </div>
                       )}
                     {!showAge &&
@@ -320,13 +334,11 @@ const Questionnaire = () => {
                       !showGoal && (
                         <div class="tab">
                           <h5>What's your Weight?</h5>
-                          <p>
-                            <Field
-                              type="number"
-                              name="Weight"
-                              placeholder="0.0"
-                            />
-                          </p>
+                          <Field
+                            type="number"
+                            name="Weight"
+                            placeholder="0.0"
+                          />
                         </div>
                       )}
                     {!showAge &&
@@ -337,13 +349,11 @@ const Questionnaire = () => {
                       !showGoal && (
                         <div class="tab">
                           <h5>What's your Height?</h5>
-                          <p>
-                            <Field
-                              type="number"
-                              name="Height"
-                              placeholder="0.0"
-                            />
-                          </p>
+                          <Field
+                            type="number"
+                            name="Height"
+                            placeholder="0.0"
+                          />
                         </div>
                       )}
                     {!showAge &&
@@ -437,25 +447,14 @@ const Questionnaire = () => {
                       !showLifeStyle &&
                       !showGoal && (
                         <div class="btnWrapper">
-                          <div class="link_wrapper">
-                            <a
-                              href="#"
-                              onClick={() => {
-                                setShowDone(true);
-                                setShowSubmit(false);
-                                setShowNextPrevButtons(false);
-                              }}
+                          <button type="submit">Submit</button>
+                          <div class="icon">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 268.832 268.832"
                             >
-                              Submit
-                            </a>
-                            <div class="icon">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 268.832 268.832"
-                              >
-                                <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
-                              </svg>
-                            </div>
+                              <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
+                            </svg>
                           </div>
                         </div>
                       )}

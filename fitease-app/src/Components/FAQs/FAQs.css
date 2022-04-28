@@ -1,0 +1,30 @@
+.headerFaqs h1,
+p {
+  text-align: center;
+}
+.headerFaqs h1 {
+  margin-bottom: 1em;
+  font-weight: 800;
+  color: black;
+}
+.headerFaqs p {
+  color: black;
+  margin-top: 15px;
+  font-size: large;
+}
+.headerFaqs {
+  padding: 130px 0 110px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.faqs {
+  margin-top: 5%;
+}
+
+.faqs .panel {
+  background-color: rgb(242, 246, 254, 0.2);
+  font-weight: 500;
+  font-size: large;
+}
+.panel .ant-collapse-content {
+  background-color: rgb(242, 246, 254, 0.2);
+}

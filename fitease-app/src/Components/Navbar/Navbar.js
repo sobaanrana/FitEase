@@ -46,7 +46,7 @@ function Navbar({ isLoggedInUser }) {
 */
   const loggedInUser = () => {
     const data = isAuthenticated();
-    console.log("Data", data);
+    //console.log("Data", data);
     setUser(data?.user);
     console.log("This is user from local storage", user);
     console.log("User is logged in or not", isLoggedIn);
@@ -120,6 +120,11 @@ function Navbar({ isLoggedInUser }) {
                     to="/contact"
                   >
                     Contact
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active underlineHover" to="/faq">
+                    FAQs
                   </Link>
                 </li>
               </>

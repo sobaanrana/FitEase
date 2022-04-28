@@ -5,7 +5,7 @@ div.LandingBG {
   background-attachment: fixed;
   background-size: cover;
   width: 100vw;
-  height: 116vh;
+  min-height: 115vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@ button.LandingButton {
   border: none;
   color: #fff;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   padding: 1% 1%;
   width: 15%;
