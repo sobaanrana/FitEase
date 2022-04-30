@@ -106,19 +106,21 @@ nav i {
     align-items: center;
   }
   .hamburger-rightDiv {
-    position: relative;
-    right: 0px;
+    position: absolute;
+    right: 30px;
   }
-  .hamburger-rightDiv .fa-search {
-    margin-left: 90px;
-  }
+
   .hamburger-logoDiv {
     position: relative;
     top: 10px;
   }
+  .fa-close {
+    padding: 10px;
+  }
   .mobileTop {
     margin-bottom: 0px;
   }
+
   .mobileTop i {
     color: gray;
     font-size: 26px;
@@ -140,10 +142,9 @@ nav i {
   }
   .mobile-menu-link {
     background-color: white;
-    height: 40rem;
+    height: 35rem;
     display: flex;
     justify-content: center;
-    align-items: center;
     position: absolute;
     right: 0em;
     transition: all 2s linear;
@@ -155,26 +156,23 @@ nav i {
   .mobile-menu-link ul {
     height: 20rem;
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
     align-items: start;
 
     padding-right: 2.5em;
     padding-left: 1em;
+    margin-top: 80px;
+  }
+  .mobile-menu-link ul li {
+    margin-top: 30px;
   }
 
   .mobile-menu-link ul li:first-child {
     transition-delay: 0.2s;
   }
-  .mobileloginSignup {
-    margin-top: 26px;
-  }
-  .mobileloginSignup i {
-    margin-right: 10px;
-    margin-left: 0;
-  }
+
   .mobileAccount {
-    margin-top: 10px;
+    margin-top: 40px;
     margin-left: 0;
   }
   .mobileAccount i {

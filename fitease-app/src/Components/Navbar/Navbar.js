@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import logo from "./logo.png";
 import downArrow from "./downArrow.png";
 import { isAuthenticated, signout } from "../../auth/helper";
 const Navbar = ({ isLoggedInUser }) => {
@@ -149,17 +148,15 @@ const Navbar = ({ isLoggedInUser }) => {
         {/* hamburget menu start  */}
         <div className="hamburger-menu">
           <div className="hamburger-logoDiv">
-            <img src={logo} className="mb-4 mt-0" width={"60%"}></img>
+            <img src="./logo.jpg" width="40px" />
           </div>
           <div className="hamburger-rightDiv">
-            <i class="fa fa-search"></i>
-            <i class="fa fa-shopping-cart"></i>
+            <i class="fa fa-user"></i>
 
             <NavLink
               to="/"
               onClick={() => {
                 setShow(!show);
-                console.log(show);
               }}
             >
               {!show && <i class="fa fa-bars" style={{ color: "black" }}></i>}
@@ -167,7 +164,7 @@ const Navbar = ({ isLoggedInUser }) => {
           </div>
         </div>
 
-        {show && (
+        {show && !isLoggedInUser && (
           <div className="menu-link mobile-menu-link">
             <ul>
               <div className="mobileTop">
@@ -178,40 +175,115 @@ const Navbar = ({ isLoggedInUser }) => {
                   }}
                 ></i>
               </div>
-              <img src={logo} className="mb-4 mt-0" width={"60%"}></img>
+              <img src="./logo.jpg" className="mb-4 mt-0" width={"20%"}></img>
 
-              <NavLink className="nav-link mobile-logo" to="/">
-                <i class="fa fa-list-alt"></i> SHOP BY CATEGORY
+              <li>
+                <NavLink className="nav-link" to="/">
+                  FEATURES
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  BLOGS
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  ABOUT
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  CONTACT
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  FAQ s{" "}
+                </NavLink>
+              </li>
+              <hr />
+
+              <NavLink className="nav-link mobileAccount" to="/">
+                <i class="fa fa-user"></i>
+                Account
               </NavLink>
+            </ul>
+          </div>
+        )}
+        {show && isLoggedInUser && (
+          <div className="menu-link mobile-menu-link">
+            <ul>
+              <div className="mobileTop">
+                <i
+                  class="fa fa-close"
+                  onClick={() => {
+                    setShow(!show);
+                  }}
+                ></i>
+              </div>
+              <img src="./logo.jpg" className="mb-4 mt-0" width={"20%"}></img>
+
               <li>
                 <NavLink className="nav-link" to="/">
-                  BRANDS
+                  FEATURES
                 </NavLink>
               </li>
               <hr />
 
               <li>
                 <NavLink className="nav-link" to="/">
-                  PROMOTIONS
+                  BLOGS
                 </NavLink>
               </li>
               <hr />
 
               <li>
                 <NavLink className="nav-link" to="/">
-                  GROCERY
+                  SUCCESS STORIES
                 </NavLink>
               </li>
               <hr />
 
               <li>
                 <NavLink className="nav-link" to="/">
-                  PERFUMES
+                  COMMUNITY
                 </NavLink>
               </li>
               <hr />
 
               <li>
+                <NavLink className="nav-link" to="/">
+                  CONTACT
+                </NavLink>
+              </li>
+              <hr />
+
+              <NavLink className="nav-link mobileAccount" to="/">
+                <i class="fa fa-user"></i>
+                Logout
+              </NavLink>
+            </ul>
+          </div>
+        )}
+      </nav>
+    </>
+  );
+};
+
+export default Navbar;
+
+/*
+
+<li>
                 <NavLink className="nav-link" to="/">
                   ITALAIN FOOD
                 </NavLink>
@@ -231,28 +303,4 @@ const Navbar = ({ isLoggedInUser }) => {
                 </NavLink>
               </li>
               <hr />
-
-              <li>
-                <NavLink className="nav-link" to="/">
-                  BABY CARE
-                </NavLink>
-              </li>
-              <hr />
-
-              <NavLink className="nav-link mobileloginSignup" to="/">
-                <i class="fa fa-map-marker " aria-hidden="true"></i>
-                Track your order
-              </NavLink>
-              <NavLink className="nav-link mobileAccount" to="/">
-                <i class="fa fa-user"></i>
-                Account
-              </NavLink>
-            </ul>
-          </div>
-        )}
-      </nav>
-    </>
-  );
-};
-
-export default Navbar;
+*/
