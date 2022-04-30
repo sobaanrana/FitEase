@@ -1,0 +1,55 @@
+.about {
+  margin: 100px 0px;
+}
+
+.description_img {
+  margin-top: 41px;
+}
+.hexagon i:before {
+  font-size: 24px;
+}
+.hexagon {
+  position: relative;
+  width: 49px;
+  height: 26px;
+  float: left;
+  background-color: #36d7b7;
+}
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  left: inherit;
+}
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 14.43px solid #36d7b7;
+}
+.hexagon:after {
+  top: 100%;
+  left: 0%;
+  width: 0;
+  border-top: 14.43px solid #36d7b7;
+}
+.hexagon i:before {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.iconAbout {
+  font-size: 30px;
+  margin: 0px 10px;
+}
+
+.d-table {
+  margin-left: 70px;
+}
+.section_title {
+}
+ul li {
+  list-style: none;
+}

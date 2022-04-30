@@ -7,7 +7,6 @@ import Navbar from "./Components/Navbar/Navbar";
 import Landing from "./Components/Landing/Landing";
 import Blogs from "./Components/Blogs/Blogs";
 import SingleBlog from "./Components/Blogs/SingleBlog";
-import Blgs from "./Components/Blogs/Blgs";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useState } from "react";
@@ -15,6 +14,9 @@ import Questionnaire from "./Components/Questionnaire/Questionnaire";
 import Features from "./Components/Features/Features";
 import Contact from "./ContactUs/Contact";
 import FAQs from "./Components/FAQs/FAQs";
+import About from "./Components/About/About";
+import BlogRightSideBar from "./Components/Blogs/BlogRightSideBar";
+import UserDashboard from "./Components/UserDashboard/UserDashboard";
 
 function App() {
   const [isLoggedInUser, setIsLoggedInUser] = useState(
@@ -30,12 +32,14 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/user/login" element={<Login />} />
           <Route path="/user/signup" element={<Signup />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs" element={<BlogRightSideBar />} />
           <Route path="/blogs/:id" element={<SingleBlog />} />
           <Route path="/user/questionnaire" element={<Questionnaire />} />
           <Route path="/features" element={<Features />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<FAQs />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/user/dashboard" element={<UserDashboard />} />
         </Routes>
         <Footer />
       </Router>

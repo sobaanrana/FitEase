@@ -75,7 +75,12 @@ function Signup() {
             />
           </div>
           <Formik
-            initialValues={{ first_name: "", email: "", password: "" }}
+            initialValues={{
+              first_name: "",
+              email: "",
+              password: "",
+              confirmPassword: "",
+            }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
               //console.log(values);
@@ -111,20 +116,26 @@ function Signup() {
                 />
                 <CustomErrorMsg name="password" />
 
+                <Field
+                  type="text"
+                  id="confirmPassword"
+                  class="fadeIn third"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                />
+                <CustomErrorMsg name="confirmPassword" />
+
                 <button class="fadeIn fourth  linkTagBtn" type="submit">
                   Sign Up
                 </button>
               </Form>
             )}
           </Formik>
-
           <div id="formFooter">
-            <p>
-              If already registered ? <span />
-              <Link class=" link" to="/user/login">
-                Login
-              </Link>
-            </p>
+            If already registered ? <span />
+            <Link class=" link" to="/user/login">
+              Login
+            </Link>
           </div>
         </div>
       </div>

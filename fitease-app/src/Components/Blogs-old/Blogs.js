@@ -60,10 +60,10 @@ function Blogs() {
   }, []);
   return (
     <>
-      <>
+      <div className="imgDiv">
         {" "}
         <h2 className="mx-5 mt-5">Health and Fitness Articles</h2>
-        {displayPosts}
+        <div className="posts">{displayPosts}</div>
         <div className="paginationDiv">
           <ReactPaginate
             previousLabel={"Prev"}
@@ -77,7 +77,7 @@ function Blogs() {
             activeClassName={"paginationActive"}
           />
         </div>
-      </>
+      </div>
     </>
   );
 }

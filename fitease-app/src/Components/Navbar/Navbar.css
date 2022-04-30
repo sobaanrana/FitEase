@@ -1,52 +1,206 @@
 nav {
-  z-index: 1000;
-}
-.navbarFlex {
+  background-color: #16a085;
   display: flex;
 }
-.navLinksContainer {
-  margin: 0em 5em;
-}
-.navLinksContainer > li {
-  padding-left: 2em;
-}
-form.navbarFlexItem {
-  flex: 2;
+nav a {
+  font-weight: 500;
 }
 
-ul.navbarFlexItem {
+.logo {
+  width: 400px;
+}
+.logo i {
+  font-size: 26px;
+  margin-right: 5px;
+  margin-top: 28px;
+}
+.logo .nav-link {
+  margin-top: 18px;
+}
+.logo img {
+  margin-left: 40%;
 }
 
-.loginSignupContainer .nav-item {
-  /*padding to button applied using bootstrap  */
-  padding-right: 2em;
+.menu-link {
+  margin-left: 8%;
 }
-.loginSignupContainer {
+.menu-link ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.menu-link ul li {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.nav-link {
+  color: black;
+}
+.nav-link:hover {
+  color: black;
+}
+/*
+.mid {
+  margin-left: 26px;
+}
+
+.loginSignup {
+  display: flex;
+}*/
+.loginSignup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  right: 0;
-  margin-right: 5em;
+  left: 80%;
+}
+.loginSignup i {
+  margin-left: 50px;
+  margin-right: 20px;
+
+  font-size: 26px;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
+nav i {
+  margin-left: 20px;
+  margin-top: 5px;
 }
 
-.navbar .underlineHover:after {
-  display: block;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 3px;
+.hamburger-menu {
+  display: none;
+}
+
+.showlogoDiv {
+  padding: 200px 1000px;
   background-color: white;
-  content: "";
-  transition: width 0.2s;
+  position: fixed;
+  top: 210px;
 }
-
-.underlineHover:hover {
-  color: white;
+.belowSearchBar {
+  display: none;
 }
+@media screen and (max-width: 700px) {
+  .hamburger-menu {
+    font-size: 25px;
+    color: black;
 
-.underlineHover:hover:after {
-  width: 100%;
+    display: block;
+  }
+  .logo {
+    display: none;
+  }
+  .showlogoDiv {
+    display: none;
+  }
+  .loginSignup {
+    display: none;
+  }
+  .menu-link {
+    display: none;
+  }
+  .hamburger-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hamburger-rightDiv {
+    position: relative;
+    right: 0px;
+  }
+  .hamburger-rightDiv .fa-search {
+    margin-left: 90px;
+  }
+  .hamburger-logoDiv {
+    position: relative;
+    top: 10px;
+  }
+  .mobileTop {
+    margin-bottom: 0px;
+  }
+  .mobileTop i {
+    color: gray;
+    font-size: 26px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  .mobile-menu-link {
+    display: flex;
+    position: relative;
+    z-index: 99;
+  }
+  .mobile-logo {
+    background-color: #ffac00;
+  }
+  .mobile-menu-link .nav-link {
+    padding: 0px;
+    font-size: 14px;
+  }
+  .mobile-menu-link {
+    background-color: white;
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0em;
+    transition: all 2s linear;
+    transform-origin: top;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  }
+
+  .mobile-menu-link ul {
+    height: 20rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: start;
+
+    padding-right: 2.5em;
+    padding-left: 1em;
+  }
+
+  .mobile-menu-link ul li:first-child {
+    transition-delay: 0.2s;
+  }
+  .mobileloginSignup {
+    margin-top: 26px;
+  }
+  .mobileloginSignup i {
+    margin-right: 10px;
+    margin-left: 0;
+  }
+  .mobileAccount {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  .mobileAccount i {
+    margin-right: 10px;
+    margin-left: 0;
+  }
+  hr {
+    height: 0.1px;
+    width: 100%;
+    background-color: #cad1d8;
+    margin: 0;
+  }
+  .belowSearchBar {
+    background-color: white;
+    display: block;
+    position: absolute;
+    top: 96px;
+    padding: 5px 100px;
+  }
+
+  .searchBelowSearchBar {
+    font-size: 15px;
+    position: relative;
+    left: 340px;
+    padding: 3px;
+    width: 30px;
+    background-color: #ffac00;
+  }
 }

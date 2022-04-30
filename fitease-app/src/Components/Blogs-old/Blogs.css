@@ -1,7 +1,13 @@
-/* Pagination  */
-.paginationDiv {
-  margin-left: 260px;
+.posts {
+  flex: 9;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5em 14em;
+  /*margin: 20px;*/
 }
+
+/* Pagination  */
+
 .paginationBttns {
   width: 100%;
   height: 40px;

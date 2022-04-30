@@ -1,10 +1,11 @@
-//import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { isAuthenticated, signout } from "../../auth/helper";
-//axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token"); //now x-auth-token is sent with every network request and server will consider logged in
 import "./Navbar.css";
-function Navbar({ isLoggedInUser }) {
+import { NavLink } from "react-router-dom";
+import logo from "./logo.png";
+import downArrow from "./downArrow.png";
+import { isAuthenticated, signout } from "../../auth/helper";
+const Navbar = ({ isLoggedInUser }) => {
+  const [show, setShow] = useState(false); // for mobile view
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   //    localStorage.getItem("token") ? true : false
   const [user, setUser] = useState({});
@@ -18,32 +19,6 @@ function Navbar({ isLoggedInUser }) {
       })
       .catch((err) => console.log(err));
   };
-
-  /*
-  const loggedInUser = () => {
-    try {
-      let token = localStorage.getItem("token");
-      if (token) {
-        console.log("getUser token", token);
-        axios
-          .get("https://usman-recipes.herokuapp.com/api/users/me", {
-            headers: {
-              "x-auth-token": token,
-              "content-type": "application/json",
-            },
-          })
-          .then((response) => {
-            console.log("line 27", response);
-            setUser(response.data);
-            setIsLoggedIn(true);
-          })
-          .catch((error) => console.log(error));
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-*/
   const loggedInUser = () => {
     const data = isAuthenticated();
     //console.log("Data", data);
@@ -63,173 +38,221 @@ function Navbar({ isLoggedInUser }) {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg py-3 navbar-dark bg-dark">
-      <div className="container-fluid">
-        <Link className="navbar-brand font-weight-bold px-5" to="/">
-          FitEase
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse navbarFlex"
-          id="navbarSupportedContent"
-        >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0  navbarFlexItem navLinksContainer">
+    <>
+      {" "}
+      <nav>
+        {/*Category*/}
+        <div className="logo">
+          <NavLink className="nav-link" to="/">
+            <img src="./logo.jpg" width="40px" />
+          </NavLink>
+        </div>
+        {/* 2nd menu part  */}
+        <div className="menu-link">
+          <ul>
             {!isLoggedInUser && (
               <>
-                {" "}
-                <li className="nav-item ">
-                  <Link
-                    className="nav-link active underlineHover"
-                    aria-current="page"
-                    to="/"
-                  >
-                    Home
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/home">
+                    HOME
+                  </NavLink>
                 </li>
-                <li className="nav-item ">
-                  <Link
-                    className="nav-link active underlineHover"
-                    to="/features"
-                  >
-                    Features
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/features">
+                    FEATURES
+                  </NavLink>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link active underlineHover" to="/blogs">
-                    Blogs
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/blogs">
+                    BLOGS
+                  </NavLink>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link active underlineHover" to="/about">
-                    About
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/about">
+                    ABOUT
+                  </NavLink>
                 </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active underlineHover"
-                    to="/contact"
-                  >
-                    Contact
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/contact">
+                    CONTACT{" "}
+                  </NavLink>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link active underlineHover" to="/faq">
+                <li>
+                  <NavLink className="nav-link" to="/faqs">
                     FAQs
-                  </Link>
+                  </NavLink>
                 </li>
+                <div className="loginSignup">
+                  <li>
+                    <NavLink className="nav-link" to="/user/login">
+                      LOGIN
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="nav-link" to="/user/signup">
+                      SIGNUP
+                    </NavLink>
+                  </li>
+                </div>
               </>
             )}
             {isLoggedInUser && (
               <>
                 {" "}
-                <li className="nav-item ">
-                  <Link
-                    className="nav-link active underlineHover"
-                    aria-current="page"
-                    to="/"
-                  >
-                    Home
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/home">
+                    HOME
+                  </NavLink>
                 </li>
-                <li className="nav-item ">
-                  <Link
-                    className="nav-link active underlineHover"
-                    to="/features"
-                  >
-                    Features
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/features">
+                    FEATURES
+                  </NavLink>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link active underlineHover" to="/blogs">
-                    Blogs
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/blogs">
+                    BLOGS
+                  </NavLink>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link active underlineHover" to="/about">
-                    Success Stories
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/about">
+                    SUCCESS STORIES
+                  </NavLink>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link active underlineHover" to="/about">
-                    Community
-                  </Link>
+                <li>
+                  <NavLink className="nav-link" to="/contact">
+                    COMMUNITY
+                  </NavLink>
                 </li>
-                <li className=" nav-item">
-                  <Link className="nav-link active underlineHover" to="/">
-                    Account
-                  </Link>
-                </li>
-              </>
-            )}
-          </ul>
-          {/*  <form className="d-flex navbarFlexItem mx-2">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-success mx-5 px-5" type="submit">
-              Search
-            </button>
-          </form>*/}
-
-          <div className="loginSignupContainer">
-            <ul className="navbar-nav navbarFlexItem">
-              {isLoggedInUser ? (
-                <>
-                  <li className="nav-item">
-                    <p className="nav-link active">{user?.first_name}</p>
+                <div className="loginSignup">
+                  <li className="nav-link">
+                    <p className="nav-name">{user?.first_name}</p>
                   </li>
 
-                  <li className="nav-item">
-                    <Link
-                      className="nav-link btn btn-outline-primary text-white px-4"
+                  <li className="nav-link">
+                    <NavLink
+                      className="nav-link"
                       to="/"
                       onClick={() => {
                         onLogout();
                       }}
                     >
                       Logout
-                    </Link>
+                    </NavLink>
                   </li>
-                </>
-              ) : (
-                <>
-                  <li className="nav-item ">
-                    <Link
-                      className=" nav-link btn btn-outline-primary text-white px-4"
-                      to="/user/login"
-                    >
-                      LogIn
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link
-                      className="nav-link btn btn-outline-primary text-white px-4"
-                      to="/user/signup"
-                    >
-                      SignUp
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul>
+                </div>
+              </>
+            )}
+          </ul>
+        </div>
+
+        {/* hamburget menu start  */}
+        <div className="hamburger-menu">
+          <div className="hamburger-logoDiv">
+            <img src={logo} className="mb-4 mt-0" width={"60%"}></img>
+          </div>
+          <div className="hamburger-rightDiv">
+            <i class="fa fa-search"></i>
+            <i class="fa fa-shopping-cart"></i>
+
+            <NavLink
+              to="/"
+              onClick={() => {
+                setShow(!show);
+                console.log(show);
+              }}
+            >
+              {!show && <i class="fa fa-bars" style={{ color: "black" }}></i>}
+            </NavLink>
           </div>
         </div>
-      </div>
-    </nav>
+
+        {show && (
+          <div className="menu-link mobile-menu-link">
+            <ul>
+              <div className="mobileTop">
+                <i
+                  class="fa fa-close"
+                  onClick={() => {
+                    setShow(!show);
+                  }}
+                ></i>
+              </div>
+              <img src={logo} className="mb-4 mt-0" width={"60%"}></img>
+
+              <NavLink className="nav-link mobile-logo" to="/">
+                <i class="fa fa-list-alt"></i> SHOP BY CATEGORY
+              </NavLink>
+              <li>
+                <NavLink className="nav-link" to="/">
+                  BRANDS
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  PROMOTIONS
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  GROCERY
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  PERFUMES
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  ITALAIN FOOD
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  ELECTORNICS
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  PERSONAL CARE
+                </NavLink>
+              </li>
+              <hr />
+
+              <li>
+                <NavLink className="nav-link" to="/">
+                  BABY CARE
+                </NavLink>
+              </li>
+              <hr />
+
+              <NavLink className="nav-link mobileloginSignup" to="/">
+                <i class="fa fa-map-marker " aria-hidden="true"></i>
+                Track your order
+              </NavLink>
+              <NavLink className="nav-link mobileAccount" to="/">
+                <i class="fa fa-user"></i>
+                Account
+              </NavLink>
+            </ul>
+          </div>
+        )}
+      </nav>
+    </>
   );
-}
+};
 
 export default Navbar;

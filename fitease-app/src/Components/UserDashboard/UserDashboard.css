@@ -1,0 +1,109 @@
+.userDashboard {
+  margin: 100px 0;
+}
+.userInfo {
+  /* background-color: #f8f9fe;*/
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 50em;
+  padding-top: 5px;
+}
+.userInfo img {
+  position: absolute;
+  top: -5%;
+  left: 22%;
+  border-radius: 50%;
+}
+
+.userContent {
+  margin-top: 50%;
+  padding: 10px 20px;
+}
+.userContent p {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+#userName {
+  font-size: 26px;
+  font-weight: 700;
+  padding: 10px 20px;
+  background-color: palegreen;
+  border-radius: 1.5rem / 50%;
+}
+#male {
+  font-size: 20px;
+  font-weight: 500;
+}
+#age {
+  font-size: 22px;
+  font-weight: 600;
+  margin-left: 60px;
+}
+#height {
+  font-size: 20px;
+  font-weight: 600;
+}
+#weight {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 20px;
+}
+#veg {
+  font-size: 20px;
+  font-weight: 600;
+}
+#status {
+  font-size: 20px;
+  font-weight: 600;
+}
+.userContent svg {
+  font-size: 25px;
+  margin-right: 12px;
+}
+
+.userLowerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Right Side Upper Buttons*/
+.userControls {
+  height: 100em;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.userControlButtons {
+  display: flex;
+  margin-bottom: 10px;
+}
+.userControlButtons div {
+  padding: 10px 79px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.dietPrediction {
+  margin-top: 20px;
+  height: 50em;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.exercisePrediction {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  height: 50em;
+}
+.accountSetting {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  height: 50em;
+}
+.userMsg {
+  border: 1px solid black;
+  height: 30em;
+  margin: 60px;
+}
+
+/**/

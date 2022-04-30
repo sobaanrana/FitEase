@@ -1,0 +1,52 @@
+nav {
+  z-index: 1000;
+}
+.navbarFlex {
+  display: flex;
+}
+.navLinksContainer {
+  margin: 0em 5em;
+}
+.navLinksContainer > li {
+  padding-left: 2em;
+}
+form.navbarFlexItem {
+  flex: 2;
+}
+
+ul.navbarFlexItem {
+}
+
+.loginSignupContainer .nav-item {
+  /*padding to button applied using bootstrap  */
+  padding-right: 2em;
+}
+.loginSignupContainer {
+  position: absolute;
+  right: 0;
+  margin-right: 5em;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+}
+
+.navbar .underlineHover:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 3px;
+  background-color: white;
+  content: "";
+  transition: width 0.2s;
+}
+
+.underlineHover:hover {
+  color: white;
+}
+
+.underlineHover:hover:after {
+  width: 100%;
+}

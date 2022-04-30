@@ -23,7 +23,7 @@ const fadeInUp = keyframes`
 `;
 
 const Features = () => (
-  <div className="imgDiv">
+  <div className="">
     <div className="container">
       <h2 className="heading">Features</h2>
       <div className="row ">

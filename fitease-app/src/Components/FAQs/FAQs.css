@@ -1,3 +1,6 @@
+.faqPage {
+  margin-bottom: 100px;
+}
 .headerFaqs h1,
 p {
   text-align: center;
@@ -27,4 +30,8 @@ p {
 }
 .panel .ant-collapse-content {
   background-color: rgb(242, 246, 254, 0.2);
+}
+
+.ant-collapse > .ant-collapse-item {
+  border-bottom: 1px solid white;
 }

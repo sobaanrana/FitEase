@@ -1,55 +1,30 @@
-/*.postImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 7px;
-  margin-bottom: 10px;
+.card {
+  margin: 20px;
 }
-
-.postInfo {
+.postIMg {
+  width: 335px;
+  height: 200px;
+}
+.cardMainContent {
+  margin: 30px 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+.cardDate {
+  width: 140px;
+  padding: 2px;
+  text-align: center;
+  background-color: antiquewhite;
+  position: absolute;
+  top: 1%;
+  left: 1%;
 }
 
-.postCat {
-  font-family: "Varela Round", sans-serif;
-  font-size: 11px;
-  color: #be9656;
-  line-height: 20px;
-  margin-top: 15px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.postTitle {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 24px;
+.cardTitle {
+  color: black;
   font-weight: 700;
-  margin-top: 15px;
-  cursor: pointer;
+  margin-left: 20px;
 }
-
-.postDate {
-  font-family: "Lora", serif;
-  font-style: italic;
-  font-size: 13px;
-  color: #999;
-}
-
-.postDesc {
-  font-family: "Varela Round", sans-serif;
-  font-size: 14px;
-  color: #444;
-  line-height: 24px;
-  margin-top: 15px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-}
-*/
 .max-lines {
   display: block; /* or inline-block */
   text-overflow: ellipsis;
@@ -57,4 +32,13 @@
   overflow: hidden;
   max-height: 3.6em;
   line-height: 1.8em;
+}
+
+.post_status li {
+  display: inline;
+  margin-right: 12px;
+  font-size: 12px;
+}
+.post_status li i {
+  margin-right: 5px;
 }

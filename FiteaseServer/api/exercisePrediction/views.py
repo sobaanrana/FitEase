@@ -38,14 +38,14 @@ class ExercisePredictionViewSet(viewsets.ModelViewSet):
     
 
     serializer_class = ExercisePredictionSerializer
-
-    obj = Questionnaire.objects.all()
+'''  obj = Questionnaire.objects.all()
     print(obj)
     # assuming obj is a model instance
     serialized_obj = serializers.serialize('json', [ obj, ])
     #print(serialized_obj)
     model1= joblib.load('JoggingPipeline.pkl')
-
+'''
+  
    # score1=model1.predict()
   
    

@@ -1,6 +1,6 @@
 footer {
-  position: absolute;
-  top: 73em;
+  position: relative;
+  top: 0;
   right: 0;
   left: 0;
 }
