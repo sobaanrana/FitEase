@@ -192,7 +192,13 @@ i.font60 {
 }
 .feature-box.f-boxed:hover h4 {
   color: #ffffff;
-} /*
+}
+.imgFeatureBox {
+  position: relative;
+  left: 25%;
+  margin-bottom: 20px;
+}
+/*
 .feature-box i.i-circle {
   border-radius: 60px;
 }

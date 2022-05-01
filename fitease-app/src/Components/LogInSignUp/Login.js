@@ -88,7 +88,7 @@ function Login() {
         onLogin(values)
       }
     >
-      <div className="imgDiv">
+      <div>
         <div class="wrapper fadeInDown ">
           <div id="formContent">
             <div class="fadeIn first">
@@ -99,7 +99,7 @@ function Login() {
               />
             </div>
 
-            <Form>
+            <Form className="loginSignupForm">
               <Field
                 type="text"
                 id="login"
@@ -117,12 +117,14 @@ function Login() {
               />
               <CustomErrorMsg name="password" />
 
-              <button class="fadeIn fourth  linkTagBtn" type="submit">
+              <button class="fadeIn fourth" type="submit">
                 Log In
               </button>
             </Form>
 
             <div id="formFooter">
+              <br />
+
               <a class="link" href="#">
                 Forgot Password?
               </a>

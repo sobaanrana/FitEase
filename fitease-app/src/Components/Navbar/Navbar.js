@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import downArrow from "./downArrow.png";
 import { isAuthenticated, signout } from "../../auth/helper";
+import { FaUserAlt } from "react-icons/fa";
 const Navbar = ({ isLoggedInUser }) => {
   const [show, setShow] = useState(false); // for mobile view
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,7 +28,11 @@ const Navbar = ({ isLoggedInUser }) => {
 
     // setIsLoggedIn(true);
   };
-
+  /*
+  const scroll = () => {
+    const section = document.querySelector("#features");
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  };*/
   useEffect(() => {
     console.log("header useEffect");
 
@@ -43,7 +48,7 @@ const Navbar = ({ isLoggedInUser }) => {
         {/*Category*/}
         <div className="logo">
           <NavLink className="nav-link" to="/">
-            <img src="./logo.jpg" width="40px" />
+            <img src="./logo.jpg" width="100px" />
           </NavLink>
         </div>
         {/* 2nd menu part  */}
@@ -52,9 +57,7 @@ const Navbar = ({ isLoggedInUser }) => {
             {!isLoggedInUser && (
               <>
                 <li>
-                  <NavLink className="nav-link" to="/home">
-                    HOME
-                  </NavLink>
+                  <NavLink className="nav-link" to="/home"></NavLink>
                 </li>
                 <li>
                   <NavLink className="nav-link" to="/features">
@@ -82,6 +85,11 @@ const Navbar = ({ isLoggedInUser }) => {
                   </NavLink>
                 </li>
                 <div className="loginSignup">
+                  <li>
+                    <NavLink className="nav-link" to="/user/login">
+                      <FaUserAlt />
+                    </NavLink>
+                  </li>
                   <li>
                     <NavLink className="nav-link" to="/user/login">
                       LOGIN

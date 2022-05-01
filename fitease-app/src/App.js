@@ -15,7 +15,7 @@ import Features from "./Components/Features/Features";
 import Contact from "./ContactUs/Contact";
 import FAQs from "./Components/FAQs/FAQs";
 import About from "./Components/About/About";
-import BlogRightSideBar from "./Components/Blogs/BlogRightSideBar";
+import BlogSideBarLayout from "./Components/Blogs/BlogSideBarLayout";
 import UserDashboard from "./Components/UserDashboard/UserDashboard";
 
 function App() {
@@ -32,13 +32,13 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/user/login" element={<Login />} />
           <Route path="/user/signup" element={<Signup />} />
-          <Route path="/blogs" element={<BlogRightSideBar />} />
+          <Route path="/blogs" element={<BlogSideBarLayout />} />
           <Route path="/blogs/:id" element={<SingleBlog />} />
           <Route path="/user/questionnaire" element={<Questionnaire />} />
-          <Route path="/features" element={<Features />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faqs" element={<FAQs />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/features" element={<Features displayBanner={true} />} />
+          <Route path="/contact" element={<Contact displayBanner={true} />} />
+          <Route path="/faqs" element={<FAQs displayBanner={true} />} />
+          <Route path="/about" element={<About displayBanner={true} />} />
           <Route path="/user/dashboard" element={<UserDashboard />} />
         </Routes>
         <Footer />

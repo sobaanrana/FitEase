@@ -1,13 +1,13 @@
 nav {
-  background-color: #16a085;
+  background-color: #343434;
   display: flex;
 }
 nav a {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .logo {
-  width: 400px;
+  width: 300px;
 }
 .logo i {
   font-size: 26px;
@@ -19,10 +19,12 @@ nav a {
 }
 .logo img {
   margin-left: 40%;
+  margin-top: 3%;
 }
 
 .menu-link {
-  margin-left: 8%;
+  margin-left: 14%;
+  margin-top: 3%;
 }
 .menu-link ul {
   display: flex;
@@ -34,12 +36,17 @@ nav a {
   margin-right: 20px;
   margin-top: 20px;
 }
+.menu-link ul li a {
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+}
 
 .nav-link {
   color: black;
 }
 .nav-link:hover {
-  color: black;
+  color: #36d7b7;
 }
 /*
 .mid {
@@ -55,6 +62,7 @@ nav a {
   align-items: center;
   position: absolute;
   left: 80%;
+  top: 2%;
 }
 .loginSignup i {
   margin-left: 50px;

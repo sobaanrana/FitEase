@@ -1,24 +1,7 @@
 .faqPage {
   margin-bottom: 100px;
 }
-.headerFaqs h1,
-p {
-  text-align: center;
-}
-.headerFaqs h1 {
-  margin-bottom: 1em;
-  font-weight: 800;
-  color: black;
-}
-.headerFaqs p {
-  color: black;
-  margin-top: 15px;
-  font-size: large;
-}
-.headerFaqs {
-  padding: 130px 0 110px;
-  background: rgba(0, 0, 0, 0.2);
-}
+
 .faqs {
   margin-top: 5%;
 }
@@ -29,9 +12,17 @@ p {
   font-size: large;
 }
 .panel .ant-collapse-content {
-  background-color: rgb(242, 246, 254, 0.2);
+  /*border: none;*/
+}
+.faqs .col-lg-8 .ant-collapse > .ant-collapse-item {
+  border-bottom: none;
 }
 
-.ant-collapse > .ant-collapse-item {
-  border-bottom: 1px solid white;
+.faqs .col-lg-8 .ant-collapse {
+  border: 1px solid #fff;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.ant-collapse-item {
+  border: none;
 }

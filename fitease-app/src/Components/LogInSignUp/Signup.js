@@ -27,6 +27,17 @@ const validationSchema = yup.object().shape({
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Password Required"),
+  confirmPassword: yup
+    .string()
+    .when("password", {
+      is: (val) => (val && val.length > 0 ? true : false),
+      then: yup
+        .string()
+        .oneOf([yup.ref("password")], "Passwords Does not Match"),
+    })
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Password Required"),
 });
 
 function Signup() {
@@ -64,7 +75,7 @@ function Signup() {
     }
   };
   return (
-    <div className="imgDiv">
+    <div>
       <div class="wrapper fadeInDown">
         <div id="formContent">
           <div class="fadeIn first">
@@ -88,7 +99,7 @@ function Signup() {
             }}
           >
             {({ values }) => (
-              <Form>
+              <Form className="loginSignupForm">
                 <Field
                   type="text"
                   id="login"
@@ -121,7 +132,7 @@ function Signup() {
                   id="confirmPassword"
                   class="fadeIn third"
                   name="confirmPassword"
-                  placeholder="Confirm Password"
+                  placeholder="confirm password"
                 />
                 <CustomErrorMsg name="confirmPassword" />
 
@@ -132,8 +143,9 @@ function Signup() {
             )}
           </Formik>
           <div id="formFooter">
-            If already registered ? <span />
-            <Link class=" link" to="/user/login">
+            <br />
+            <p>If already registered ?</p>
+            <Link class="formFooterLink" to="/user/login">
               Login
             </Link>
           </div>

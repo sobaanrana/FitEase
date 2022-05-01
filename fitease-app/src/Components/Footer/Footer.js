@@ -57,7 +57,10 @@ function Footer() {
               placeholder="Message"
               aria-label="Search"
             />
-            <button className="btn btn-success my-3 " type="submit">
+            <button
+              className="btn btn-success my-3 footerFormBtn "
+              type="submit"
+            >
               Submit
             </button>
           </form>

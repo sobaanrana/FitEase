@@ -1,4 +1,5 @@
 import React from "react";
+import HeaderBanner from "../Components/HeaderBanner/HeaderBanner";
 import "./Contact.css";
 //import emailjs from "emailjs-com";
 //import Footer from "../components/footer";
@@ -38,7 +39,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 */
-const Contact = function () {
+const Contact = function ({ displayBanner }) {
   /* function sendEmail(e) {
     const success = document.getElementById("success");
     const button = document.getElementById("buttonsent");
@@ -67,16 +68,16 @@ const Contact = function () {
   }
 */
   return (
-    <div className="imgDiv">
+    <div>
       {/*<GlobalStyles />*/}
-      <div className="mainbreadcumb">
-        <div className="row">
-          <div className="col-md-12 text-center">
-            <h1>Contact Us</h1>
-            <p>We are just a message away for your help.</p>
-          </div>
-        </div>
-      </div>
+      {displayBanner && (
+        <HeaderBanner
+          title={"Contact"}
+          headline={"We are just a message away for your help. :)"}
+          displayType={"block"}
+        />
+      )}
+
       <section className="container my-5 mainContent">
         <div className="row">
           <div className="col-lg-8 col-sm-8 mb-3">

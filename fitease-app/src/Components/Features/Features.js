@@ -9,6 +9,7 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import HeaderBanner from "../HeaderBanner/HeaderBanner";
 const fadeInUp = keyframes`
   0% {
     opacity: 0;
@@ -22,8 +23,15 @@ const fadeInUp = keyframes`
   }
 `;
 
-const Features = () => (
-  <div className="">
+const Features = ({ displayBanner }) => (
+  <div className="" id="features">
+    {displayBanner && (
+      <HeaderBanner
+        title={"Features"}
+        headline={"Features, all you need! :)"}
+        displayType={"block"}
+      />
+    )}
     <div className="container">
       <h2 className="heading">Features</h2>
       <div className="row ">
@@ -44,6 +52,11 @@ const Features = () => (
 <i></i>*/}
             </Reveal>
             <div className="text">
+              <img
+                src="./268-avatar-man-outline.gif"
+                className="imgFeatureBox"
+                width={"50%"}
+              />
               <Reveal
                 className="onStep"
                 keyframes={fadeInUp}
@@ -53,6 +66,7 @@ const Features = () => (
               >
                 <h4>User Account</h4>
               </Reveal>
+
               <Reveal
                 className="onStep"
                 keyframes={fadeInUp}
@@ -81,6 +95,11 @@ const Features = () => (
               triggerOnce
             ></Reveal>
             <div className="text">
+              <img
+                src="./1330-rest-api-outline.gif"
+                width={"50%"}
+                className="imgFeatureBox"
+              />
               <Reveal
                 className="onStep"
                 keyframes={fadeInUp}
@@ -116,111 +135,12 @@ const Features = () => (
               triggerOnce
             ></Reveal>
             <div className="text">
-              <Reveal
-                className="onStep"
-                keyframes={fadeInUp}
-                delay={100}
-                duration={600}
-                triggerOnce
-              >
-                <h4>Machine Learning</h4>
-              </Reveal>
-              <Reveal
-                className="onStep"
-                keyframes={fadeInUp}
-                delay={200}
-                duration={600}
-                triggerOnce
-              >
-                <p>
-                  Authentic and relevant supervised and unsupervside machine
-                  Learning algorithms are used for recommending and predictions.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-        </div>
+              <img
+                src="./334-loader-5.gif"
+                width={"50%"}
+                className="imgFeatureBox"
+              />
 
-        <div className="col-lg-4 col-md-6 mb-3">
-          <div className="feature-box f-boxed style-3">
-            <Reveal
-              className="onStep"
-              keyframes={fadeInUp}
-              delay={0}
-              duration={600}
-              triggerOnce
-            ></Reveal>
-            <div className="text">
-              <Reveal
-                className="onStep"
-                keyframes={fadeInUp}
-                delay={100}
-                duration={600}
-                triggerOnce
-              >
-                <h4>Machine Learning</h4>
-              </Reveal>
-              <Reveal
-                className="onStep"
-                keyframes={fadeInUp}
-                delay={200}
-                duration={600}
-                triggerOnce
-              >
-                <p>
-                  Authentic and relevant supervised and unsupervside machine
-                  Learning algorithms are used for recommending and predictions.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 mb-3">
-          <div className="feature-box f-boxed style-3">
-            <Reveal
-              className="onStep"
-              keyframes={fadeInUp}
-              delay={0}
-              duration={600}
-              triggerOnce
-            ></Reveal>
-            <div className="text">
-              <Reveal
-                className="onStep"
-                keyframes={fadeInUp}
-                delay={100}
-                duration={600}
-                triggerOnce
-              >
-                <h4>Machine Learning</h4>
-              </Reveal>
-              <Reveal
-                className="onStep"
-                keyframes={fadeInUp}
-                delay={200}
-                duration={600}
-                triggerOnce
-              >
-                <p>
-                  Authentic and relevant supervised and unsupervside machine
-                  Learning algorithms are used for recommending and predictions.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 mb-3">
-          <div className="feature-box f-boxed style-3">
-            <Reveal
-              className="onStep"
-              keyframes={fadeInUp}
-              delay={0}
-              duration={600}
-              triggerOnce
-            ></Reveal>
-            <div className="text">
               <Reveal
                 className="onStep"
                 keyframes={fadeInUp}
