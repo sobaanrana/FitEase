@@ -32,7 +32,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/user/login" element={<Login />} />
           <Route path="/user/signup" element={<Signup />} />
-          <Route path="/blogs" element={<BlogSideBarLayout />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<SingleBlog />} />
           <Route path="/user/questionnaire" element={<Questionnaire />} />
           <Route path="/features" element={<Features displayBanner={true} />} />

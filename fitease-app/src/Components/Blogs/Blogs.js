@@ -3,6 +3,8 @@ import Blog from "./Blog";
 import "./Blogs.css";
 import { getPosts } from "./helper/apicalls";
 import ReactPaginate from "react-paginate";
+import BlogSideBarLayout from "./BlogSideBarLayout";
+import HeaderBanner from "../HeaderBanner/HeaderBanner";
 
 function Blogs() {
   // const apiKey = d540a061aaa9496c81c5104093646cd3;
@@ -60,24 +62,35 @@ function Blogs() {
   }, []);
   return (
     <>
-      <>
-        {" "}
-        <h2 className="mx-5 mt-5">Health and Fitness Articles</h2>
-        {displayPosts}
-        <div className="paginationDiv">
-          <ReactPaginate
-            previousLabel={"Prev"}
-            nextLabel={"Next"}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={"paginationBttns"}
-            previousLinkClassName={"previousBttn"}
-            nextLinkClassName={"nextBttn"}
-            disabledClassName={"paginationDisabled"}
-            activeClassName={"paginationActive"}
-          />
+      <HeaderBanner
+        title={"Blogs"}
+        headline={"Read Our Blogs, and get fit. :)"}
+        displayType={"block"}
+      />
+      <div class="container">
+        <div class="row">
+          <BlogSideBarLayout />
+
+          <div class="col-md-12 col-lg-8">
+            <h2 className="mx-5 mt-5">Health and Fitness Articles</h2>
+
+            <div class="row">{displayPosts}</div>
+          </div>
         </div>
-      </>
+      </div>
+      <div className="paginationDiv">
+        <ReactPaginate
+          previousLabel={"Prev"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationBttns"}
+          previousLinkClassName={"previousBttn"}
+          nextLinkClassName={"nextBttn"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
+        />
+      </div>
     </>
   );
 }
