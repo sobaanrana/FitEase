@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from "react";
-import image from "./image.png";
-import "./Carousel.css";
-import axios from "axios";
+import React, { useEffect, useState } from 'react'
+import image from './image.png'
+import './Carousel.css'
+import axios from 'axios'
 /*
 import bg1 from "./bg-1";
 import bg2 from "./bg-2";
 import bg3 from "./bg-3";*/
 const Carousel = () => {
-  const images = [image, image, image];
-  const [slideIndex, setSlideIndex] = useState(1);
+  const images = [image, image, image]
+  const [slideIndex, setSlideIndex] = useState(1)
 
   const moveDot = (index) => {
-    setSlideIndex(index);
-  };
+    setSlideIndex(index)
+  }
 
-  const banners = ["./bg-1.jpg", "./bg-2.jpg", "./bg-3.jpg"];
+  /* const banners = ['./bg-1.jpg', './bg-2.jpg', './bg-3.jpg']*/
+  const banners = [
+    './Gym Fitness (Banner (Landscape)) (1).png',
+    './Gym Fitness (Banner (Landscape)) (2).png',
+    './2G.png',
+  ]
 
   // From Api
   /* const [homepageData, setHomePageData] = useState({});
@@ -48,30 +53,30 @@ const Carousel = () => {
   }, []);*/
   return (
     <>
-      <div className="upperImgDiv">
+      <div className='upperImgDiv'>
         {banners.map((banner, index) => (
           <div
             className={
-              slideIndex === index + 1 ? "slide active" : "slide not-active"
+              slideIndex === index + 1 ? 'slide active' : 'slide not-active'
             }
           >
-            <img key={index} src={banner} width="100%" height="800px" />
+            <img key={index} src={banner} width='100%' height='600px' />
           </div>
         ))}
-        <div className="container-dots">
+        <div className='container-dots'>
           {Array.from({ length: 3 }).map((item, index) => (
             <div
               onClick={() => moveDot(index + 1)}
-              className={slideIndex === index + 1 ? "dot active" : "dot"}
+              className={slideIndex === index + 1 ? 'dot active' : 'dot'}
             ></div>
           ))}
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Carousel;
+export default Carousel
 
 /* <div className=' d-flex flex-column align-items-start textPart'>
         <div className='upper'>

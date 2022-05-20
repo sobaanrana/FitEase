@@ -1,65 +1,63 @@
-import React from "react";
-import "./Footer.css";
+import React from 'react'
+import './Footer.css'
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faDribbble,
   faFacebookF,
   faLinkedin,
   faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/free-brands-svg-icons'
 
 function Footer() {
   return (
-    <footer class="site-footer">
-      <div class="footerDiv">
-        <div class=" footerPara ">
+    <footer class='site-footer'>
+      <div class='footerDiv'>
+        <div class=' footerPara '>
           <h6>About</h6>
-          <p class="text-justify">
+          <p class='text-justify'>
             FitEase.com <i> an FYP Project </i> is an initiative to introduce
-            people <br />
-            around the globe with healthy lifestyfa. This web based <br />{" "}
-            application recommends customized diet and exercise <br />
-            plan to its user on the basis of their input parameters.
+            people around the globe with healthy lifestyfa. This web based
+            application recommends customized diet and exercise plan to its user
+            on the basis of their input parameters.
           </p>
         </div>
-        <div class="footerLinks  ">
-          <h6 className="d-flex justify-content-center">Quick Links</h6>
-          <ul class="footer-links ">
-            <li className="d-flex justify-content-center">
-              <a href="http://scanfcode.com/about/">Home</a>
+        <div class='footerLinks  '>
+          <h6 className='d-flex justify-content-center'>Quick Links</h6>
+          <ul class='footer-links '>
+            <li className='d-flex justify-content-center'>
+              <a href=''>Home</a>
             </li>
-            <li className="d-flex justify-content-center">
-              <a href="http://scanfcode.com/contact/">Contact Us</a>
+            <li className='d-flex justify-content-center'>
+              <a href=''>About</a>
             </li>
-            <li className="d-flex justify-content-center">
-              <a href="http://scanfcode.com/contribute-at-scanfcode/">About </a>
+            <li className='d-flex justify-content-center'>
+              <a href=''>Features </a>
             </li>
-            <li className="d-flex justify-content-center">
-              <a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a>
-            </li>
-            <li className="d-flex justify-content-center">
-              <a href="http://scanfcode.com/sitemap/">Contact</a>
+
+            <li className='d-flex justify-content-center'>
+              <a href=''>Contact</a>
             </li>
           </ul>
         </div>
-        <div className="FooterForm">
-          <form className=" form-group mx-2  ">
+        <div className='FooterForm'>
+          <form className=' form-group mx-2  '>
             <input
-              className="form-control my-2 px-5"
-              type="email"
-              placeholder="name@email.com"
-              aria-label="Search"
+              className='form-control my-2 px-5'
+              type='email'
+              placeholder='name@email.com'
+              aria-label='Search'
             />
             <textarea
-              className="form-control px-5 "
-              type="text"
-              placeholder="Message"
-              aria-label="Search"
+              className='form-control px-5 '
+              type='text'
+              placeholder='Message'
+              aria-label='Search'
             />
             <button
-              className="btn btn-success my-3 footerFormBtn "
-              type="submit"
+              className='btn btn-success my-3 footerFormBtn '
+              type='submit'
+              onClick={() => console.log('button from footer clicked ')}
             >
               Submit
             </button>
@@ -68,34 +66,34 @@ function Footer() {
       </div>
       <hr />
       <div>
-        <div class="row lowerFooter">
-          <div class="CopyrightText">
-            <p class="copyright-text">
+        <div class='row lowerFooter'>
+          <div class='CopyrightText'>
+            <p class='copyright-text'>
               Copyright &copy; 2022 All Rights Reserved by <spn> </spn>
-              <a href="/"> FitEase</a>.
+              <a href='/'> FitEase</a>.
             </p>
           </div>
 
-          <div class="socials">
-            <ul class="social-icons">
+          <div class='socials'>
+            <ul class='social-icons'>
               <li>
-                <a class="facebook" href="#">
-                  <FontAwesomeIcon icon={faFacebookF} className="fa" />
+                <a class='facebook' href='#'>
+                  <FontAwesomeIcon icon={faFacebookF} className='fa' />
                 </a>
               </li>
               <li>
-                <a class="twitter" href="#">
-                  <FontAwesomeIcon icon={faTwitter} className="fa" />
+                <a class='twitter' href='#'>
+                  <FontAwesomeIcon icon={faTwitter} className='fa' />
                 </a>
               </li>
               <li>
-                <a class="dribbble" href="#">
-                  <FontAwesomeIcon icon={faDribbble} className="fa" />
+                <a class='dribbble' href='#'>
+                  <FontAwesomeIcon icon={faDribbble} className='fa' />
                 </a>
               </li>
               <li>
-                <a class="linkedin" href="#">
-                  <FontAwesomeIcon icon={faLinkedin} className="fa" />
+                <a class='linkedin' href='#'>
+                  <FontAwesomeIcon icon={faLinkedin} className='fa' />
                 </a>
               </li>
             </ul>
@@ -103,7 +101,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

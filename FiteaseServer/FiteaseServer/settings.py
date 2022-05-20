@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'api.user',
     'api.blog',
     'api.questionnaire',
-    'api.exercisePrediction'
+    'api.exercisePrediction',
+    'api.dietPrediction'
 ]
 
 MIDDLEWARE = [

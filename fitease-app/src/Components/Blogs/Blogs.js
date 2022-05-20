@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Blog from "./Blog";
-import "./Blogs.css";
-import { getPosts } from "./helper/apicalls";
-import ReactPaginate from "react-paginate";
-import BlogSideBarLayout from "./BlogSideBarLayout";
-import HeaderBanner from "../HeaderBanner/HeaderBanner";
+import React, { useEffect, useState } from 'react'
+import Blog from './Blog'
+import './Blogs.css'
+import { getPosts } from './helper/apicalls'
+import ReactPaginate from 'react-paginate'
+import BlogSideBarLayout from './BlogSideBarLayout'
+import HeaderBanner from '../HeaderBanner/HeaderBanner'
 
 function Blogs() {
   // const apiKey = d540a061aaa9496c81c5104093646cd3;
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([])
 
   // For pagination
 
-  const [pageNumber, setPageNumber] = useState(0); //for current page number
-  const postsPerPage = 6;
-  const pagesVisited = pageNumber * postsPerPage; // ie. 1*5 = page1*5posts
+  const [pageNumber, setPageNumber] = useState(0) //for current page number
+  const postsPerPage = 6
+  const pagesVisited = pageNumber * postsPerPage // ie. 1*5 = page1*5posts
 
   const displayPosts = posts
     .slice(pagesVisited, pagesVisited + postsPerPage) //(postsDispalyed, postsDispalyed + postsPerPage)
@@ -23,24 +23,24 @@ function Blogs() {
         <Blog key={index} post={post} />
         <hr />
       </>
-    )); // array indexes has this <> </hr></> at each
+    )) // array indexes has this <> </hr></> at each
 
-  const pageCount = Math.ceil(posts.length / postsPerPage); // if there are 11 posts then 11/5 and then ceiling operation means three pages
+  const pageCount = Math.ceil(posts.length / postsPerPage) // if there are 11 posts then 11/5 and then ceiling operation means three pages
   const changePage = ({ selected }) => {
     // for react paginate compoenent gets selected Page as prop
-    setPageNumber(selected);
-  };
+    setPageNumber(selected)
+  }
 
   const loadPosts = async () => {
     getPosts()
       .then((data) => {
         // as .json() returned
-        // console.log(data);
+        console.log(data)
 
-        setPosts(data);
+        setPosts(data)
         //console.log(data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
     /*await axios
       .get(
         `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=e1ea1ac3401e4b41a20227637e40c1cc`
@@ -56,43 +56,43 @@ function Blogs() {
         console.log(error);
       });
   };*/
-  };
+  }
   useEffect(() => {
-    loadPosts();
-  }, []);
+    loadPosts()
+  }, [])
   return (
     <>
       <HeaderBanner
-        title={"Blogs"}
-        headline={"Read Our Blogs, and get fit. :)"}
-        displayType={"block"}
+        title={'Blogs'}
+        headline={'Read Our Blogs, and get fit. :)'}
+        displayType={'block'}
       />
-      <div class="container">
-        <div class="row">
+      <div class='container'>
+        <div class='row'>
           <BlogSideBarLayout />
 
-          <div class="col-md-12 col-lg-8">
-            <h2 className="mx-5 mt-5">Health and Fitness Articles</h2>
+          <div class='col-md-12 col-lg-8'>
+            <h2 className='mx-5 mt-5'>Health and Fitness Articles</h2>
 
-            <div class="row">{displayPosts}</div>
+            <div class='row'>{displayPosts}</div>
           </div>
         </div>
       </div>
-      <div className="paginationDiv">
+      <div className='paginationDiv'>
         <ReactPaginate
-          previousLabel={"Prev"}
-          nextLabel={"Next"}
+          previousLabel={'Prev'}
+          nextLabel={'Next'}
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName={"paginationBttns"}
-          previousLinkClassName={"previousBttn"}
-          nextLinkClassName={"nextBttn"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
+          containerClassName={'paginationBttns'}
+          previousLinkClassName={'previousBttn'}
+          nextLinkClassName={'nextBttn'}
+          disabledClassName={'paginationDisabled'}
+          activeClassName={'paginationActive'}
         />
       </div>
     </>
-  );
+  )
 }
 
-export default Blogs;
+export default Blogs

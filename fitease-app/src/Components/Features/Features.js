@@ -1,15 +1,15 @@
-import React from "react";
-import Reveal from "react-awesome-reveal";
-import { keyframes } from "@emotion/react";
-import "./Features.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react'
+import Reveal from 'react-awesome-reveal'
+import { keyframes } from '@emotion/react'
+import './Features.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faDribbble,
   faFacebookF,
   faLinkedin,
   faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import HeaderBanner from "../HeaderBanner/HeaderBanner";
+} from '@fortawesome/free-brands-svg-icons'
+import HeaderBanner from '../HeaderBanner/HeaderBanner'
 const fadeInUp = keyframes`
   0% {
     opacity: 0;
@@ -21,24 +21,24 @@ const fadeInUp = keyframes`
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
-`;
+`
 
 const Features = ({ displayBanner }) => (
-  <div className="" id="features">
+  <div className='' id='features'>
     {displayBanner && (
       <HeaderBanner
-        title={"Features"}
-        headline={"Features, all you need! :)"}
-        displayType={"block"}
+        title={'Features'}
+        headline={'Features, all you need! :)'}
+        displayType={'block'}
       />
     )}
-    <div className="container">
-      <h2 className="heading">Features</h2>
-      <div className="row ">
-        <div className="col-lg-4 col-md-6 mb-3 ">
-          <div className="feature-box f-boxed style-3">
+    <div className='container'>
+      <h2 className='heading'>Features</h2>
+      <div className='row '>
+        <div className='col-lg-4 col-md-6  '>
+          <div className='feature-box f-boxed style-3'>
             <Reveal
-              className="onStep"
+              className='onStep'
               keyframes={fadeInUp}
               delay={0}
               duration={600}
@@ -51,14 +51,14 @@ const Features = ({ displayBanner }) => (
 
 <i></i>*/}
             </Reveal>
-            <div className="text">
+            <div className='text'>
               <img
-                src="./268-avatar-man-outline.gif"
-                className="imgFeatureBox"
-                width={"50%"}
+                src='./268-avatar-man-outline.gif'
+                className='imgFeatureBox'
+                width={'40%'}
               />
               <Reveal
-                className="onStep"
+                className='onStep'
                 keyframes={fadeInUp}
                 delay={100}
                 duration={600}
@@ -68,16 +68,17 @@ const Features = ({ displayBanner }) => (
               </Reveal>
 
               <Reveal
-                className="onStep"
+                className='onStep'
                 keyframes={fadeInUp}
                 delay={200}
                 duration={600}
                 triggerOnce
               >
                 <p>
-                  User can regtister an acoount and will encounter a
+                  User can register an account and will encounter a
                   questionnaire form to provide his/her relevant input
-                  parameters.
+                  parameters, and then get diet and exercise predictions. The
+                  user can log in using credentials to the application.
                 </p>
               </Reveal>
             </div>
@@ -85,23 +86,23 @@ const Features = ({ displayBanner }) => (
           </div>
         </div>
 
-        <div className="col-lg-4 col-md-6 mb-3">
-          <div className="feature-box f-boxed style-3">
+        <div className='col-lg-4 col-md-6 '>
+          <div className='feature-box f-boxed style-3'>
             <Reveal
-              className="onStep"
+              className='onStep'
               keyframes={fadeInUp}
               delay={0}
               duration={600}
               triggerOnce
             ></Reveal>
-            <div className="text">
+            <div className='text'>
               <img
-                src="./1330-rest-api-outline.gif"
-                width={"50%"}
-                className="imgFeatureBox"
+                src='./1330-rest-api-outline.gif'
+                width={'40%'}
+                className='imgFeatureBox'
               />
               <Reveal
-                className="onStep"
+                className='onStep'
                 keyframes={fadeInUp}
                 delay={100}
                 duration={600}
@@ -110,39 +111,41 @@ const Features = ({ displayBanner }) => (
                 <h4>Diet and Exercise</h4>
               </Reveal>
               <Reveal
-                className="onStep"
+                className='onStep'
                 keyframes={fadeInUp}
                 delay={200}
                 duration={600}
                 triggerOnce
               >
                 <p>
-                  The user's input parameters are sued to recommend customized
-                  diet and exercise plan, which can be implemented easily.
+                  The user's input parameters i.e. age, gender, weight, height,
+                  veg/nonveg, lifestyle and goal are used to recommend suitable
+                  diet and exercise, which can be implemented easily by the
+                  user.
                 </p>
               </Reveal>
             </div>
           </div>
         </div>
 
-        <div className="col-lg-4 col-md-6 mb-3">
-          <div className="feature-box f-boxed style-3">
+        <div className='col-lg-4 col-md-6 '>
+          <div className='feature-box f-boxed style-3'>
             <Reveal
-              className="onStep"
+              className='onStep'
               keyframes={fadeInUp}
               delay={0}
               duration={600}
               triggerOnce
             ></Reveal>
-            <div className="text">
+            <div className='text'>
               <img
-                src="./334-loader-5.gif"
-                width={"50%"}
-                className="imgFeatureBox"
+                src='./334-loader-5.gif'
+                width={'40%'}
+                className='imgFeatureBox'
               />
 
               <Reveal
-                className="onStep"
+                className='onStep'
                 keyframes={fadeInUp}
                 delay={100}
                 duration={600}
@@ -151,15 +154,145 @@ const Features = ({ displayBanner }) => (
                 <h4>Machine Learning</h4>
               </Reveal>
               <Reveal
-                className="onStep"
+                className='onStep'
                 keyframes={fadeInUp}
                 delay={200}
                 duration={600}
                 triggerOnce
               >
                 <p>
-                  Authentic and relevant supervised and unsupervside machine
-                  Learning algorithms are used for recommending and predictions.
+                  Authentic and suitable supervised and unsupervside machine
+                  learning models are trained and tested on relevant dataset for
+                  recommending diet and exercise to the users considering the
+                  input parameters.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-lg-4 col-md-6 '>
+          <div className='feature-box f-boxed style-3'>
+            <Reveal
+              className='onStep'
+              keyframes={fadeInUp}
+              delay={0}
+              duration={600}
+              triggerOnce
+            ></Reveal>
+            <div className='text'>
+              <img
+                src='./648-victory-success-outline.gif'
+                width={'40%'}
+                className='imgFeatureBox'
+              />
+
+              <Reveal
+                className='onStep'
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>Daily Reports and Response</h4>
+              </Reveal>
+              <Reveal
+                className='onStep'
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  The registered user having recommended diet and exercise will
+                  fill checkboxes in daily report. They will be motivated,
+                  appreciated or warned considering their progress.{' '}
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-lg-4 col-md-6 '>
+          <div className='feature-box f-boxed style-3'>
+            <Reveal
+              className='onStep'
+              keyframes={fadeInUp}
+              delay={0}
+              duration={600}
+              triggerOnce
+            ></Reveal>
+            <div className='text'>
+              <img
+                src='./56-document-outline.gif'
+                width={'40%'}
+                className='imgFeatureBox'
+              />
+
+              <Reveal
+                className='onStep'
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>Blogs and Workouts</h4>
+              </Reveal>
+              <Reveal
+                className='onStep'
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  Health/Fitness blogs are viewed by the users of webapp. These
+                  are related to any topic covering diet and exercises. Also,
+                  there is a workout page providing exercises and their best
+                  practices for users.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-lg-4 col-md-6 '>
+          <div className='feature-box f-boxed style-3'>
+            <Reveal
+              className='onStep'
+              keyframes={fadeInUp}
+              delay={0}
+              duration={600}
+              triggerOnce
+            ></Reveal>
+            <div className='text'>
+              <img
+                src='./icons8-phonelink-ring.gif'
+                width={'40%'}
+                className='imgFeatureBox'
+              />
+
+              <Reveal
+                className='onStep'
+                keyframes={fadeInUp}
+                delay={100}
+                duration={600}
+                triggerOnce
+              >
+                <h4>Mobile Reponsive and User Friendly</h4>
+              </Reveal>
+              <Reveal
+                className='onStep'
+                keyframes={fadeInUp}
+                delay={200}
+                duration={600}
+                triggerOnce
+              >
+                <p>
+                  The application is cross-platform. All the pages of this
+                  application are made mobile reponsive for the better user
+                  experience. The app design is simple and easily
+                  understandable.
                 </p>
               </Reveal>
             </div>
@@ -168,8 +301,8 @@ const Features = ({ displayBanner }) => (
       </div>
     </div>
   </div>
-);
-export default Features;
+)
+export default Features
 
 /*
           <i className=" bg-color-2 i-boxed icon_cloud-upload_alt"></i>

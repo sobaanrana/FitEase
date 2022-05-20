@@ -6,6 +6,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   height: 50em;
   padding-top: 5px;
+  border: 2px solid #36d7b7;
 }
 .userInfo img {
   position: absolute;
@@ -26,7 +27,7 @@
   font-size: 26px;
   font-weight: 700;
   padding: 10px 20px;
-  background-color: palegreen;
+  background-color: #36d7b7;
   border-radius: 1.5rem / 50%;
 }
 #male {
@@ -55,6 +56,10 @@
   font-size: 20px;
   font-weight: 600;
 }
+#goal {
+  font-size: 20px;
+  font-weight: 600;
+}
 .userContent svg {
   font-size: 25px;
   margin-right: 12px;
@@ -65,10 +70,12 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
+.userContent p {
+  color: black;
+}
 /* Right Side Upper Buttons*/
 .userControls {
-  height: 100em;
+  height: 50em;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -81,11 +88,12 @@
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
     rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  background-color: #36d7b7;
 }
 
 .dietPrediction {
   margin-top: 20px;
-  height: 50em;
+  height: 40em;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -93,12 +101,12 @@
 .exercisePrediction {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  height: 50em;
+  height: 40em;
 }
-.accountSetting {
+.dailyReport {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  height: 50em;
+  height: 40em;
 }
 .userMsg {
   border: 1px solid black;

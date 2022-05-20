@@ -1,6 +1,6 @@
 /*** feature box ***/
 .feature-box {
-  margin: 10% 0;
+  margin: 5% 0;
 }
 .heading {
   margin-top: 10%;
@@ -18,10 +18,12 @@
 }
 .feature-box p {
   text-align: justify;
-  word-break: break-all;
+  /*word-break: break-all;*/
+  font-size: 16px;
 }
 .feature-box h4 {
   font-weight: 600;
+  font-size: 22px;
 }
 /*
 .feature-box.s1:hover .inner i {
@@ -165,7 +167,7 @@ i.font60 {
 }
 .feature-box.f-boxed {
   overflow: none;
-  padding: 50px 60px;
+  padding: 20px 40px;
   /*background: rgba(0, 0, 0, 0.2);*/
   background-color: #36d7b7;
   font-size: 20px;
@@ -195,7 +197,7 @@ i.font60 {
 }
 .imgFeatureBox {
   position: relative;
-  left: 25%;
+  left: 30%;
   margin-bottom: 20px;
 }
 /*

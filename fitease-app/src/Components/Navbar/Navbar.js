@@ -1,102 +1,122 @@
-import React, { useEffect, useState } from "react";
-import "./Navbar.css";
-import { NavLink } from "react-router-dom";
-import downArrow from "./downArrow.png";
-import { isAuthenticated, signout } from "../../auth/helper";
-import { FaUserAlt } from "react-icons/fa";
+import React, { useEffect, useState } from 'react'
+import './Navbar.css'
+import { NavLink } from 'react-router-dom'
+import downArrow from './downArrow.png'
+import { authenticate, isAuthenticated, signout } from '../../auth/helper'
+import { FaUserAlt } from 'react-icons/fa'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectUser } from '../../features/User/userSlice'
+import { setLoggedInUser } from '../../features/User/userSlice'
+
 const Navbar = ({ isLoggedInUser }) => {
-  const [show, setShow] = useState(false); // for mobile view
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [show, setShow] = useState(false) // for mobile view
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   //    localStorage.getItem("token") ? true : false
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({})
 
   const onLogout = () => {
     signout()
       .then((res) => {
-        setUser(false);
+        setUser(false)
         // setIsLoggedIn(false);
-        window.location.reload();
+        window.location.reload()
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
   const loggedInUser = () => {
-    const data = isAuthenticated();
+    const data = isAuthenticated()
     //console.log("Data", data);
-    setUser(data?.user);
-    console.log("This is user from local storage", user);
-    console.log("User is logged in or not", isLoggedIn);
+    setUser(data?.user)
+    console.log('This is user from local storage', user)
+    console.log('User is logged in or not', isLoggedIn)
 
     // setIsLoggedIn(true);
-  };
+  }
   /*
   const scroll = () => {
     const section = document.querySelector("#features");
     section.scrollIntoView({ behavior: "smooth", block: "start" });
   };*/
+
+  // <------------------- Getting user from redux toolkit ------------------->
+
+  //const hello = authenticate()
+  //console.log('Set this hello data to Redux', hello)
+  /*const dispatch = useDispatch()
+  if (user) {
+    dispatch(setLoggedInUser(user)) // user that is state wiht data from local storage
+  }
+  const newUser = useSelector(selectUser)
+  console.log('This is User', newUser)*/
   useEffect(() => {
-    console.log("header useEffect");
+    console.log('header useEffect')
 
     // TODO : isLoggedInUser is handled from app component , try to handle from here using above isLoggedIN by setting true on login and false on logout
     // TODO : user role admin then chnage the navbar accordingly as admin dashboard etc.
-    loggedInUser();
-  }, []);
+    loggedInUser()
+  }, [])
 
   return (
     <>
-      {" "}
+      {' '}
       <nav>
         {/*Category*/}
-        <div className="logo">
-          <NavLink className="nav-link" to="/">
-            <img src="./logo.jpg" width="100px" />
+        <div className='logo'>
+          <NavLink className='nav-link' to='/'>
+            <img src='./final-logo.png' width='100px' />
           </NavLink>
         </div>
         {/* 2nd menu part  */}
-        <div className="menu-link">
+        <div className='menu-link'>
           <ul>
             {!isLoggedInUser && (
               <>
                 <li>
-                  <NavLink className="nav-link" to="/home"></NavLink>
+                  <NavLink className='nav-link' to='/home'></NavLink>
                 </li>
                 <li>
-                  <NavLink className="nav-link" to="/features">
+                  <NavLink className='nav-link underlineHover' to='/features'>
                     FEATURES
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="nav-link" to="/blogs">
+                  <NavLink className='nav-link underlineHover' to='/blogs'>
                     BLOGS
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="nav-link" to="/about">
+                  <NavLink className='nav-link underlineHover' to='/workouts'>
+                    WORKOUTS
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className='nav-link underlineHover' to='/about'>
                     ABOUT
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="nav-link" to="/contact">
-                    CONTACT{" "}
+                  <NavLink className='nav-link underlineHover' to='/contact'>
+                    CONTACT{' '}
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="nav-link" to="/faqs">
+                  <NavLink className='nav-link underlineHover' to='/faqs'>
                     FAQs
                   </NavLink>
                 </li>
-                <div className="loginSignup">
+                <div className='loginSignup'>
                   <li>
-                    <NavLink className="nav-link" to="/user/login">
+                    <NavLink className='nav-link ' to='/user/login'>
                       <FaUserAlt />
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="nav-link" to="/user/login">
+                    <NavLink className='nav-link' to='/user/login'>
                       LOGIN
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="nav-link" to="/user/signup">
+                    <NavLink className='nav-link' to='/user/signup'>
                       SIGNUP
                     </NavLink>
                   </li>
@@ -105,43 +125,50 @@ const Navbar = ({ isLoggedInUser }) => {
             )}
             {isLoggedInUser && (
               <>
-                {" "}
-                <li>
-                  <NavLink className="nav-link" to="/home">
+                {/*
+               <li>
+                  <NavLink className='nav-link' to='/home'>
                     HOME
                   </NavLink>
                 </li>
+                */}
                 <li>
-                  <NavLink className="nav-link" to="/features">
-                    FEATURES
+                  <NavLink className='nav-link ml-5' to='/user/dashboard'>
+                    DASHBOARD
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="nav-link" to="/blogs">
+                  <NavLink className='nav-link' to='/blogs'>
                     BLOGS
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink className="nav-link" to="/about">
-                    SUCCESS STORIES
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="nav-link" to="/contact">
-                    COMMUNITY
-                  </NavLink>
-                </li>
-                <div className="loginSignup">
-                  <li className="nav-link">
-                    <p className="nav-name">{user?.first_name}</p>
-                  </li>
 
-                  <li className="nav-link">
+                <li>
+                  <NavLink className='nav-link' to='/workouts'>
+                    WORKOUTS
+                  </NavLink>
+                </li>
+                {
+                  <li>
+                    <NavLink className='nav-link' to='/contact'>
+                      CONTACT{' '}
+                    </NavLink>
+                  </li>
+                }
+                <div className='loginSignup'>
+                  <li>
+                    <NavLink className='nav-link ' to='/account-settings'>
+                      <FaUserAlt />
+                    </NavLink>
+                  </li>
+                  <li className=' link-username'>{user?.first_name}</li>
+
+                  <li className='nav-link'>
                     <NavLink
-                      className="nav-link"
-                      to="/"
+                      className='nav-link'
+                      to='/'
                       onClick={() => {
-                        onLogout();
+                        onLogout()
                       }}
                     >
                       Logout
@@ -154,129 +181,129 @@ const Navbar = ({ isLoggedInUser }) => {
         </div>
 
         {/* hamburget menu start  */}
-        <div className="hamburger-menu">
-          <div className="hamburger-logoDiv">
-            <img src="./logo.jpg" width="40px" />
+        <div className='hamburger-menu'>
+          <div className='hamburger-logoDiv'>
+            <img src='./logo.jpg' width='40px' />
           </div>
-          <div className="hamburger-rightDiv">
-            <i class="fa fa-user"></i>
+          <div className='hamburger-rightDiv'>
+            <i class='fa fa-user'></i>
 
             <NavLink
-              to="/"
+              to='/'
               onClick={() => {
-                setShow(!show);
+                setShow(!show)
               }}
             >
-              {!show && <i class="fa fa-bars" style={{ color: "black" }}></i>}
+              {!show && <i class='fa fa-bars' style={{ color: 'black' }}></i>}
             </NavLink>
           </div>
         </div>
 
         {show && !isLoggedInUser && (
-          <div className="menu-link mobile-menu-link">
+          <div className='menu-link mobile-menu-link'>
             <ul>
-              <div className="mobileTop">
+              <div className='mobileTop'>
                 <i
-                  class="fa fa-close"
+                  class='fa fa-close'
                   onClick={() => {
-                    setShow(!show);
+                    setShow(!show)
                   }}
                 ></i>
               </div>
-              <img src="./logo.jpg" className="mb-4 mt-0" width={"20%"}></img>
+              <img src='./logo.jpg' className='mb-4 mt-0' width={'20%'}></img>
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   FEATURES
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   BLOGS
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   ABOUT
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   CONTACT
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className="nav-link" to="/">
-                  FAQ s{" "}
+                <NavLink className='nav-link' to='/'>
+                  FAQ s{' '}
                 </NavLink>
               </li>
               <hr />
 
-              <NavLink className="nav-link mobileAccount" to="/">
-                <i class="fa fa-user"></i>
+              <NavLink className='nav-link mobileAccount' to='/'>
+                <i class='fa fa-user'></i>
                 Account
               </NavLink>
             </ul>
           </div>
         )}
         {show && isLoggedInUser && (
-          <div className="menu-link mobile-menu-link">
+          <div className='menu-link mobile-menu-link'>
             <ul>
-              <div className="mobileTop">
+              <div className='mobileTop'>
                 <i
-                  class="fa fa-close"
+                  class='fa fa-close'
                   onClick={() => {
-                    setShow(!show);
+                    setShow(!show)
                   }}
                 ></i>
               </div>
-              <img src="./logo.jpg" className="mb-4 mt-0" width={"20%"}></img>
+              <img src='./logo.jpg' className='mb-4 mt-0' width={'20%'}></img>
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   FEATURES
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   BLOGS
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   SUCCESS STORIES
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   COMMUNITY
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className="nav-link" to="/">
+                <NavLink className='nav-link' to='/'>
                   CONTACT
                 </NavLink>
               </li>
               <hr />
 
-              <NavLink className="nav-link mobileAccount" to="/">
-                <i class="fa fa-user"></i>
+              <NavLink className='nav-link mobileAccount' to='/'>
+                <i class='fa fa-user'></i>
                 Logout
               </NavLink>
             </ul>
@@ -284,10 +311,10 @@ const Navbar = ({ isLoggedInUser }) => {
         )}
       </nav>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
 
 /*
 

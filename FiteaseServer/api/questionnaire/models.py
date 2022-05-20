@@ -4,7 +4,7 @@ from api.user.models import CustomUser
 # Create your models here.
 
 class Questionnaire(models.Model):
-    Name  = models.ForeignKey(CustomUser, on_delete = models.SET_NULL, blank = True, null=True )
+    User  = models.ForeignKey(CustomUser, on_delete = models.SET_NULL, blank = True, null=True )
     Age = models.IntegerField()
     Gender = models.CharField(max_length = 50)
     Weight = models.FloatField()

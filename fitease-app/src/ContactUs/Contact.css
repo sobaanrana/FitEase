@@ -1,201 +1,37 @@
-/** contact **/
-.form-side {
-  border-radius: 4px;
+.contactDiv {
+  display: flex;
+  background-color: #36d7b7;
+  width: 80%;
+  margin: 100px;
+  padding: 50px;
+  border-radius: 5%;
 }
-.text-side {
-  padding: 15px 0;
-  margin-top: 15px;
+.formSide {
+  padding: 20px;
+  margin: 10px 20px;
 }
-.text-side .address {
-  padding-top: 15px;
-  line-height: 1.6;
+.formSide h3 {
+  margin: 0px 0px 50px 0px;
 }
-.text-side .address .heading {
-  font-size: 1.4rem;
-  font-weight: 500;
-  letter-spacing: 1px;
+.formSide button {
+  margin: 10px 140px;
 }
-.text-side .list {
-  position: relative;
-  max-width: 320px;
-  display: block;
-  padding: 5px 0 15px;
-  padding-left: 40px;
-}
-.text-side .list i {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  font-size: 1.3rem;
-  display: inline-block;
-}
-.text-side .list a {
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.text-side .list a:hover {
-  color: black;
-  transition: all 0.3s ease;
-}
-.formcontact {
-  display: block;
-  width: 100%;
-}
-.formcontact label {
-  display: block;
-  width: 100%;
-  margin-bottom: 5px;
-}
-
-.formcontact input[type="text"] {
-  width: 100%;
-  font-size: 0.9rem;
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #ebebeb;
-  margin-bottom: 15px;
-  background-color: white;
-  text-align: start;
-}
-.formcontact input[type="email"] {
-  width: 100%;
-  font-size: 0.9rem;
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #ebebeb;
-  margin-bottom: 15px;
-  background-color: white;
-}
-.formcontact textarea {
-  font-size: 0.9rem;
-  width: 100%;
-  height: 195px;
-  padding: 8px 10px;
-  border: 1px solid #ebebeb;
-  margin-bottom: 15px;
-  background-color: white;
-}
-.formcontact .msg-error {
-  font-size: 0.87rem;
-  opacity: 0.8;
-  padding: 5px 0;
-}
-.formcontact button {
-  margin-top: 15px;
-  -webkit-transition-delay: 0s;
-  transition-delay: 0s;
-  z-index: 0;
-  margin-left: 0;
-}
-/*
-.formcontact button span {
-  color: white;
-  position: relative;
-  z-index: 3;
-}*/
-/*
-    &::before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      position: absolute;
-      background-image: linear-gradient(to left, $color, $color_more);
-      opacity: 0;
-      z-index: 1;
-      transition: all 0.3s ease;
-    }
-    &:hover::before {
-      opacity: 1;
-      transition: all 0.3s ease;
-    }
-    &:hover {
-      .shine {
-        -webkit-animation: sheen 1s alternate;
-        animation: sheen 1s alternate;
-      }
-    }
-  }
-}
-#success,
-#failed {
-  &.show {
-    display: block !important;
-    margin-bottom: 15px;
-  }
-  &.hide {
-    display: none;
-  }
-}
-
-#buttonsent.show {
-  pointer-events: none;
-}
-#buttonsent {
-  width: max-content;
-  padding: 8px 30px;
-}
-*/
-.padding40 {
+.addressBox {
+  display: flex;
+  flex-direction: column;
   padding: 30px;
-  border-radius: 20px;
   background-color: rgb(242, 246, 254, 0.2);
+  height: 200px;
+  border-radius: 20%;
+  margin: 20px 0px 0px 50px;
 }
-.padding40 .text-light {
-  color: black;
-  background: green;
-  margin-bottom: 0;
+.addressBox .contactInfo {
+  display: flex;
+  flex-direction: column;
 }
-
-.padding40 h3 {
-  color: black;
-  font-weight: 550;
+.addressBox .contactInfo span {
+  font-size: 12px;
 }
-.padding40 .text-light .btn {
-  color: black;
-}
-
-address {
-  margin-top: 20px;
-  margin-bottom: 1rem;
-  font-style: normal;
-  line-height: inherit;
-}
-address.s1 span {
-  display: block;
-  padding: 0;
-  font-size: 15px;
-  line-height: 1.7em;
-}
-address.s1 i {
-  color: black;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 15px;
-  font-size: 15px;
-}
-address.s1 .btn {
-  display: inline-block;
-  border: 0;
-  color: black;
-  padding: 0;
-  margin: 0;
-}
-
-address.s1 .btn:hover {
-  background: none;
-  padding: 0;
-}
-address.s1 .btn:before {
-  content: unset;
-}
-.mainContent {
-  padding: 2em 2em;
-  margin-bottom: 50%;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 3%;
-  /* rgba(79, 245, 3, 0.3);*/
+.addressBox .contactInfo i {
+  padding-right: 12px;
 }

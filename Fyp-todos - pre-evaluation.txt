@@ -1,0 +1,14 @@
+Forgot Password - via email 6 digit code
+Account Settings - form + app
+Daily Report - frontend + app
+Workouts component desigining - data from backend
+contact us page link with backend
+footer contact form link with backend
+
+Dashboard user info - from local storage
+
+user - global state redux
+
+Minor changes in all current components - content + data
+
+

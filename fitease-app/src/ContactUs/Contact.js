@@ -1,6 +1,6 @@
-import React from "react";
-import HeaderBanner from "../Components/HeaderBanner/HeaderBanner";
-import "./Contact.css";
+import React from 'react'
+import HeaderBanner from '../Components/HeaderBanner/HeaderBanner'
+import './Contact.css'
 //import emailjs from "emailjs-com";
 //import Footer from "../components/footer";
 //import { createGlobalStyle } from "styled-components";
@@ -72,106 +72,76 @@ const Contact = function ({ displayBanner }) {
       {/*<GlobalStyles />*/}
       {displayBanner && (
         <HeaderBanner
-          title={"Contact"}
-          headline={"We are just a message away for your help. :)"}
-          displayType={"block"}
+          title={'Contact'}
+          headline={'We are just a message away for your help. :)'}
+          displayType={'block'}
         />
       )}
 
-      <section className="container my-5 mainContent">
-        <div className="row">
-          <div className="col-lg-8 col-sm-8 mb-3">
-            <h3 className="my-5 font-weight-bold">Do you have any question?</h3>
-            <div className="form-side">
-              <form className="formcontact">
-                {" "}
-                {/*onSubmit={sendEmail} */}
-                <input
-                  type="text"
-                  className="form-control"
-                  name="user_name"
-                  placeholder="Your Name"
-                  required
-                />
-                <input
-                  type="email"
-                  className="form-control"
-                  name="user_email"
-                  placeholder="Your Email"
-                  required
-                />
-                <input
-                  type="text"
-                  className="form-control"
-                  name="user_phone"
-                  placeholder="Your Phone"
-                  required
-                />
-                <textarea
-                  name="message"
-                  className="form-control"
-                  placeholder="Your Message"
-                  required
-                />
-                {/*  <div id="success" className="hide">
-                  Your message has been sent...
-                </div>
-                <div id="failed" className="hide">
-                  Message failed...
-                </div>*/}
-                <button type="button " class="btn btn-success btn-lg btn-block">
-                  Submit
-                </button>
-              </form>
-            </div>
+      <div className='container '>
+        <div className='contactDiv'>
+          <div className='formSide '>
+            <h3 className='contactHeading'>Do you have any question?</h3>
+
+            <form className='formcontact'>
+              {/*onSubmit={sendEmail} */}
+              <input
+                type='text'
+                className='form-control'
+                name='user_name'
+                placeholder='Your Name'
+                required
+              />
+              <input
+                type='email'
+                className='form-control'
+                name='user_email'
+                placeholder='Your Email'
+                required
+              />
+              <input
+                type='text'
+                className='form-control'
+                name='user_phone'
+                placeholder='Your Phone'
+                required
+              />
+              <textarea
+                name='message'
+                className='form-control'
+                placeholder='Your Message'
+                required
+              />
+
+              <button type='button ' class='btn btn-success btn-sm '>
+                Submit
+              </button>
+            </form>
           </div>
 
-          <div className="col-md-4 ">
-            <div className="padding40 box-rounded mb30 ">
-              <h3>Pakistan Office</h3>
-              <address className="s1">
-                <span>
-                  <i className="id-color fa fa-map-marker fa-lg"></i>
-                  COMSATS, Lahore, Pakistan
-                </span>
-                <span>
-                  <i className="id-color fa fa-phone fa-lg"></i>(042) 111 001
-                  007
-                </span>
-                <span>
-                  <i className="id-color fa fa-envelope-o fa-lg"></i>
-                  <span className="btn">contact@cuilahore.edu.pk</span>
-                </span>
-                <span>
-                  <i className="id-color fa fa-file-pdf-o fa-lg"></i>
-                  <span className="btn">Download Brochure</span>
-                </span>
-              </address>
+          <div className='addressBox '>
+            <h3>Pakistan Office</h3>
+            <div className='contactInfo'>
+              <span>
+                <i className='id-color fa fa-map-marker fa-lg'></i>
+                COMSATS, Lahore, Pakistan
+              </span>
+              <span>
+                <i className='id-color fa fa-phone fa-lg'></i>(042) 111 001 007
+              </span>
+              <span>
+                <i className='id-color fa fa-envelope-o fa-lg'></i>
+                contact@cuilahore.edu.pk
+              </span>
+              <span>
+                <i className='id-color fa fa-file-pdf-o fa-lg'></i>
+                Download Brochure
+              </span>
             </div>
-            {/* <div className="padding40 box-rounded mb30">
-              <h3>AU Office</h3>
-              <address className="s1">
-                <span>
-                  <i className="fa fa-map-marker fa-lg"></i>100 Mainstreet
-                  Center, Sydney
-                </span>
-                <span>
-                  <i className="fa fa-phone fa-lg"></i>+61 333 9296
-                </span>
-                <span>
-                  <i className="fa fa-envelope-o fa-lg"></i>
-                  <span className="btn">contact@example.com</span>
-                </span>
-                <span>
-                  <i className="fa fa-file-pdf-o fa-lg"></i>
-                  <span className="btn">Download Brochure</span>
-                </span>
-              </address>
-            </div>*/}
           </div>
         </div>
-      </section>
+      </div>
     </div>
-  );
-};
-export default Contact;
+  )
+}
+export default Contact

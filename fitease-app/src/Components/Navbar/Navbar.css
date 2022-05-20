@@ -1,13 +1,15 @@
 nav {
-  background-color: #343434;
+  background-color: #36d7b7;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
   display: flex;
+  border-bottom: 1px solid white;
 }
 nav a {
   font-weight: 600;
 }
 
 .logo {
-  width: 300px;
+  width: 200px;
 }
 .logo i {
   font-size: 26px;
@@ -23,8 +25,12 @@ nav a {
 }
 
 .menu-link {
-  margin-left: 14%;
-  margin-top: 3%;
+  margin-top: 5%;
+  margin-left: 7%;
+}
+.menu-link-4items {
+  margin-top: 5%;
+  margin-left: 12%;
 }
 .menu-link ul {
   display: flex;
@@ -33,20 +39,21 @@ nav a {
   list-style: none;
 }
 .menu-link ul li {
-  margin-right: 20px;
-  margin-top: 20px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 .menu-link ul li a {
   font-weight: 600;
   font-size: 18px;
-  color: #fff;
+  /*color: #fff;*/
+  color: black;
 }
 
 .nav-link {
   color: black;
 }
 .nav-link:hover {
-  color: #36d7b7;
+  color: #fff;
 }
 /*
 .mid {
@@ -61,8 +68,8 @@ nav a {
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 80%;
-  top: 2%;
+  right: 3%;
+  top: 1%;
 }
 .loginSignup i {
   margin-left: 50px;
@@ -88,6 +95,14 @@ nav i {
 }
 .belowSearchBar {
   display: none;
+}
+
+.link-username {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  /*color: #fff;*/
+  color: black;
 }
 @media screen and (max-width: 700px) {
   .hamburger-menu {
@@ -209,4 +224,25 @@ nav i {
     width: 30px;
     background-color: #ffac00;
   }
+}
+
+*
+/* underlining style for navbar a links*/
+.underlineHover:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 3px;
+  background-color: white;
+  content: '';
+  transition: width 0.2s;
+}
+
+.underlineHover:hover {
+  color: white;
+}
+
+.underlineHover:hover:after {
+  width: 100%;
 }

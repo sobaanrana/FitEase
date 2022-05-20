@@ -51,14 +51,16 @@ footer {
 }
 
 .footerPara {
-  margin-right: 14%;
+  margin-right: 10%;
+  width: 320px;
 }
 .footerLinks {
-  margin-right: 20%;
+  margin-right: 10%;
+  width: 200px;
 }
 .socials {
   position: absolute;
-  left: 580px;
+  right: 200px;
   bottom: 2px;
 }
 .social-icons li {
@@ -118,7 +120,10 @@ footer {
 
 .FooterForm {
   margin-right: 10%;
-  max-width: 250%;
+}
+.FooterForm input,
+textarea {
+  padding: 0px 100px;
 }
 
 .FooterForm button {

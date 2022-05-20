@@ -7,7 +7,8 @@
 }
 
 .faqs .panel {
-  background-color: rgb(242, 246, 254, 0.2);
+  /*background-color: rgb(242, 246, 254, 0.2);*/
+  background-color: #fff;
   font-weight: 500;
   font-size: large;
 }
@@ -20,9 +21,18 @@
 
 .faqs .col-lg-8 .ant-collapse {
   border: 1px solid #fff;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  /*box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;*/
 }
 .ant-collapse-item {
   border: none;
+}
+
+.ant-collapse-content-box p {
+  font-weight: 400;
+}
+
+.faqRightImg div {
+  margin-top: 50px;
+  margin-left: 50px;
 }

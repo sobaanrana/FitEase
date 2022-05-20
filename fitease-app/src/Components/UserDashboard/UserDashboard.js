@@ -1,72 +1,148 @@
-import React, { useState } from "react";
-import "./UserDashboard.css";
-import { FaTransgenderAlt, FaWeight, FaStarOfLife } from "react-icons/fa";
-import { GiBodyHeight, GiStairsGoal } from "react-icons/gi";
-import { MdOutlineManageAccounts, MdOutlineFoodBank } from "react-icons/md";
+import React, { useEffect, useState } from 'react'
+import './UserDashboard.css'
+import { FaTransgenderAlt, FaWeight, FaStarOfLife } from 'react-icons/fa'
+import { GiBodyHeight, GiStairsGoal } from 'react-icons/gi'
+import { MdOutlineManageAccounts, MdOutlineFoodBank } from 'react-icons/md'
+import { getDiet, getExercises } from './apiCalls'
+import DailyReport from '../DailyReport/DailyReport'
+
 const UserDashboard = () => {
   const [show, setShow] = useState({
     diet: true,
     exercise: false,
-    account: false,
-  });
+    dailyReport: false,
+  })
+
+  const [exercises, setExercises] = useState({})
+  const [diet, setDiet] = useState([])
+  const [exercisesPrediction, setExercisesPrediction] = useState([])
   const onDiet = () => {
-    setShow({ diet: true, exercise: false, account: false });
-  };
+    setShow({ diet: true, exercise: false, dailyReport: false })
+  }
   const onExercise = () => {
-    setShow({ diet: false, exercise: true, account: false });
-  };
-  const onAccount = () => {
-    setShow({ diet: false, exercise: false, account: true });
-  };
+    setShow({ diet: false, exercise: true, dailyReport: false })
+    exercisePrediction()
+  }
+  const onDailyReport = () => {
+    setShow({ diet: false, exercise: false, dailyReport: true })
+  }
+
+  const exercisePrediction = () => {
+    getExercises()
+      .then((data) => {
+        console.log('Exercise Prediction', data)
+
+        if (data) {
+          setExercises(data.prediction[0].fields)
+          let exercisesList = []
+
+          Object.keys(exercises).map((key, index) => {
+            //console.log('Key , Value', key, exercises[key])
+
+            if (exercises[key] === 1) {
+              //setExercisesPrediction(key)
+              exercisesList.push(key)
+              //setExercisesPrediction(newList)
+            }
+          })
+          console.log(exercisesList)
+          setExercisesPrediction(exercisesList)
+        }
+      })
+
+      .catch((err) => console.log(err))
+
+    /*
+  if (exercises != null) {
+    //let newObj = JSON.parse(exercises.exercisePrediction)
+    //console.log(typeof exercises.exercisePrediction)
+    /* Object.keys(exercises).map((key, index) => {
+      console.log(exercises.exercisePrediction[key])
+    })*/
+
+    //console.log(exercises)
+    /* let exercisesList = []
+
+    Object.keys(exercises).map((key, index) => {
+      //console.log('Key , Value', key, exercises[key])
+
+      if (exercises[key] === 1) {
+        // checking if the values is not present in the array but does not work here with state
+        //&& exercisesPrediction.includes(key) === false
+        //if (exercisesPrediction.indexOf(key) === -1) {}
+        exercisesList.push(key)
+      }
+      // console.log(exercisesList)
+    })*/
+  }
+
+  const dietPrediction = () => {
+    getDiet()
+      .then((data) => {
+        console.log('Diet Prediction', data)
+        setDiet(data.prediction)
+      })
+      .catch((err) => console.log(err))
+  }
+  // console.log('Exercise Predictions are', [...new Set(exercisesPrediction)]) gettting unique values
+
+  useEffect(() => {
+    if (diet === null) {
+      return <div>Loading</div>
+    }
+    exercisePrediction() // the moment button is clicked then it calls function
+    dietPrediction()
+  }, []) // this creates spam in the backend
+
   return (
-    <div className="container">
-      <div className="row userDashboard">
-        <div className="col-lg-4 col-md-12">
-          <div className="userInfo">
+    <div className='container'>
+      <div className='row userDashboard'>
+        <div className='col-lg-4 col-md-12'>
+          <div className='userInfo'>
             <img
-              alt="Image placeholder"
-              src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
-              width={"200px"}
+              alt='Image placeholder'
+              src='https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg'
+              width={'200px'}
             />
-            <div className="userContent">
-              <p id="userName">Rana Sobaan </p>
+            <div className='userContent'>
+              <p id='userName'>Rana Sobaan </p>
               <br />
               <br />
-              <div className="userLowerContent">
+              <div className='userLowerContent'>
                 <p>
-                  <span id="male">
-                    {" "}
+                  <span id='male'>
+                    {' '}
                     <FaTransgenderAlt />
                     Male
-                  </span>{" "}
+                  </span>{' '}
                   ,
-                  <span id="age">
-                    {" "}
+                  <span id='age'>
+                    {' '}
                     <MdOutlineManageAccounts />
                     24 yrs
                   </span>
                 </p>
                 <br />
                 <p>
-                  <span id="height">
-                    {" "}
+                  <span id='height'>
+                    {' '}
                     <GiBodyHeight /> 5.11 feets
                   </span>
-                  <span id="weight">
-                    {" "}
+                  <span id='weight'>
+                    {' '}
                     <FaWeight /> 80 kgs
                   </span>
                 </p>
                 <br />
-                <p id="veg">
+                <p id='veg'>
                   <MdOutlineFoodBank />
                   Veg/Non veg - not specified
                 </p>
-                <p id="status">
-                  {" "}
+                <p id='status'>
+                  {' '}
                   <FaStarOfLife /> Moderately Active
                 </p>
-                <p>
+                <p id='goal'>
                   <GiStairsGoal />
                   Lose Weight
                 </p>
@@ -74,42 +150,53 @@ const UserDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="col-lg-8 col-md-12">
-          <div className="userControls">
-            <div className="userControlButtons">
+        <div className='col-lg-8 col-md-12'>
+          <div className='userControls'>
+            <div className='userControlButtons'>
               <div onClick={() => onDiet()}>Diet</div>
               <div onClick={() => onExercise()}>Excercise</div>
-              <div onClick={() => onAccount()}>Account Settings</div>
+              <div onClick={() => onDailyReport()}>Daily Report</div>
             </div>
-            <div className="row">
+            <div className='row'>
               {show.diet && (
-                <div className="col-lg12 col-md-12">
-                  <div className="dietPrediction">THIS IS DIET PREDICTION</div>
+                <div className='col-lg12 col-md-12'>
+                  <div className='dietPrediction'>
+                    THIS IS DIET PREDICTION
+                    {diet.map((d) => (
+                      <p>{d}</p>
+                    ))}
+                  </div>
                 </div>
               )}
 
               {show.exercise && (
-                <div className="col-lg-12 col-md-12">
-                  <div className="exercisePrediction">
+                <div className='col-lg-12 col-md-12'>
+                  <div className='exercisePrediction'>
                     THIS IS EXERCISE PREDICTION
+                    {exercises && (
+                      <div>
+                        {exercisesPrediction?.map((e, index) => (
+                          <p key={index}>{e}</p>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
-              {show.account && (
-                <div className="col-lg- 12 col-md-12">
-                  <div className="accountSetting">
-                    HERE IS ACCOUNT SETTIGN FORM THAT WILL PERFORM PUT METHOD TO
-                    DB
+              {show.dailyReport && (
+                <div className='col-lg- 12 col-md-12'>
+                  <div className='dailyReport'>
+                    <DailyReport />
                   </div>
                 </div>
               )}
             </div>
-            <div className="userMsg"></div>
+            {/*<div className='userMsg'></div>*/}
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserDashboard;
+export default UserDashboard

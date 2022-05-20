@@ -15,73 +15,133 @@ from django.core import serializers
 import json
 import pandas as pd
 # from django.core.files.storage import FileSystemStorage
-
+import numpy as np
 import joblib
 
 # Create your views here.
+@csrf_exempt
+def results(request):
+  # Making Input paramters for models acceptabl
+    dataValues = list()
+    obj = Questionnaire.objects.latest('id') # get latest questionnaire
+    print('The obj direct for django table', obj)
+
+    serialized_obj = serializers.serialize('json', [ obj, ])
+    data=json.loads(serialized_obj)
+    print('The serialized obj of a djanogo obj', serialized_obj)
+
+
+    for key, value in data[0].items():
+        dataValues.append(value)
+    print('The dataValues', dataValues) # to extract fields from django obj
+
+    fields = dataValues[2] # field obj at index 2
+    # Removing unwanted fields
+    user = fields['User'] # get user id
+    print('The user id', user) # to be used at frontend for user get req
+    del fields['User']
+    del fields['created_at']
+    del fields['updated_at']
+    print(fields)
+    
+    #df = pd.DataFrame.from_dict(fields, orient = 'index')
+    df = pd.DataFrame([fields])
+    print(df.dtypes) 
+
+    # Loadin models from joblib
+    CrunchesModel = joblib.load('CrunchesPipeline.pkl')
+    joggingModel = joblib.load('JoggingPipeline.pkl')
+    PullUpsModel= joblib.load('PullUpsPipeline.pkl')
+    PushUpsModel= joblib.load('PushUpsPipeline.pkl')
+    SitUpsModel= joblib.load('SitUpsPipeline.pkl')
+    WalkingModel = joblib.load('WalkingPipeline.pkl')
+
+    # Predicting the values from models
+    print(CrunchesModel.predict(df))
+    print(joggingModel.predict(df))
+    print(PullUpsModel.predict(df))
+    print(PushUpsModel.predict(df))
+    print(SitUpsModel.predict(df))
+    print(WalkingModel.predict(df))
+
+    
+
+    # Saving the predictions in the database
+    #savePredictions = ExercisePrediction(exercisePrediction  = {'crunches':CrunchesModel.predict(df)[0],'jogging':joggingModel.predict(df)[0],'pullups':PullUpsModel.predict(df)[0],'pushups':PushUpsModel.predict(df)[0],'situps':SitUpsModel.predict(df)[0],'walking':WalkingModel.predict(df)[0]})
+    savePredictions = ExercisePrediction(crunches=CrunchesModel.predict(df)[0],jogging=joggingModel.predict(df)[0],pullups=PullUpsModel.predict(df)[0],pushups=PushUpsModel.predict(df)[0],situps=SitUpsModel.predict(df)[0],walking=WalkingModel.predict(df)[0])
+
+     # exercisePrediction is a dict and field name of model to be used only
+    savePredictions.save()
+    newResult = ExercisePrediction.objects.latest('id') # get latest questionnaire
+    serialized_newResult = serializers.serialize('json', [ newResult, ]) # string json formmy_obj = json.loads(serialized_newResult.replace("'", '"') # convert to json obj
+    #my_obj = json.loads(serialized_newResult.replace("'", '"') # convert to json obj
+
+    data=json.loads(serialized_newResult) # convert to json obj
+
+    print('The newResult', data)
+    return JsonResponse({'ExercisePrediction':'success', 'prediction':data}) # the data need to be serialized to used at frontend/json else tyoe error
+
+
 class ExercisePredictionViewSet(viewsets.ModelViewSet):
    # permission_classes = (IsAuthenticated)
-    #permission_classes_by_action = (AllowAny)
-    #permission_classes_by_action = { 'create' : [AllowAny]}
-   # permission_classes = (permissions.AllowAny,)
     permission_classes_by_action = { 'create' : [AllowAny]}
     permission_classes = (permissions.AllowAny,)
     #file = open('S:\FitEase\FiteaseServer\api\exercisePrediction\JoggingPipeline.pkl', 'rb')
      
-   # model1= joblib.load(file)
-   # load the model
-    #model = joblib.load(open('WalkingPipeline.pkl', "rb"))
+
 
     queryset = ExercisePrediction.objects.all().order_by('id')
-   # m = ExercisePrediction(exercisePrediction={'situps':1,'walking':0})
-  #  m.save()
+    #m = ExercisePrediction(exercisePrediction={'situps':1,'hello':0})
+    #m.save()
     
 
     serializer_class = ExercisePredictionSerializer
-'''  obj = Questionnaire.objects.all()
-    print(obj)
-    # assuming obj is a model instance
-    serialized_obj = serializers.serialize('json', [ obj, ])
-    #print(serialized_obj)
+
+    
+
+'''
+    # Perfectly Working Second Method - But not able to get recent id
+     df = pd.DataFrame(list(Questionnaire.objects.all().values()))
+   # print(list(Questionnaire.objects.all().values()))
+    print(list(Questionnaire.objects.filter(id='5').values())) #[{'id': 5, 'Name_id': None, 'Age': 22, 'Gender': 'Null', 'Weight': 80.0, 'Height': 5.11, 'Lifestyle': 'Null', 'Goal': 'Null', 'BMI': 0.0, 'BMR': 0.0, 'Calorie_Count': 0.0, 'created_at': datetime.date(2022, 3, 23), 'updated_at': datetime.date(2022, 3, 23)}]
+    df = pd.DataFrame(list(Questionnaire.objects.filter(id='5').values('Age','Gender', 'Weight', 'Height', 'Lifestyle', 'Goal', 'BMI', 'BMR', 'Calorie_Count')))
+    print(df)
+    print(df.dtypes)
     model1= joblib.load('JoggingPipeline.pkl')
+
+    print(model1.predict(df))
+    # limit which fields
+    #df = pd.DataFrame(list(BlogPost.objects.all().values('author', 'date', 'slug')))
+    # First Method but dtype object error
+
 '''
-  
-   # score1=model1.predict()
-  
    
-   # score1=int(score1)
-  
+    #model1.predict(df)
+
+    #df = pd.DataFrame(fields.items(), columns=['Age','Gender', 'Weight', 'Height', 'Lifestyle', 'Goal', 'BMI', 'BMR', 'Calorie_Count'])
+    # Error : KeyError: "None of [Index(['Gender', 'Lifestyle', 'Goal'], dtype='object')] are in the [columns]"
+
+   
+
+
+'''
+    new_keys = ['Age','Gender', 'Weight', 'Height', 'Lifestyle', 'Goal', 'BMI', 'BMR', 'Calorie_Count']
+    print(fields) # returns the latest object
+
+    fieldsList = list(fields.items())
+    print(fieldsList) # returns
+    arr_2d = np.array(fieldsList).transpose()
+    print(arr_2d)
+'''
+    
+    #df['Gender'] = df['Gender'].astype('object')
+    #print(df)
+
+   # model1.predict([[obj.Age,obj.Gender, obj.Weight, obj.Height, obj.Lifestyle, obj.Goal, obj.BMI, obj.BMR, obj.Calorie_Count]])
+    #dataF=pd.DataFrame({fields})
+    #model1.predict(new_2d_arr)
 
     
 
 
 
-'''
-
-class ExercisePredictionViewSet(viewsets.ModelViewSet):
-    queryset = ExercisePrediction.objects.all().order_by('id')
-    m = ExercisePrediction(exercisePrediction={'pushupp':1,'walking':0})
-    m.save()
-    serializer_class = ExercisePredictionSerializer
-
-'''
-
-
-'''  def exercisePrediction(request):
-    # get response to backend
-        if request.method == 'GET':
-            return JsonResponse({'pushupp':1,'walking':0})
-    queryset = ExercisePrediction.objects.all() #.order_by('id')
-    serializer_class = ExercisePredictionSerializer\
-        
-        
-    '''   
-
-
-'''# This list contains a Blog object.
- Blog.objects.filter(name__startswith='Beatles')
-[<Blog: Beatles Blog>]
-
-# This list contains a dictionary.
- Blog.objects.filter(name__startswith='Beatles').values()
-[{'id': 1, 'name': 'Beatles Blog', 'tagline': 'All the latest Beatles news.'}]'''

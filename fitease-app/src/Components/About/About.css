@@ -10,18 +10,19 @@
 }
 .hexagon {
   position: relative;
-  width: 49px;
-  height: 26px;
+  margin: 10px;
+  width: 80px;
+  height: 40px;
   float: left;
   background-color: #36d7b7;
 }
 .hexagon:before,
 .hexagon:after {
-  content: "";
+  content: '';
   position: absolute;
   width: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
   left: inherit;
 }
 .hexagon:before {
@@ -41,15 +42,39 @@
 }
 
 .iconAbout {
-  font-size: 30px;
-  margin: 0px 10px;
+  font-size: 40px;
+  margin: 0px 20px;
 }
 
 .d-table {
   margin-left: 70px;
 }
-.section_title {
+.section_title h4 {
+  font-size: 26px;
+  font-weight: 600;
+}
+.section_title p {
+  font-size: 16px;
+  text-align: justify;
 }
 ul li {
   list-style: none;
+}
+
+.list_description p {
+  color: black;
+}
+
+.line1 {
+  margin-left: 100px;
+}
+
+.line2 {
+  margin-left: 100px;
+
+  margin-top: 80px;
+}
+
+.icons4 {
+  margin: 80px 0px;
 }
