@@ -71,15 +71,23 @@ def results(request):
     savePredictions = ExercisePrediction(crunches=CrunchesModel.predict(df)[0],jogging=joggingModel.predict(df)[0],pullups=PullUpsModel.predict(df)[0],pushups=PushUpsModel.predict(df)[0],situps=SitUpsModel.predict(df)[0],walking=WalkingModel.predict(df)[0])
 
      # exercisePrediction is a dict and field name of model to be used only
-    savePredictions.save()
-    newResult = ExercisePrediction.objects.latest('id') # get latest questionnaire
-    serialized_newResult = serializers.serialize('json', [ newResult, ]) # string json formmy_obj = json.loads(serialized_newResult.replace("'", '"') # convert to json obj
-    #my_obj = json.loads(serialized_newResult.replace("'", '"') # convert to json obj
+    #savePredictions.save()
+    #newResult = ExercisePrediction.objects.latest('id') # get latest questionnaire
+    #serialized_newResult = serializers.serialize('json', [ newResult, ]) # string json formmy_obj = json.loads(serialized_newResult.replace("'", '"') # convert to json obj
+    #data=json.loads(serialized_newResult) # convert to json obj
 
-    data=json.loads(serialized_newResult) # convert to json obj
+    exercisePred = {'crunches' : CrunchesModel.predict(df)[0], 'jogging' : joggingModel.predict(df)[0], 'pullups' : PullUpsModel.predict(df)[0], 'pushups' : PushUpsModel.predict(df)[0], 'situps' : SitUpsModel.predict(df)[0], 'walking' : WalkingModel.predict(df)[0]}
+    #print('The newResult', exercisePred)
 
-    print('The newResult', data)
-    return JsonResponse({'ExercisePrediction':'success', 'prediction':data}) # the data need to be serialized to used at frontend/json else tyoe error
+
+    data = list()
+    for ex in exercisePred:
+        if exercisePred[ex] == 1:
+            data.append(ex)
+    print('The data', data)
+
+            
+    return JsonResponse({'ExercisePrediction':'success', 'prediction': data}) # the data need to be serialized to used at frontend/json else tyoe error
 
 
 class ExercisePredictionViewSet(viewsets.ModelViewSet):
