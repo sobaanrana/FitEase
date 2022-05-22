@@ -13,15 +13,15 @@ const UserDashboard = () => {
     dailyReport: false,
   })
 
-  const [exercises, setExercises] = useState({})
+  const [exercises, setExercises] = useState([])
   const [diet, setDiet] = useState([])
-  const [exercisesPrediction, setExercisesPrediction] = useState([])
+  //const [exercisesPrediction, setExercisesPrediction] = useState([])
   const onDiet = () => {
     setShow({ diet: true, exercise: false, dailyReport: false })
   }
   const onExercise = () => {
     setShow({ diet: false, exercise: true, dailyReport: false })
-    exercisePrediction()
+    //exercisePrediction()
   }
   const onDailyReport = () => {
     setShow({ diet: false, exercise: false, dailyReport: true })
@@ -31,7 +31,9 @@ const UserDashboard = () => {
     getExercises()
       .then((data) => {
         console.log('Exercise Prediction', data)
-
+        setExercises(data.prediction)
+        // Sagregating data on ecercise Prediction with 1 on the frontend
+        /*
         if (data) {
           setExercises(data.prediction[0].fields)
           let exercisesList = []
@@ -44,38 +46,15 @@ const UserDashboard = () => {
               exercisesList.push(key)
               //setExercisesPrediction(newList)
             }
-          })
+          })*
           console.log(exercisesList)
           setExercisesPrediction(exercisesList)
-        }
+          
+        }*/
       })
 
       .catch((err) => console.log(err))
-
-    /*
-  if (exercises != null) {
-    //let newObj = JSON.parse(exercises.exercisePrediction)
-    //console.log(typeof exercises.exercisePrediction)
-    /* Object.keys(exercises).map((key, index) => {
-      console.log(exercises.exercisePrediction[key])
-    })*/
-
-    //console.log(exercises)
-    /* let exercisesList = []
-
-    Object.keys(exercises).map((key, index) => {
-      //console.log('Key , Value', key, exercises[key])
-
-      if (exercises[key] === 1) {
-        // checking if the values is not present in the array but does not work here with state
-        //&& exercisesPrediction.includes(key) === false
-        //if (exercisesPrediction.indexOf(key) === -1) {}
-        exercisesList.push(key)
-      }
-      // console.log(exercisesList)
-    })*/
   }
-
   const dietPrediction = () => {
     getDiet()
       .then((data) => {
@@ -162,9 +141,12 @@ const UserDashboard = () => {
                 <div className='col-lg12 col-md-12'>
                   <div className='dietPrediction'>
                     THIS IS DIET PREDICTION
-                    {diet.map((d) => (
-                      <p>{d}</p>
-                    ))}
+                    <p className='dietName'>Breakfast</p>
+                    <p>{diet?.breakfast}</p>
+                    <p className='dietName'>Lunch</p>
+                    <p>{diet?.lunch}</p>
+                    <p className='dietName'>Dinner</p>
+                    <p>{diet?.dinner}</p>
                   </div>
                 </div>
               )}
@@ -175,7 +157,7 @@ const UserDashboard = () => {
                     THIS IS EXERCISE PREDICTION
                     {exercises && (
                       <div>
-                        {exercisesPrediction?.map((e, index) => (
+                        {exercises?.map((e, index) => (
                           <p key={index}>{e}</p>
                         ))}
                       </div>
@@ -186,7 +168,7 @@ const UserDashboard = () => {
               {show.dailyReport && (
                 <div className='col-lg- 12 col-md-12'>
                   <div className='dailyReport'>
-                    <DailyReport />
+                    <DailyReport exercises={exercises} />
                   </div>
                 </div>
               )}

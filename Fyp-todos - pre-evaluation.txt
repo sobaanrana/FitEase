@@ -5,6 +5,7 @@ Workouts component desigining - data from backend
 contact us page link with backend
 footer contact form link with backend
 
+does not show exercises on render but shows diet may be bcz the manipulations at the frontend - do it at backend like diet
 Dashboard user info - from local storage
 
 user - global state redux
