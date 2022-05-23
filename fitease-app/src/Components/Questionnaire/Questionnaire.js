@@ -146,21 +146,25 @@ const Questionnaire = () => {
       Calorie_Count,
     }
     console.log(data)
+    data = { user: user, ...data }
+    console.log('DATA', data)
     postQuestionnaire(data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
   }
 
+  // getting user by id from backend
   const loggedInUser = () => {
     const data = JSON.parse(localStorage.getItem('loggedInUser'))
     //console.log(data?.user?.id);
     getLoggedInUser(data?.user?.id)
       .then((res) => {
-        setUser(data?.user?.id) // setting user id instead of a user details that can be set and used later
+        setUser(data?.user?.email) // setting user id instead of a user details that can be set and used later
         console.log('Res is ', res)
       })
       .catch((err) => console.log(err))
   }
+
   useEffect(() => {
     // avoided useEffect on initial render - todo : use with useRef if Possible
     if (showDone) {

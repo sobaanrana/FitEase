@@ -3,7 +3,7 @@ import './UserDashboard.css'
 import { FaTransgenderAlt, FaWeight, FaStarOfLife } from 'react-icons/fa'
 import { GiBodyHeight, GiStairsGoal } from 'react-icons/gi'
 import { MdOutlineManageAccounts, MdOutlineFoodBank } from 'react-icons/md'
-import { getDiet, getExercises } from './apiCalls'
+import { getDiet, getExercises, postLoggedInUser } from './apiCalls'
 import DailyReport from '../DailyReport/DailyReport'
 
 const UserDashboard = () => {
@@ -69,6 +69,9 @@ const UserDashboard = () => {
     if (diet === null) {
       return <div>Loading</div>
     }
+    const user = JSON.parse(localStorage.getItem('loggedInUser'))
+
+    postLoggedInUser(user.user.email)
     exercisePrediction() // the moment button is clicked then it calls function
     dietPrediction()
   }, []) // this creates spam in the backend

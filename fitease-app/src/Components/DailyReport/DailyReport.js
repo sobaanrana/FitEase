@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Field, Form, Formik } from 'formik'
 import './DailyReport.css'
-import { postDailyReportMsg } from './apiCalls'
+import { getMsgDict, postDailyReportMsg } from './apiCalls'
+import { toast } from 'react-toastify'
+
 const DailyReport = ({ exercises }) => {
-  console.log('exercises', exercises)
+  //console.log('exercises', exercises)
   const [count, setCount] = useState(0)
-  const [exerciseCount, setExerciseCount] = useState(0)
-  const [dietCount, setDietCount] = useState(0)
+  // const [exerciseCount, setExerciseCount] = useState(0)
+  // const [dietCount, setDietCount] = useState(0)
+  const [msg, setMsg] = useState(null)
+  const user = JSON.parse(localStorage.getItem('loggedInUser'))
+  //console.log('user')
   const onDailyReport = (values) => {
-    console.log('values', values)
+    //console.log('values', values)
     if (Object.keys(values).length > 0) {
       computeResults(values)
     }
@@ -61,47 +66,101 @@ const DailyReport = ({ exercises }) => {
     let exerciseCountVar = exerciseIterate - 3
     console.log('exerciseCountVar', exerciseCountVar)
     console.log('dietCountVar', dietCountVar)
-    setExerciseCount(exerciseCountVar)
-    setDietCount(dietCountVar)
+
+    // Since async behaviour as the value set and so same msg show on next click and changes after + no need to use extra states
+    //setExerciseCount(exerciseCountVar)
+    //setDietCount(dietCountVar)
 
     let totalCount = exerciseCountVar + dietCountVar
     console.log('total count', totalCount)
     setCount(totalCount)
+    prepareMsg(exerciseCountVar, dietCountVar)
   }
-  const sendMsg = () => {
+
+  const prepareMsg = (exerciseCount, dietCount) => {
     console.log('Total Count for appreciation, motivation and warning', count)
 
-    let msg = ''
+    //let msg = ''
+    console.log('exerciseCount, dietCount', exerciseCount, dietCount)
     if (exerciseCount === exercises.length && dietCount === 3) {
-      msg = 'Appreciate'
+      setMsg('Appreciate')
       console.log('Fitease Appreciates')
     } else if (
       exerciseCount >= Math.round(exercises.length / 2) &&
       dietCount >= Math.round(3 / 2)
     ) {
-      msg = 'Motivate'
+      setMsg('Motivate')
       console.log('Fitease Motivates')
-    } else if (exerciseCount < exercises.length / 2 && dietCount < 3 / 2) {
-      msg = 'Warn'
-      console.log('Fitease Warns')
+      // } else if (e < exercises.length / 2 && d < 3 / 2) {
+      //   setMsg('Warn')
+      //   console.log('Fitease Warns')
     } else if (exerciseCount === exercises.length || dietCount === 3) {
-      msg = 'Motivate'
-    } else if (exerciseCount !== exercises.length && dietCount !== 3) {
-      msg = 'Motivate'
-    } else if (exerciseCount !== exercises.length || dietCount !== 3) {
-      msg = 'Motivate'
-    } else {
-      msg = 'Warn'
-    }
+      console.log('Fitease Motivates')
 
-    postDailyReportMsg(msg)
+      setMsg('Motivate')
+    } else if (exerciseCount === 0 && dietCount === 0) {
+      console.log('Fitease Warns')
+      setMsg('Warn')
+    } else if (exerciseCount !== exercises.length || dietCount !== 3) {
+      console.log('Fitease Motivates')
+
+      setMsg('Motivate')
+      // } else if (e !== exercises.length && d !== 3) {
+      //   console.log('Fitease Motivates')
+
+      //   setMsg('Motivate')
+    }
+  }
+  const sendMsg = () => {
+    postDailyReportMsg(msg, user.user.email)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
   }
+
+  // This shows Msg that is greator in number at backend considerinf overall commitment
+  const showMsg = () => {
+    let msgDict = []
+    getMsgDict()
+      .then((res) => {
+        console.log(res)
+        msgDict.push(res.Message)
+
+        console.log(
+          'msgDict - greator',
+          Object.keys(msgDict[0])?.reduce((a, b) =>
+            msgDict[0][a] > msgDict[0][b] ? a : b
+          )
+        )
+        let greatorMsg = Object.keys(msgDict[0])?.reduce((a, b) =>
+          msgDict[0][a] > msgDict[0][b] ? a : b
+        )
+        //        console.log('greatorMsg', greatorMsg)
+
+        if (greatorMsg === 'Appreciate') {
+          toast.success(greatorMsg, {
+            position: toast.POSITION.LEFT,
+          })
+        } else if (greatorMsg === 'Motivate') {
+          toast.info(greatorMsg, {
+            position: toast.POSITION.LEFT,
+          })
+        } else if (greatorMsg === 'Warn') {
+          toast.error(greatorMsg, {
+            position: toast.POSITION.LEFT,
+          })
+        }
+      })
+      .catch((err) => console.log(err))
+
+    console.log('MsgDict', msgDict)
+  }
   console.log('Count', count)
   useEffect(() => {
-    sendMsg()
-  }, [count])
+    if (msg !== null) {
+      sendMsg()
+      showMsg()
+    }
+  }, [msg])
 
   return (
     <div>

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'api.questionnaire',
     'api.exercisePrediction',
     'api.dietPrediction',
+    'api.predictions',
     'api.dailyReport',
 ]
 
