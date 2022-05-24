@@ -157,7 +157,7 @@ const Navbar = ({ isLoggedInUser }) => {
                 }
                 <div className='loginSignup'>
                   <li>
-                    <NavLink className='nav-link ' to='/account-settings'>
+                    <NavLink className='nav-link ' to='/user/account-settings'>
                       <FaUserAlt />
                     </NavLink>
                   </li>

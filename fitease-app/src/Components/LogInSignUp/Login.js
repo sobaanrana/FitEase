@@ -23,7 +23,7 @@ const validationSchema = yup.object().shape({
 
   password: yup
     .string()
-    .min(2, 'Too Short!')
+    .min(5, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Password Required'),
   //matches(re, "Invalid Password"),

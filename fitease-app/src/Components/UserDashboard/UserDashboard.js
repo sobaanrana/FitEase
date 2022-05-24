@@ -5,6 +5,7 @@ import { GiBodyHeight, GiStairsGoal } from 'react-icons/gi'
 import { MdOutlineManageAccounts, MdOutlineFoodBank } from 'react-icons/md'
 import { getDiet, getExercises, postLoggedInUser } from './apiCalls'
 import DailyReport from '../DailyReport/DailyReport'
+import { Link } from 'react-router-dom'
 
 const UserDashboard = () => {
   const [show, setShow] = useState({
@@ -129,6 +130,11 @@ const UserDashboard = () => {
                   Lose Weight
                 </p>
               </div>
+            </div>
+            <div>
+              <button>
+                <Link to={'/user/questionnaire/update'}>Edit</Link>
+              </button>
             </div>
           </div>
         </div>

@@ -18,6 +18,7 @@ import About from './Components/About/About'
 import BlogSideBarLayout from './Components/Blogs/BlogSideBarLayout'
 import UserDashboard from './Components/UserDashboard/UserDashboard'
 import AccountSettings from './Components/AccountSettings/AccountSettings'
+import UpdateQuestionnaire from './Components/Questionnaire/UpdateQuestionnaire'
 
 function App() {
   const [isLoggedInUser, setIsLoggedInUser] = useState(
@@ -36,12 +37,16 @@ function App() {
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blogs/:id' element={<SingleBlog />} />
           <Route path='/user/questionnaire' element={<Questionnaire />} />
+          <Route
+            path='/user/questionnaire/update'
+            element={<UpdateQuestionnaire />}
+          />
           <Route path='/features' element={<Features displayBanner={true} />} />
           <Route path='/contact' element={<Contact displayBanner={true} />} />
           <Route path='/faqs' element={<FAQs displayBanner={true} />} />
           <Route path='/about' element={<About displayBanner={true} />} />
           <Route path='/user/dashboard' element={<UserDashboard />} />
-          <Route path='/account-settings' element={<AccountSettings />} />
+          <Route path='/user/account-settings' element={<AccountSettings />} />
         </Routes>
         <Footer />
       </Router>

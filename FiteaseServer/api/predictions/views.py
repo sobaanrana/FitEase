@@ -23,7 +23,7 @@ import joblib
 def exercisePrediction(request):
     # user email will be the latest instance email as he has just submitted the daily report and then get the msg repsons
     dataValues = list()
-    user = Prediction.objects.latest('id') # get latest questionnaire
+    user = Prediction.objects.latest('id') # get latest email
     #print('The user direct for django table', user)
 
     serializedUser = serializers.serialize('json', [ user, ])

@@ -24,7 +24,7 @@ const validationSchema = yup.object().shape({
 
   password: yup
     .string()
-    .min(2, 'Too Short!')
+    .min(5, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Password Required'),
   confirmPassword: yup
@@ -49,9 +49,10 @@ function Signup() {
     console.log('user', user)
 
     if (user) {
-      const { first_name, email, password } = user
+      const { first_name, last_name, email, password } = user // not sending confirm password to db as its for checking here just
       console.log(user)
-      signup(user)
+
+      signup({ first_name, last_name, email, password })
         .then((data) => {
           //  console.log("Data", data); //inside evey property comes an error with guideline/error from backend
           if (data?.email === email) {
@@ -88,6 +89,7 @@ function Signup() {
           <Formik
             initialValues={{
               first_name: '',
+              last_name: '',
               email: '',
               password: '',
               confirmPassword: '',
@@ -105,9 +107,17 @@ function Signup() {
                   id='login'
                   class='fadeIn second'
                   name='first_name'
-                  placeholder='name'
+                  placeholder='first name'
                 />
                 <CustomErrorMsg name='first_name' />
+                <Field
+                  type='text'
+                  id='login'
+                  class='fadeIn second'
+                  name='last_name'
+                  placeholder='last name'
+                />
+                <CustomErrorMsg name='last_name' />
 
                 <Field
                   type='text'

@@ -8,6 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, logout
 from rest_framework import permissions
 
+from django.contrib.auth.hashers import check_password
+
 import random
 import re
 
@@ -49,7 +51,7 @@ def signin(request):
             token = generate_session_token()
             user.session_token = token
             user.save()
-            
+            usr_dict['pass'] = password
             login(request, user)
             return JsonResponse({'token' : token , 'user': usr_dict})
         else:
