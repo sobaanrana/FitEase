@@ -1,3 +1,37 @@
+.daily-report .headline {
+  font-size: 18px;
+  position: absolute;
+  top: 50px;
+  left: 140px;
+}
+
+.daily-report .exercise {
+  font-size: 18px;
+  position: absolute;
+  top: 110px;
+  left: 140px;
+}
+
+.daily-report .diet {
+  font-size: 18px;
+  position: absolute;
+  top: 260px;
+  left: 140px;
+}
+.dailyReport-form {
+  padding: 100px 280px;
+}
+.dailyReport-form label {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 0px;
+}
+
+.dailyReport-form .btn {
+  padding: 5px;
+  font-size: 12px;
+  margin: 20px 0px;
+}
 /* Radio Button */
 input[type='checkbox'] {
   -webkit-appearance: none;

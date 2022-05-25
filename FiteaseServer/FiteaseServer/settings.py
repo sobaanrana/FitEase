@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'api',
     'api.user',
     'api.blog',
+    'ckeditor',
     'api.questionnaire',
     'api.exercisePrediction',
     'api.dietPrediction',

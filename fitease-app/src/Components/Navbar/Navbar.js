@@ -63,7 +63,7 @@ const Navbar = ({ isLoggedInUser }) => {
         {/*Category*/}
         <div className='logo'>
           <NavLink className='nav-link' to='/'>
-            <img src='./final-logo.png' width='100px' />
+            <img src='./final-logo.png' width='100%' />
           </NavLink>
         </div>
         {/* 2nd menu part  */}

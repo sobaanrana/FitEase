@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './styles.css'
 import classNames from 'classnames'
 import { Field, Form, Formik } from 'formik'
-import { getLoggedInUser, getQuesByUser, postQuestionnaire } from './services'
+import {
+  getLoggedInUser,
+  getQuesByUser,
+  postQuestionnaire,
+  updateQuestionnaire,
+} from './services'
 import { useNavigate, useRoutes } from 'react-router-dom'
 import { FaTransgenderAlt, FaWeight, FaStarOfLife } from 'react-icons/fa'
 import { GiBodyHeight, GiStairsGoal } from 'react-icons/gi'
@@ -78,8 +83,8 @@ const UpdateQuestionnaire = () => {
     }
   }
 
-  const onSubmitQuestionnaire = (data) => {
-    console.log(data)
+  const onUpdateQuestionnaire = (data) => {
+    //console.log(data)
 
     const BMI = (data.Weight / data.Height ** 2) * 10000
     var BMR, Calorie_Count
@@ -118,15 +123,16 @@ const UpdateQuestionnaire = () => {
     console.log(`http://localhost:8000/api/user/${user}/`)
     data = {
       ...data,
-      Name: `http://localhost:8000/api/user/${user}/`,
+      //Name: `http://localhost:8000/api/user/${user}/`,
+      user,
       BMI,
       BMR,
       Calorie_Count,
     }
-    console.log(data)
-    data = { user: user, ...data }
-    console.log('DATA', data)
-    postQuestionnaire(data)
+    //console.log(data)
+    //data = { user: user, ...data }
+    //console.log('DATA', data)
+    updateQuestionnaire(questionnaireData.pk, data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
   }
@@ -158,7 +164,7 @@ const UpdateQuestionnaire = () => {
     // avoided useEffect on initial render - todo : use with useRef if Possible
     if (showDone) {
       setTimeout(() => {
-        navigate('/')
+        navigate('/user/dashboard')
       }, 5000)
     }
     loggedInUser()
@@ -270,10 +276,10 @@ const UpdateQuestionnaire = () => {
                 setShowSubmit(false)
                 setShowNextPrevButtons(false)
                 console.log('Values       :', values)
-                onSubmitQuestionnaire(values)
+                onUpdateQuestionnaire(values)
               }}
             >
-              {({ values }) => (
+              {({ values, handleChange }) => (
                 <Form>
                   {showAge &&
                     !showGender &&
@@ -288,6 +294,8 @@ const UpdateQuestionnaire = () => {
                           name='Age'
                           placeholder='0'
                           className='textInp'
+                          value={values.Age}
+                          onChange={handleChange}
                         />
                         {/*  <CustomErrorMsg name="age" />*/}{' '}
                       </div>
@@ -431,7 +439,7 @@ const UpdateQuestionnaire = () => {
                     !showHeight &&
                     !showLifeStyle &&
                     !showGoal && (
-                      <div class='btnWrapper'>
+                      <div class='btnWrapperQues'>
                         <button type='submit'>Submit</button>
                         <div class='icon'>
                           <svg

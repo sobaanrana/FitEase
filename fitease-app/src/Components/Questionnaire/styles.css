@@ -224,15 +224,15 @@ button:focus {
 }*/
 
 /* Submit Buttton */
-.btnWrapper {
+.btnWrapperQues {
   position: absolute;
   top: 60%;
-  left: 45%;
+  left: 50%;
   transform: translate(-50%, -50%);
   margin: 16% 0%;
 }
 
-.btnWrapper button {
+.btnWrapperQues button {
   display: block;
   width: 200px;
   height: 50px;
@@ -248,7 +248,7 @@ button:focus {
   transition: all 0.35s;
 }
 
-.btnWrapper .icon {
+.btnWrapperQues .icon {
   width: 50px;
   height: 50px;
   border: 3px solid transparent;
@@ -260,7 +260,7 @@ button:focus {
   transition: all 0.35s;
 }
 
-.btnWrapper .icon svg {
+.btnWrapperQues .icon svg {
   width: 30px;
   position: absolute;
   top: calc(50% - 15px);
@@ -270,14 +270,14 @@ button:focus {
   transition: all 0.35s;
 }
 
-.btnWrapper button:hover {
+.btnWrapperQues button:hover {
   width: 200px;
   border: 3px solid #333;
   background: transparent;
   color: #333;
 }
 
-.btnWrapper button:hover + .icon {
+.btnWrapperQues button:hover + .icon {
   border: 3px solid #333; /*#2ecc71*/
   right: -25%;
 }

@@ -10,38 +10,27 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 
+from api.user.models import CustomUser
+
 import json
 
 # Create your views here.
 @csrf_exempt
 def msg(request):
-    #print("REQUEST", request)
-   # obj = DailyReport.objects.get(user='sobaan@gmail.com') #user=request.user #gets single 
-
-    # user email will be the latest instance email as he has just submitted the daily report and then get the msg repsons
-    dataValues = list()
-    obj = DailyReport.objects.latest('id') # get latest questionnaire
-    #print('The obj direct for django table', obj)
-
-    serialized_objDR = serializers.serialize('json', [ obj, ])
-    data=json.loads(serialized_objDR)
-    #print('The serialized obj of a djanogo obj', serialized_objDR)
-
-
-    for key, value in data[0].items():
-        dataValues.append(value)
-   # print('The dataValues', dataValues) # to extract fields from django obj
-
-    fields = dataValues[2] # field obj at index 2
-    # Removing unwanted fields
-    email = fields['user'] # get user id
-    #print('The email', email) # fields) # to extract fields from
+    # Getting input parameters from Questionnaire related to this email
+    user = CustomUser.objects.exclude(session_token=0)
+    print('user',user)
+    if(user):
+      serializedUser = serializers.serialize('json', [ user[0], ])
+      #print('The serialized obj of a djanogo obj', serializedUser)
+      userData=json.loads(serializedUser)
+      userEmail = userData[0]['fields']['email']
 
 
     DailyReports = list()
 
     # getting all the instances related this email
-    objects_all=DailyReport.objects.filter(user=email)
+    objects_all=DailyReport.objects.filter(user=userEmail)
     for obj in objects_all: 
         serialized_obj = serializers.serialize('json', [obj, ])
         DailyReports.append(json.loads(serialized_obj))

@@ -44,8 +44,8 @@ export const authenticate = (data, next) => {
   //const dispatch = useDispatch()
   // user data in local storage and global state redux being set from here
   if (typeof window !== undefined) {
-    const { token, user } = data
-    const { id } = user
+    // const { token, user } = data
+    // const { id } = user
     localStorage.setItem('loggedInUser', JSON.stringify(data))
     //dispatch(setUser(JSON.stringify(data)))
 

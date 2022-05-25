@@ -3,7 +3,12 @@ import './UserDashboard.css'
 import { FaTransgenderAlt, FaWeight, FaStarOfLife } from 'react-icons/fa'
 import { GiBodyHeight, GiStairsGoal } from 'react-icons/gi'
 import { MdOutlineManageAccounts, MdOutlineFoodBank } from 'react-icons/md'
-import { getDiet, getExercises, postLoggedInUser } from './apiCalls'
+import {
+  getDiet,
+  getExercises,
+  getQuesByUser,
+  postLoggedInUser,
+} from './apiCalls'
 import DailyReport from '../DailyReport/DailyReport'
 import { Link } from 'react-router-dom'
 
@@ -16,6 +21,9 @@ const UserDashboard = () => {
 
   const [exercises, setExercises] = useState([])
   const [diet, setDiet] = useState([])
+  const [user, setUser] = useState(null)
+  const [questionnaireData, setQuestionnaireData] = useState(null)
+
   //const [exercisesPrediction, setExercisesPrediction] = useState([])
   const onDiet = () => {
     setShow({ diet: true, exercise: false, dailyReport: false })
@@ -66,12 +74,23 @@ const UserDashboard = () => {
   }
   // console.log('Exercise Predictions are', [...new Set(exercisesPrediction)]) gettting unique values
 
+  // getting questionnaire of logged in user
+  const quesByUser = () => {
+    getQuesByUser()
+      .then((res) => {
+        //console.log('Questionnaire of Logged In User', res)
+        setQuestionnaireData(res.questionnaire.fields)
+      })
+      .catch((err) => console.log(err))
+  }
+  console.log('Questionnaire of Logged In User', questionnaireData)
   useEffect(() => {
     if (diet === null) {
       return <div>Loading</div>
     }
     const user = JSON.parse(localStorage.getItem('loggedInUser'))
-
+    setUser(user.user)
+    quesByUser()
     postLoggedInUser(user.user.email)
     exercisePrediction() // the moment button is clicked then it calls function
     dietPrediction()
@@ -88,7 +107,9 @@ const UserDashboard = () => {
               width={'200px'}
             />
             <div className='userContent'>
-              <p id='userName'>Rana Sobaan </p>
+              <p id='userName'>
+                {user?.first_name} {user?.last_name}
+              </p>
               <br />
               <br />
               <div className='userLowerContent'>
@@ -96,45 +117,46 @@ const UserDashboard = () => {
                   <span id='male'>
                     {' '}
                     <FaTransgenderAlt />
-                    Male
+                    {questionnaireData?.Gender}
                   </span>{' '}
                   ,
                   <span id='age'>
                     {' '}
                     <MdOutlineManageAccounts />
-                    24 yrs
+                    {questionnaireData?.Age} yrs
                   </span>
                 </p>
                 <br />
                 <p>
                   <span id='height'>
                     {' '}
-                    <GiBodyHeight /> 5.11 feets
+                    <GiBodyHeight /> {questionnaireData?.Height} cms
                   </span>
                   <span id='weight'>
                     {' '}
-                    <FaWeight /> 80 kgs
+                    <FaWeight /> {questionnaireData?.Weight} Kgs
                   </span>
                 </p>
                 <br />
-                <p id='veg'>
+                {/*<p id='veg'>
                   <MdOutlineFoodBank />
                   Veg/Non veg - not specified
-                </p>
+                </p> */}
                 <p id='status'>
                   {' '}
-                  <FaStarOfLife /> Moderately Active
+                  <FaStarOfLife />
+                  {questionnaireData?.Lifestyle}
                 </p>
                 <p id='goal'>
                   <GiStairsGoal />
-                  Lose Weight
+                  {questionnaireData?.Goal}
                 </p>
               </div>
             </div>
             <div>
-              <button>
-                <Link to={'/user/questionnaire/update'}>Edit</Link>
-              </button>
+              <Link to={'/user/questionnaire/update'}>
+                <button class='btn btn-primary '>Edit</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -149,7 +171,6 @@ const UserDashboard = () => {
               {show.diet && (
                 <div className='col-lg12 col-md-12'>
                   <div className='dietPrediction'>
-                    THIS IS DIET PREDICTION
                     <p className='dietName'>Breakfast</p>
                     <p>{diet?.breakfast}</p>
                     <p className='dietName'>Lunch</p>
@@ -163,7 +184,6 @@ const UserDashboard = () => {
               {show.exercise && (
                 <div className='col-lg-12 col-md-12'>
                   <div className='exercisePrediction'>
-                    THIS IS EXERCISE PREDICTION
                     {exercises && (
                       <div>
                         {exercises?.map((e, index) => (

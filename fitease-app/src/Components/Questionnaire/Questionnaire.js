@@ -137,17 +137,18 @@ const Questionnaire = () => {
       }
     }
     console.log(user)
-    console.log(`http://localhost:8000/api/user/${user}/`)
+    //console.log(`http://localhost:8000/api/user/${user}/`)
     data = {
       ...data,
-      Name: `http://localhost:8000/api/user/${user}/`,
+      user,
+      //Name: `http://localhost:8000/api/user/${user}/`,
       BMI,
       BMR,
       Calorie_Count,
     }
-    console.log(data)
-    data = { user: user, ...data }
-    console.log('DATA', data)
+    //console.log(data)
+    //  data = { user: user, ...data }
+    // console.log('DATA', data)
     postQuestionnaire(data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
@@ -159,17 +160,19 @@ const Questionnaire = () => {
     //console.log(data?.user?.id);
     getLoggedInUser(data?.user?.id)
       .then((res) => {
-        setUser(data?.user?.email) // setting user id instead of a user details that can be set and used later
+        setUser(data?.email) // setting user id instead of a user details that can be set and used later
         console.log('Res is ', res)
       })
       .catch((err) => console.log(err))
   }
 
+  console.log('User from state', user)
+
   useEffect(() => {
     // avoided useEffect on initial render - todo : use with useRef if Possible
     if (showDone) {
       setTimeout(() => {
-        navigate('/')
+        navigate('/user/login')
       }, 5000)
     }
     loggedInUser()
@@ -441,7 +444,7 @@ const Questionnaire = () => {
                     !showHeight &&
                     !showLifeStyle &&
                     !showGoal && (
-                      <div class='btnWrapper'>
+                      <div class='btnWrapperQues'>
                         <button type='submit'>Submit</button>
                         <div class='icon'>
                           <svg

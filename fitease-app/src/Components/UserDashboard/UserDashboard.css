@@ -60,6 +60,18 @@
   font-size: 20px;
   font-weight: 600;
 }
+
+.userDashboard .btn-primary {
+  margin: 40px 110px;
+  background-color: #36d7b7;
+  color: #fff;
+  padding: 5px 40px;
+}
+.userDashboard .btn-primary a {
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+}
 .userContent svg {
   font-size: 25px;
   margin-right: 12px;
@@ -101,10 +113,17 @@
   font-size: 20px;
   font-weight: 600;
 }
+
 .exercisePrediction {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   height: 40em;
+  padding: 100px;
+}
+
+.exercisePrediction p {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .dailyReport {

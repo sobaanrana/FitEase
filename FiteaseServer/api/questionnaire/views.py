@@ -20,6 +20,7 @@ from api.user.models import CustomUser
 def getDataByEmail(request):
    # Getting input parameters from Questionnaire related to this email
    user = CustomUser.objects.exclude(session_token=0)
+   print('user',user)
    if(user):
       serializedUser = serializers.serialize('json', [ user[0], ])
       #print('The serialized obj of a djanogo obj', serializedUser)

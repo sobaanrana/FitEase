@@ -7,6 +7,7 @@ import CustomErrorMsg from './CustomErrMsg'
 import { toast } from 'react-toastify'
 import './LogInSignUp.css'
 import { authenticate, login } from '../../auth/helper'
+import { AiFillEye } from 'react-icons/ai'
 
 //axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token"); //now x-auth-token is sent with every network request and server will consider logged in
 
@@ -31,7 +32,7 @@ const validationSchema = yup.object().shape({
 
 function Login() {
   const navigate = useNavigate()
-
+  const [showPassword, setShowPassword] = useState(false)
   const onLogin = (user) => {
     const { email, password } = user
     console.log(user)
@@ -109,14 +110,17 @@ function Login() {
               />
               <CustomErrorMsg name='email' />
               <Field
-                type='text'
+                type={showPassword ? 'text' : 'password'}
                 id='password'
                 class='fadeIn third'
                 name='password'
                 placeholder='password'
               />
+              <AiFillEye
+                className='login-eye-icon fadeIn third'
+                onClick={() => setShowPassword(!showPassword)}
+              />
               <CustomErrorMsg name='password' />
-
               <button
                 class='fadeIn fourth'
                 type='submit'

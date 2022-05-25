@@ -16,9 +16,9 @@ const Carousel = () => {
 
   /* const banners = ['./bg-1.jpg', './bg-2.jpg', './bg-3.jpg']*/
   const banners = [
-    './Gym Fitness (Banner (Landscape)) (1).png',
-    './Gym Fitness (Banner (Landscape)) (2).png',
-    './2G.png',
+    './carousel-img-2.png',
+    './carousel-img-3.png',
+    './carousel-img-1.png',
   ]
 
   // From Api

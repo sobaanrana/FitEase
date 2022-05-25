@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import CustomErrorMsg from './CustomErrMsg'
-import { signup } from '../../auth/helper/index'
+import { authenticate, signup } from '../../auth/helper/index'
 import { toast } from 'react-toastify'
 import './LogInSignUp.css'
+import { AiFillEye } from 'react-icons/ai'
+
 const re =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -42,6 +44,8 @@ const validationSchema = yup.object().shape({
 
 function Signup() {
   const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const onSignup = (user) => {
     //event.preventDefault();
@@ -59,7 +63,8 @@ function Signup() {
             toast.success('SignUp Success!', {
               position: toast.POSITION.TOP_CENTER,
             })
-            navigate('/user/login')
+            authenticate(data)
+            navigate('/user/questionnaire')
           } else {
             toast.error('Error !', {
               position: toast.POSITION.TOP_LEFT,
@@ -129,20 +134,28 @@ function Signup() {
                 <CustomErrorMsg name='email' />
 
                 <Field
-                  type='text'
+                  type={showPassword ? 'text' : 'password'}
                   id='password'
                   class='fadeIn third'
                   name='password'
                   placeholder='password'
                 />
+                <AiFillEye
+                  className='signup-eye-icon1 fadeIn third'
+                  onClick={() => setShowPassword(!showPassword)}
+                />
                 <CustomErrorMsg name='password' />
 
                 <Field
-                  type='text'
+                  type={showConfirmPassword ? 'text' : 'password'}
                   id='confirmPassword'
                   class='fadeIn third'
                   name='confirmPassword'
                   placeholder='confirm password'
+                />
+                <AiFillEye
+                  className='signup-eye-icon2 fadeIn third'
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 />
                 <CustomErrorMsg name='confirmPassword' />
 

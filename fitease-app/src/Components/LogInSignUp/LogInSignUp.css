@@ -200,3 +200,20 @@ textarea {
 #ErrMsg {
   color: red;
 }
+
+.login-eye-icon {
+  position: absolute;
+  right: 15px;
+  top: 280px;
+}
+
+.signup-eye-icon1 {
+  position: absolute;
+  right: 15px;
+  top: 400px;
+}
+.signup-eye-icon2 {
+  position: absolute;
+  right: 15px;
+  top: 455px;
+}

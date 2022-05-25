@@ -34,3 +34,13 @@ export const postLoggedInUser = async (user) => {
     })
     .catch((err) => console.log(err))
 }
+
+export const getQuesByUser = () => {
+  return fetch(`http://localhost:8000/api/questionnaire/by-email/`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json()
+    })
+    .catch((err) => console.log(err))
+}

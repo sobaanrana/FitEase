@@ -6,6 +6,8 @@ import * as yup from 'yup'
 import { toast } from 'react-toastify'
 import './AccountSettings.css'
 import { getLoggedInUser, updateUser } from './apiCalls'
+import { AiFillEye } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 const re =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -28,6 +30,8 @@ const AccountSettings = () => {
   const [userData, setUserData] = useState(
     JSON.parse(localStorage.getItem('loggedInUser'))
   )
+  const [showPassword, setShowPassword] = useState(false)
+
   const onUserAccountUpdate = (newData) => {
     console.log(userData.user.id, newData)
 
@@ -88,7 +92,6 @@ const AccountSettings = () => {
                     onChange={handleChange}
                   />
                   <CustomErrorMsg name='last_name' />
-
                   <Field
                     type='text'
                     id='login'
@@ -99,12 +102,16 @@ const AccountSettings = () => {
                   />
                   <CustomErrorMsg name='email' />
                   <Field
-                    type='password'
+                    type={showPassword ? 'text' : 'password'}
                     id='password'
                     name='password'
                     placeholder='password'
                     value={values.password}
                     onChange={handleChange}
+                  />{' '}
+                  <AiFillEye
+                    className='settings-eye-icon'
+                    onClick={() => setShowPassword(!showPassword)}
                   />
                   <CustomErrorMsg name='password' />
                   <Field
@@ -125,9 +132,9 @@ const AccountSettings = () => {
           <div>
             <br />
 
-            <a class='formFooter_a' href='#'>
+            <Link class='formFooter_a' to='/user/login'>
               Login?
-            </a>
+            </Link>
           </div>
         </div>
       </div>

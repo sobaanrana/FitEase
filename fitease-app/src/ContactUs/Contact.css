@@ -35,3 +35,9 @@
 .addressBox .contactInfo i {
   padding-right: 12px;
 }
+
+@media screen and (max-width: 700px) {
+  .contactDiv {
+    display: none;
+  }
+}
