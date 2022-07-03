@@ -15,10 +15,37 @@
   padding: 60px;
   background-color: #36d7b7;
   margin: 100px;
+  border-radius: 5%;
 }
 .account-form input {
   width: 300px;
 }
 
-.settings-eye-icon {
+@media screen and (max-width: 700px) {
+  .account-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 90%;
+    height: 500px;
+    padding: 60px 20px;
+    background-color: #36d7b7;
+    margin: 100px;
+    border-radius: 5%;
+  }
+  .account-form input {
+    width: 100%;
+  }
+  .account-form button {
+    padding: 2px 20px;
+    margin: 10px 50px;
+  }
+  .account-form a {
+    color: #fff;
+  }
+  .settings-eye-icon {
+    position: absolute;
+    top: 730px;
+  }
 }

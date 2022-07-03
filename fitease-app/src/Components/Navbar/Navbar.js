@@ -8,9 +8,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectUser } from '../../features/User/userSlice'
 import { setLoggedInUser } from '../../features/User/userSlice'
 
-const Navbar = ({ isLoggedInUser }) => {
+const Navbar = () => {
   const [show, setShow] = useState(false) // for mobile view
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedInUser, setIsLoggedInUser] = useState(
+    localStorage.getItem('loggedInUser') ? true : false
+  )
   //    localStorage.getItem("token") ? true : false
   const [user, setUser] = useState({})
 
@@ -28,7 +30,7 @@ const Navbar = ({ isLoggedInUser }) => {
     //console.log("Data", data);
     setUser(data?.user)
     console.log('This is user from local storage', user)
-    console.log('User is logged in or not', isLoggedIn)
+    // console.log('User is logged in or not', isLoggedIn)
 
     // setIsLoggedIn(true);
   }
@@ -58,9 +60,8 @@ const Navbar = ({ isLoggedInUser }) => {
 
   return (
     <>
-      {' '}
       <nav>
-        {/*Category*/}
+        {/*Logo*/}
         <div className='logo'>
           <NavLink className='nav-link' to='/'>
             <img src='./final-logo.png' width='100%' />
@@ -148,13 +149,18 @@ const Navbar = ({ isLoggedInUser }) => {
                     WORKOUTS
                   </NavLink>
                 </li>
-                {
-                  <li>
-                    <NavLink className='nav-link' to='/contact'>
-                      CONTACT{' '}
-                    </NavLink>
-                  </li>
-                }
+                <li>
+                  <NavLink className='nav-link' to='/success-stories'>
+                    SUCCESS STORIES
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink className='nav-link' to='/contact'>
+                    CONTACT
+                  </NavLink>
+                </li>
+
                 <div className='loginSignup'>
                   <li>
                     <NavLink className='nav-link ' to='/user/account-settings'>
@@ -180,10 +186,10 @@ const Navbar = ({ isLoggedInUser }) => {
           </ul>
         </div>
 
-        {/* hamburget menu start  */}
+        {/* hamburger menu start  */}
         <div className='hamburger-menu'>
           <div className='hamburger-logoDiv'>
-            <img src='./logo.jpg' width='40px' />
+            <img src='./final-logo.png' width='40px' />
           </div>
           <div className='hamburger-rightDiv'>
             <i class='fa fa-user'></i>
@@ -199,6 +205,7 @@ const Navbar = ({ isLoggedInUser }) => {
           </div>
         </div>
 
+        {/*For mobile view */}
         {show && !isLoggedInUser && (
           <div className='menu-link mobile-menu-link'>
             <ul>
@@ -213,47 +220,51 @@ const Navbar = ({ isLoggedInUser }) => {
               <img src='./logo.jpg' className='mb-4 mt-0' width={'20%'}></img>
 
               <li>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/features'>
                   FEATURES
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/blogs'>
                   BLOGS
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/about'>
                   ABOUT
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/contact'>
                   CONTACT
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/'>
-                  FAQ s{' '}
+                <NavLink className='nav-link' to='/faqs'>
+                  FAQs
                 </NavLink>
               </li>
               <hr />
 
-              <NavLink className='nav-link mobileAccount' to='/'>
+              <NavLink
+                className='nav-link mobileAccount'
+                to='/user/account-settings'
+              >
                 <i class='fa fa-user'></i>
                 Account
               </NavLink>
             </ul>
           </div>
         )}
+
         {show && isLoggedInUser && (
           <div className='menu-link mobile-menu-link'>
             <ul>
@@ -268,41 +279,40 @@ const Navbar = ({ isLoggedInUser }) => {
               <img src='./logo.jpg' className='mb-4 mt-0' width={'20%'}></img>
 
               <li>
-                <NavLink className='nav-link' to='/'>
-                  FEATURES
+                <NavLink className='nav-link' to='/user/dashboard'>
+                  Dashboard
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/blogs'>
                   BLOGS
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/success-stories'>
                   SUCCESS STORIES
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/'>
-                  COMMUNITY
-                </NavLink>
-              </li>
-              <hr />
-
-              <li>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/contact'>
                   CONTACT
                 </NavLink>
               </li>
               <hr />
 
-              <NavLink className='nav-link mobileAccount' to='/'>
+              <NavLink
+                className='nav-link mobileAccount'
+                to='/'
+                onClick={() => {
+                  onLogout()
+                }}
+              >
                 <i class='fa fa-user'></i>
                 Logout
               </NavLink>

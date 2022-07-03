@@ -1,0 +1,54 @@
+.card {
+  margin: 20px;
+  width: 24em;
+}
+.postIMg {
+  width: 335px;
+  height: 200px;
+}
+.cardMainContent {
+  margin: 30px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.cardUpper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.cardStoryDate {
+  width: 100px;
+}
+
+.cardTitle {
+  color: black;
+  font-weight: 700;
+  margin-left: 10px;
+  text-align: center;
+}
+.max-lines {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 2em;
+}
+
+.post_status {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.post_status li {
+  display: inline;
+  font-size: 12px;
+}
+
+.post_status li i {
+}
+
+.cardLower {
+  display: flex;
+  justify-content: center;
+}

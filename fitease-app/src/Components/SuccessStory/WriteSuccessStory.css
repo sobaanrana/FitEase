@@ -1,0 +1,53 @@
+.successStory-wrapper {
+  display: flex;
+  justify-content: center;
+  background-color: #36d7b7;
+  width: 80%;
+  margin: 100px;
+  padding: 50px;
+  border-radius: 5%;
+}
+.story-form {
+  padding: 20px;
+}
+.story-form input {
+  width: 500px;
+}
+.story-form textarea {
+  height: 180px;
+  width: 500px;
+}
+.story-form button {
+  margin: 20px 190px;
+  padding: 6px 40px;
+}
+
+@media screen and (max-width: 700px) {
+  .contactDiv {
+    display: flex;
+    background-color: #36d7b7;
+    width: 100%;
+    margin: 100px 0px;
+    padding: 20px;
+    border-radius: 5%;
+  }
+  .formSide {
+    margin: 0px;
+    padding: 0px;
+  }
+  .formSide h3 {
+    font-size: 20px;
+    margin: 0px 0px 20px 0px;
+  }
+  .formSide button {
+    margin: 10px 100px;
+  }
+
+  .formcontact input,
+  .formcontact textarea {
+    width: 260px;
+  }
+  .addressBox {
+    display: none;
+  }
+}

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './UserDashboard.css'
-import { FaTransgenderAlt, FaWeight, FaStarOfLife } from 'react-icons/fa'
+import {
+  FaTransgenderAlt,
+  FaWeight,
+  FaStarOfLife,
+  FaWaveSquare,
+} from 'react-icons/fa'
 import { GiBodyHeight, GiStairsGoal } from 'react-icons/gi'
 import { MdOutlineManageAccounts, MdOutlineFoodBank } from 'react-icons/md'
 import {
@@ -11,6 +16,7 @@ import {
 } from './apiCalls'
 import DailyReport from '../DailyReport/DailyReport'
 import { Link } from 'react-router-dom'
+import Loader from '../Loader/Loader'
 
 const UserDashboard = () => {
   const [show, setShow] = useState({
@@ -20,9 +26,11 @@ const UserDashboard = () => {
   })
 
   const [exercises, setExercises] = useState([])
+  const [exerciseAmount, setExerciseAmount] = useState(0)
   const [diet, setDiet] = useState([])
   const [user, setUser] = useState(null)
   const [questionnaireData, setQuestionnaireData] = useState(null)
+  const [loader, setLoader] = useState(true)
 
   //const [exercisesPrediction, setExercisesPrediction] = useState([])
   const onDiet = () => {
@@ -40,7 +48,11 @@ const UserDashboard = () => {
     getExercises()
       .then((data) => {
         console.log('Exercise Prediction', data)
+
         setExercises(data.prediction)
+        if (exercises) {
+          setLoader(false)
+        }
         // Sagregating data on ecercise Prediction with 1 on the frontend
         /*
         if (data) {
@@ -69,6 +81,9 @@ const UserDashboard = () => {
       .then((data) => {
         console.log('Diet Prediction', data)
         setDiet(data.prediction)
+        if (diet) {
+          setLoader(false)
+        }
       })
       .catch((err) => console.log(err))
   }
@@ -78,7 +93,7 @@ const UserDashboard = () => {
   const quesByUser = () => {
     getQuesByUser()
       .then((res) => {
-        //console.log('Questionnaire of Logged In User', res)
+        console.log('Questionnaire of Logged In User', res)
         setQuestionnaireData(res.questionnaire.fields)
       })
       .catch((err) => console.log(err))
@@ -103,6 +118,7 @@ const UserDashboard = () => {
           <div className='userInfo'>
             <img
               alt='Image placeholder'
+              // src='./default-image.png'
               src='https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg'
               width={'200px'}
             />
@@ -151,12 +167,16 @@ const UserDashboard = () => {
                   <GiStairsGoal />
                   {questionnaireData?.Goal}
                 </p>
+                <p id='calorieCount'>
+                  <FaWaveSquare />
+                  Calories Required {questionnaireData?.Calorie_Count}
+                </p>
               </div>
-            </div>
-            <div>
-              <Link to={'/user/questionnaire/update'}>
-                <button class='btn btn-primary '>Edit</button>
-              </Link>
+              <div className='user-edit-btn'>
+                <Link to={'/user/questionnaire/update'}>
+                  <button class='btn btn-primary '>Edit</button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -170,28 +190,62 @@ const UserDashboard = () => {
             <div className='row'>
               {show.diet && (
                 <div className='col-lg12 col-md-12'>
-                  <div className='dietPrediction'>
-                    <p className='dietName'>Breakfast</p>
-                    <p>{diet?.breakfast}</p>
-                    <p className='dietName'>Lunch</p>
-                    <p>{diet?.lunch}</p>
-                    <p className='dietName'>Dinner</p>
-                    <p>{diet?.dinner}</p>
-                  </div>
+                  {loader ? (
+                    <Loader />
+                  ) : (
+                    <div className='dietPrediction'>
+                      <p className='dietName'>Breakfast</p>
+                      <p>{diet?.breakfast}</p>
+                      <p className='dietName'>Lunch</p>
+                      <p>{diet?.lunch}</p>
+                      <p className='dietName'>Dinner</p>
+                      <p>{diet?.dinner}</p>
+                    </div>
+                  )}
                 </div>
               )}
 
               {show.exercise && (
                 <div className='col-lg-12 col-md-12'>
-                  <div className='exercisePrediction'>
-                    {exercises && (
-                      <div>
-                        {exercises?.map((e, index) => (
-                          <p key={index}>{e}</p>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  {loader ? (
+                    <Loader />
+                  ) : (
+                    <div className='exercisePrediction'>
+                      {exercises && (
+                        <div>
+                          {exercises?.map((e, index) =>
+                            e === 'crunches' ? (
+                              <p key={index}>
+                                {e} <span>|</span>3 sets 8 reps
+                              </p>
+                            ) : e === 'jogging' ? (
+                              <p key={index}>
+                                {e} <span>|</span>1 mile
+                              </p>
+                            ) : e === 'pullups' ? (
+                              <p key={index}>
+                                {e} <span>|</span>3 sets 6 reps
+                              </p>
+                            ) : e === 'pushups' ? (
+                              <p key={index}>
+                                {e}
+                                <span>|</span> 3 sets 10 reps
+                              </p>
+                            ) : e === 'situps' ? (
+                              <p key={index}>
+                                {e} <span>|</span>3 sets 12 reps
+                              </p>
+                            ) : e === 'walking' ? (
+                              <p key={index}>
+                                {e}
+                                <span>|</span> 2 miles
+                              </p>
+                            ) : null
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
               {show.dailyReport && (

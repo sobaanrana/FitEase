@@ -1,47 +1,48 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Blog.css";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Blog.css'
 
 function Blog({ post }) {
   return (
-    <div class="col-md-6 col-lg-6">
-      <div class="card" style={{ width: " 24em" }}>
-        <div class="">
-          <a href="">
-            <img src={post.image} className="postIMg" alt="" />
+    <div class='col-md-6 col-lg-6'>
+      <div class='card' style={{ width: ' 24em' }}>
+        <div class=''>
+          <a href=''>
+            <img src={post.image} className='postIMg' alt='' />
           </a>
         </div>
-        <div class="cardMainContent">
-          <div class="cardDate">{new Date(post.created_at).toDateString()}</div>
+        <div class='cardMainContent'>
+          <div class='cardDate'>{new Date(post.created_at).toDateString()}</div>
 
-          <h5 class="cardTitle">
-            <Link to={`/blogs/${post.id}`} class="cardTitle">
-              {post.title}{" "}
+          <h5 class='cardTitle'>
+            <Link to={`/blogs/${post.id}`} class='cardTitle'>
+              {post.title}{' '}
             </Link>
           </h5>
-          <ul class="post_status ">
+          <ul class='post_status '>
             <li>
-              <i class="fa fa-user" aria-hidden="true"></i>
-              Jonadhan
+              <i class='fa fa-user' aria-hidden='true'></i>
+              {post.author}
             </li>
             <li>
-              <i class="fa fa-eye" aria-hidden="true"></i>99 Views
+              <i class='fa fa-eye' aria-hidden='true'></i>
+              {post.views} Views
             </li>
-            <li>
-              <i class="fa fa-comment-o" aria-hidden="true"></i>32 Comments
-            </li>
+            {/* <li>
+              <i class='fa fa-comment-o' aria-hidden='true'></i>32 Comments
+            </li> */}
           </ul>
-          <p className="max-lines">{post.description}</p>
-          <a href="" class="btn btn_link">
+          <p className='max-lines'>{post.description}</p>
+          <a href='' class='btn btn_link'>
             Read More
           </a>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Blog;
+export default Blog
 
 ///blogs/${post.id}
 /* <div className="post">

@@ -26,7 +26,7 @@ nav a {
 
 .menu-link {
   margin-top: 5%;
-  margin-left: 7%;
+  margin-left: 2%;
 }
 .menu-link-4items {
   margin-top: 5%;
@@ -123,6 +123,9 @@ nav i {
   .menu-link {
     display: none;
   }
+  .menu-link {
+    margin-top: 0px;
+  }
   .hamburger-menu {
     display: flex;
     justify-content: center;
@@ -170,6 +173,7 @@ nav i {
     justify-content: center;
     position: absolute;
     right: 0em;
+
     transition: all 2s linear;
     transform-origin: top;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,

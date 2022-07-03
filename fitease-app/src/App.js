@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify'
 import { useState } from 'react'
 import Questionnaire from './Components/Questionnaire/Questionnaire'
 import Features from './Components/Features/Features'
-import Contact from './ContactUs/Contact'
+import Contact from './Components/ContactUs/Contact'
 import FAQs from './Components/FAQs/FAQs'
 import About from './Components/About/About'
 import BlogSideBarLayout from './Components/Blogs/BlogSideBarLayout'
@@ -20,34 +20,50 @@ import UserDashboard from './Components/UserDashboard/UserDashboard'
 import AccountSettings from './Components/AccountSettings/AccountSettings'
 import UpdateQuestionnaire from './Components/Questionnaire/UpdateQuestionnaire'
 import Workouts from './Components/Workouts/Workouts'
+import NotFound from './Components/NotFound/NotFound'
+import WriteSuccessStory from './Components/SuccessStory/WriteSuccessStory'
+import SuccessStories from './Components/SuccessStory/SuccessStories'
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
 
 function App() {
-  const [isLoggedInUser, setIsLoggedInUser] = useState(
-    localStorage.getItem('loggedInUser') ? true : false
-  )
+  const isLoggedIn = localStorage.getItem('loggedInUser') ? true : false
+
   return (
     <div>
       <ToastContainer />
 
       <Router>
-        <Navbar isLoggedInUser={isLoggedInUser} />
+        <Navbar />
         <Routes>
+          <Route path='*' element={<NotFound />} />
+
           <Route path='/' element={<Landing />} />
           <Route path='/user/login' element={<Login />} />
           <Route path='/user/signup' element={<Signup />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blogs/:id' element={<SingleBlog />} />
+
+          <Route path='/features' element={<Features displayBanner={true} />} />
+          <Route path='/contact' element={<Contact displayBanner={true} />} />
+          <Route path='/faqs' element={<FAQs displayBanner={true} />} />
+
+          <Route path='/about' element={<About displayBanner={true} />} />
+          <Route path='/about' element={<About displayBanner={true} />} />
+
+          <Route path='/workouts' element={<Workouts />} />
+
+          {isLoggedIn ? <></> : <></>}
           <Route path='/user/questionnaire' element={<Questionnaire />} />
           <Route
             path='/user/questionnaire/update'
             element={<UpdateQuestionnaire />}
           />
-          <Route path='/features' element={<Features displayBanner={true} />} />
-          <Route path='/contact' element={<Contact displayBanner={true} />} />
-          <Route path='/faqs' element={<FAQs displayBanner={true} />} />
-          <Route path='/about' element={<About displayBanner={true} />} />
-          <Route path='/about' element={<About displayBanner={true} />} />
-          <Route path='/workouts' element={<Workouts />} />
+          <Route path='/success-stories' element={<SuccessStories />} />
+          <Route
+            path='/user/success-story'
+            element={<WriteSuccessStory displayBanner={true} />}
+          />
+
           <Route path='/user/account-settings' element={<AccountSettings />} />
           <Route path='/user/dashboard' element={<UserDashboard />} />
         </Routes>

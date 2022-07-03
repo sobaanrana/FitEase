@@ -17,3 +17,26 @@ p {
   margin-top: 15px;
   font-size: large;
 }
+
+@media screen and (max-width: 700px) {
+  .headerBanner {
+    background-color: #36d7b7;
+    padding: 50px 0 110px;
+    /*background: rgba(0, 0, 0, 0.2);*/
+  }
+  .headerBanner h1,
+  p {
+    text-align: center;
+  }
+  .headerBanner h1 {
+    margin-bottom: 1em;
+    font-weight: 800;
+    color: black;
+    font-size: 26px;
+  }
+  .headerBanner p {
+    color: black;
+    margin-top: 15px;
+    font-size: 16px;
+  }
+}

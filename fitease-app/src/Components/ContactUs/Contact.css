@@ -38,6 +38,30 @@
 
 @media screen and (max-width: 700px) {
   .contactDiv {
+    display: flex;
+    background-color: #36d7b7;
+    width: 100%;
+    margin: 100px 0px;
+    padding: 20px;
+    border-radius: 5%;
+  }
+  .formSide {
+    margin: 0px;
+    padding: 0px;
+  }
+  .formSide h3 {
+    font-size: 20px;
+    margin: 0px 0px 20px 0px;
+  }
+  .formSide button {
+    margin: 10px 100px;
+  }
+
+  .formcontact input,
+  .formcontact textarea {
+    width: 260px;
+  }
+  .addressBox {
     display: none;
   }
 }

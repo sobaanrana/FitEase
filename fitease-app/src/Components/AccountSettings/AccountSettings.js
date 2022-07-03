@@ -123,7 +123,9 @@ const AccountSettings = () => {
                     onChange={handleChange}
                   />
                   <CustomErrorMsg name='confirmPassword' />
-                  <button type='submit'>Update</button>
+                  <button type='submit' className='btn btn-success btn-sm'>
+                    Update
+                  </button>
                 </Form>
               )}
             </Formik>

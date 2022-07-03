@@ -14,7 +14,7 @@ const DailyReport = ({ exercises }) => {
   //console.log('user')
   const [sendData, setSendData] = useState(false)
   const onDailyReport = (values) => {
-    //console.log('values', values)
+    console.log('values', values)
     if (Object.keys(values).length > 0) {
       computeResults(values)
     }
@@ -45,9 +45,9 @@ const DailyReport = ({ exercises }) => {
       }
     })
     //debugger
-    if (exerciseIterate - 3 === exercises.length) {
-      console.log('Congratulations! You have completed your Exercise')
-    }
+    // if (exerciseIterate - 3 === exercises.length) {
+    //   console.log('Congratulations! You have completed your Exercise')
+    // }
     // <---------------Diet ---------------->
     // object.entries(objName) returns [[key,value],[],[]]
     Object.entries(results).map((diet) => {
@@ -60,9 +60,9 @@ const DailyReport = ({ exercises }) => {
         console.log('dietCountVar  from map', dietCountVar)
       }
     })
-    if (results.breakfast && results.lunch && results.dinner) {
-      console.log('Congratulations! You have completed your Diet')
-    }
+    // if (results.breakfast && results.lunch && results.dinner) {
+    //   console.log('Congratulations! You have completed your Diet')
+    // }
     //debugger
     let exerciseCountVar = exerciseIterate - 3
     console.log('exerciseCountVar', exerciseCountVar)
@@ -88,6 +88,7 @@ const DailyReport = ({ exercises }) => {
     if (exerciseCount === exercises.length && dietCount === 3) {
       msg = 'Appreciate'
       console.log('Fitease Appreciates')
+
       showMsg(msg)
     } else if (
       exerciseCount >= Math.round(exercises.length / 2) &&
@@ -120,6 +121,21 @@ const DailyReport = ({ exercises }) => {
 
       //   setMsg('Motivate')
     }
+
+    // When user submits the form , then toastify message is shown accordingly
+    if (msg === 'Appreciate') {
+      toast.success('Great!! Your are awesome today :)', {
+        position: toast.POSITION.LEFT,
+      })
+    } else if (msg === 'Motivate') {
+      toast.info('Good!! At least you achieved something today :)', {
+        position: toast.POSITION.LEFT,
+      })
+    } else if (msg === 'Warn') {
+      toast.error('You could have achieved something today :(', {
+        position: toast.POSITION.LEFT,
+      })
+    }
   }
 
   // This shows Msg that is greator in number at backend considerinf overall commitment
@@ -142,19 +158,25 @@ const DailyReport = ({ exercises }) => {
         //        console.log('greatorMsg', greatorMsg)
 
         if (greatorMsg === 'Appreciate') {
-          toast.success(greatorMsg, {
-            position: toast.POSITION.LEFT,
-          })
+          toast.success(
+            'You are doing great! Continue with this pace to achieve goal soon!',
+            {
+              position: toast.POSITION.LEFT,
+            }
+          )
           sendMsg(msg)
         } else if (greatorMsg === 'Motivate') {
-          toast.info(greatorMsg, {
+          toast.info('You can do better. Keep going towards your goal! ', {
             position: toast.POSITION.LEFT,
           })
           sendMsg(msg)
         } else if (greatorMsg === 'Warn') {
-          toast.error(greatorMsg, {
-            position: toast.POSITION.LEFT,
-          })
+          toast.error(
+            'You need to work hard to achieve goal. Consistency and perseverance are the key to goal. ',
+            {
+              position: toast.POSITION.LEFT,
+            }
+          )
           sendMsg(msg)
         }
       })
@@ -188,83 +210,91 @@ const DailyReport = ({ exercises }) => {
         >
           {({ values }) => (
             <Form>
-              <br />
-              {exercises?.map((exercise, index) => {
-                return (
-                  <>
-                    <h3 className='exercise'>Exercise</h3>
+              <h3 className='exercise'>Exercise</h3>
 
-                    <label>
-                      {/*<Field type='checkbox' name='exercise' value='true' /> checkboxes does not works this way in formik*/}
-                      <Field
-                        name={exercise}
-                        type='checkbox'
-                        class='option-input'
-                        render={({ field, form }) => {
-                          {
-                            /*console.log('field', field)*/
-                          }
-                          return (
-                            <input
-                              type='checkbox'
-                              checked={field.value}
-                              {...field}
-                            />
-                          )
-                        }}
-                      />
-                      {exercise}
-                    </label>
-                    <br />
-                  </>
-                )
-              })}
-              <br />
-              <br />
-
+              <div className='exercise-form'>
+                {exercises?.map((exercise, index) => {
+                  return (
+                    <div>
+                      <label>
+                        {/*<Field type='checkbox' name='exercise' value='true' /> checkboxes does not works this way in formik*/}
+                        <Field
+                          name={exercise}
+                          type='checkbox'
+                          class='option-input'
+                          render={({ field, form }) => {
+                            {
+                              /*console.log('field', field)*/
+                            }
+                            return (
+                              <input
+                                type='checkbox'
+                                checked={field.value}
+                                {...field}
+                              />
+                            )
+                          }}
+                        />
+                        {exercise}
+                      </label>
+                    </div>
+                  )
+                })}
+              </div>
               <h3 className='diet'>Diet</h3>
-              <label>
-                <Field
-                  name='breakfast'
-                  type='checkbox'
-                  render={({ field, form }) => {
-                    return (
-                      <input type='checkbox' checked={field.value} {...field} />
-                    )
-                  }}
-                />
-                Breakfast
-              </label>
-              <br />
 
-              <label>
-                <Field
-                  name='lunch'
-                  type='checkbox'
-                  render={({ field, form }) => {
-                    return (
-                      <input type='checkbox' checked={field.value} {...field} />
-                    )
-                  }}
-                />
-                Lunch
-              </label>
-              <br />
+              <div className='diet-form'>
+                <label>
+                  <Field
+                    name='breakfast'
+                    type='checkbox'
+                    render={({ field, form }) => {
+                      return (
+                        <input
+                          type='checkbox'
+                          checked={field.value}
+                          {...field}
+                        />
+                      )
+                    }}
+                  />
+                  Breakfast
+                </label>
 
-              <label>
-                <Field
-                  name='dinner'
-                  type='checkbox'
-                  render={({ field, form }) => {
-                    return (
-                      <input type='checkbox' checked={field.value} {...field} />
-                    )
-                  }}
-                />
-                Dinner
-              </label>
+                <label>
+                  <Field
+                    name='lunch'
+                    type='checkbox'
+                    render={({ field, form }) => {
+                      return (
+                        <input
+                          type='checkbox'
+                          checked={field.value}
+                          {...field}
+                        />
+                      )
+                    }}
+                  />
+                  Lunch
+                </label>
 
-              <br />
+                <label>
+                  <Field
+                    name='dinner'
+                    type='checkbox'
+                    render={({ field, form }) => {
+                      return (
+                        <input
+                          type='checkbox'
+                          checked={field.value}
+                          {...field}
+                        />
+                      )
+                    }}
+                  />
+                  Dinner
+                </label>
+              </div>
 
               <button type='submit' className='btn btn-primary'>
                 Submit

@@ -1,0 +1,18 @@
+.notfound-main-div {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  width: max-content;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+}
+
+.pagenotfoound-count {
+  font-size: 21px;
+}
+
+.pagenotfoound-count {
+  font-size: 18px;
+}

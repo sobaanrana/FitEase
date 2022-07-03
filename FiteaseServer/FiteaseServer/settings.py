@@ -44,13 +44,17 @@ INSTALLED_APPS = [
     'api.user',
     'api.blog',
     'ckeditor',
+    'api.workout',
+    'api.contact',
+    'api.successStory',
     'api.questionnaire',
     'api.exercisePrediction',
     'api.dietPrediction',
     'api.predictions',
     'api.dailyReport',
-]
 
+
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

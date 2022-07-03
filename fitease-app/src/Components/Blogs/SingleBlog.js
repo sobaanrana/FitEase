@@ -66,8 +66,8 @@ export default function SingleBlog() {
       />
       <div class='container'>
         <div class='row'>
-          <BlogSideBarLayout />
-          <div class='col-md-12 col-lg-8'>
+          {/* <BlogSideBarLayout /> */}
+          <div class='col-md-12 col-lg-12'>
             <div className='singleBlog'>
               <div class='img'>
                 <img src='images/post/workout-bars-at-park.jpg' alt='' />
@@ -84,41 +84,21 @@ export default function SingleBlog() {
                     <li>
                       <i class='fa fa-eye' aria-hidden='true'></i>79 Views
                     </li>
-                    <li>
+                    {/* <li>
                       <i class='fa fa-comment-o' aria-hidden='true'></i>09
                       Comments
-                    </li>
+                    </li> */}
                     <li>14 April, 2017</li>
                   </ul>
                 </div>
                 <div class='mainText'>
                   <p>{post.description}</p>
-                  <blockquote>
-                    <sup>
-                      <i class='fa fa-quote-left' aria-hidden='true'></i>
-                    </sup>
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout. The point of using Lorem Ipsum is that it has a
-                    more-or-less normal distribution of letters, content here.
-                    <sup>
-                      <i class='fa fa-quote-right' aria-hidden='true'></i>
-                    </sup>
-                  </blockquote>
-                  <p>
-                    Mus elementum quam auctor nostra felis nisl sagittis
-                    dignissim adipiscing tempor consectetuer nullam ultricies
-                    curabitur diam. Platea suspendisse dui lobortis pulvinar
-                    ligula morbi odio laoreet mattis malesuada felis dignissim
-                    commodo pulvinar primis Risus curabitur tellus sagittis
-                    laoreet conubia. A porttitor porta dignissim consequat
-                    praesent hac erat dolor. Facilisi sem et.
-                  </p>
-                  <h4 class='color_default text-uppercase mb_15'>
+
+                  {/* <h4 class='color_default text-uppercase mb_15'>
                     Keep your body feet with our tips.
-                  </h4>
+                  </h4> */}
                 </div>
-                <div className='singleBlogLower'>
+                {/* <div className='singleBlogLower'>
                   <div class='socialShare'>Social Share :</div>
                   <ul class='social_media media_dark'>
                     <li>
@@ -147,10 +127,10 @@ export default function SingleBlog() {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
-            <div class='blogsComments'>
+            {/* <div class='blogsComments'>
               <h4 class='text-uppercase '>Comments ( 03 )</h4>
               <ul>
                 <li>
@@ -238,8 +218,8 @@ export default function SingleBlog() {
                   </div>
                 </li>
               </ul>
-            </div>
-            <div class='type_comment'>
+            </div> */}
+            {/* <div class='type_comment'>
               <h4 class='comment_title color_default text-uppercase py_30'>
                 Leave a Comment
               </h4>
@@ -288,8 +268,8 @@ export default function SingleBlog() {
                   </div>
                 </form>
               </div>
-            </div>
-          </div>{' '}
+            </div> */}
+          </div>
         </div>
       </div>
     </>

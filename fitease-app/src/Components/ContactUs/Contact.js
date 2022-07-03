@@ -1,6 +1,11 @@
 import React from 'react'
-import HeaderBanner from '../Components/HeaderBanner/HeaderBanner'
+import HeaderBanner from '../HeaderBanner/HeaderBanner'
 import './Contact.css'
+import { Field, Form, Formik } from 'formik'
+import CustomErrorMsg from './CustomErrMsg'
+import * as yup from 'yup'
+import { postContact } from './apiCalls'
+
 //import emailjs from "emailjs-com";
 //import Footer from "../components/footer";
 //import { createGlobalStyle } from "styled-components";
@@ -39,6 +44,19 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 */
+
+const validationSchema = yup.object().shape({
+  first_name: yup
+    .string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Name Required'),
+  email: yup
+    .string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Email Required'),
+})
 const Contact = function ({ displayBanner }) {
   /* function sendEmail(e) {
     const success = document.getElementById("success");
@@ -67,6 +85,15 @@ const Contact = function ({ displayBanner }) {
       );
   }
 */
+
+  const onContactSubmit = (values) => {
+    values = { ...values, phone: parseInt(values.phone) }
+    postContact(values)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => console.log(error))
+  }
   return (
     <div>
       {/*<GlobalStyles />*/}
@@ -83,40 +110,65 @@ const Contact = function ({ displayBanner }) {
           <div className='formSide '>
             <h3 className='contactHeading'>Do you have any question?</h3>
 
-            <form className='formcontact'>
-              {/*onSubmit={sendEmail} */}
-              <input
-                type='text'
-                className='form-control'
-                name='user_name'
-                placeholder='Your Name'
-                required
-              />
-              <input
-                type='email'
-                className='form-control'
-                name='user_email'
-                placeholder='Your Email'
-                required
-              />
-              <input
-                type='text'
-                className='form-control'
-                name='user_phone'
-                placeholder='Your Phone'
-                required
-              />
-              <textarea
-                name='message'
-                className='form-control'
-                placeholder='Your Message'
-                required
-              />
+            <Formik
+              enableReinitialize={true}
+              initialValues={{
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+              }}
+              // validationSchema={validationSchema}
+              onSubmit={(values) => {
+                console.log(values)
+                onContactSubmit(values)
+              }}
+            >
+              {({ values }) => (
+                <Form className='formcontact'>
+                  <Field
+                    type='text'
+                    name='name'
+                    placeholder='Name'
+                    value={values.name}
+                    className='form-control'
+                  />
+                  <CustomErrorMsg name='name' />
 
-              <button type='button ' class='btn btn-success btn-sm '>
-                Submit
-              </button>
-            </form>
+                  <Field
+                    type='email'
+                    name='email'
+                    placeholder='Email'
+                    value={values.email}
+                    className='form-control'
+                  />
+                  <CustomErrorMsg name='email' />
+
+                  <Field
+                    type='text'
+                    name='phone'
+                    placeholder='Phone Number'
+                    value={values.phone}
+                    className='form-control'
+                  />
+                  <CustomErrorMsg name='phone' />
+
+                  <Field
+                    as='textarea'
+                    type='text'
+                    name='message'
+                    placeholder='Type Your Message'
+                    value={values.message}
+                    className='form-control'
+                  />
+                  <CustomErrorMsg name='message' />
+
+                  <button type='submit' className='btn btn-success btn-sm '>
+                    Submit
+                  </button>
+                </Form>
+              )}
+            </Formik>
           </div>
 
           <div className='addressBox '>

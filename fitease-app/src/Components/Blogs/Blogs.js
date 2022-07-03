@@ -5,11 +5,12 @@ import { getPosts } from './helper/apicalls'
 import ReactPaginate from 'react-paginate'
 import BlogSideBarLayout from './BlogSideBarLayout'
 import HeaderBanner from '../HeaderBanner/HeaderBanner'
+import Loader from '../Loader/Loader'
 
 function Blogs() {
   // const apiKey = d540a061aaa9496c81c5104093646cd3;
   const [posts, setPosts] = useState([])
-
+  const [loader, setLoader] = useState(true)
   // For pagination
 
   const [pageNumber, setPageNumber] = useState(0) //for current page number
@@ -38,6 +39,9 @@ function Blogs() {
         console.log(data)
 
         setPosts(data)
+        if (posts) {
+          setLoader(false)
+        }
         //console.log(data);
       })
       .catch((err) => console.log(err))
@@ -67,9 +71,11 @@ function Blogs() {
         headline={'Read Our Blogs, and get fit. :)'}
         displayType={'block'}
       />
+      {loader && <Loader />}
+
       <div class='container'>
         <div class='row'>
-          <BlogSideBarLayout />
+          <BlogSideBarLayout posts={posts} setPosts={setPosts} />
 
           <div class='col-md-12 col-lg-8'>
             <h2 className='mx-5 mt-5'>Health and Fitness Articles</h2>

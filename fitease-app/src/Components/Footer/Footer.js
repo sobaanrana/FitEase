@@ -8,8 +8,16 @@ import {
   faLinkedin,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons'
+import { Field, Form, Formik } from 'formik'
+import { postContact } from './apiCalls'
 
 function Footer() {
+  const onSubmitContact = (values) => {
+    postContact(values)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+  }
+
   return (
     <footer class='site-footer'>
       <div class='footerDiv'>
@@ -41,27 +49,42 @@ function Footer() {
           </ul>
         </div>
         <div className='FooterForm'>
-          <form className=' form-group mx-2  '>
-            <input
-              className='form-control my-2 px-5'
-              type='email'
-              placeholder='name@email.com'
-              aria-label='Search'
-            />
-            <textarea
-              className='form-control px-5 '
-              type='text'
-              placeholder='Message'
-              aria-label='Search'
-            />
-            <button
-              className='btn btn-success my-3 footerFormBtn '
-              type='submit'
-              onClick={() => console.log('button from footer clicked ')}
-            >
-              Submit
-            </button>
-          </form>
+          <Formik
+            initialValues={{
+              email: '',
+              message: '',
+            }}
+            onSubmit={(values) => {
+              onSubmitContact(values)
+            }}
+          >
+            {({ values }) => (
+              <Form className=' form-group mx-2  '>
+                <Field
+                  className='form-control my-2 px-5'
+                  type='email'
+                  name='email'
+                  placeholder='name@email.com'
+                  value={values.email}
+                />
+                <Field
+                  as='textarea'
+                  className='form-control px-5 '
+                  type='text'
+                  name='message'
+                  placeholder='Message'
+                  value={values.message}
+                />
+                <button
+                  className='btn btn-success my-3 footerFormBtn '
+                  type='submit'
+                  onClick={() => console.log('button from footer clicked ')}
+                >
+                  Submit
+                </button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
       <hr />

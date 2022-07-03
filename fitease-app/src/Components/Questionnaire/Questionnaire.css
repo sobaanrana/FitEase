@@ -281,3 +281,61 @@ button:focus {
   border: 3px solid #333; /*#2ecc71*/
   right: -25%;
 }
+
+@media screen and (max-width: 700px) {
+  #register {
+    font-size: 26px;
+  }
+  #regForm {
+    padding: 25px;
+  }
+  .all-steps .step {
+    padding: 5px;
+  }
+  .all-steps {
+  }
+  .tab h5 {
+    font-size: 15px;
+  }
+  .tab input[type='text'],
+  .tab input[type='number'] {
+    margin: 0px 0px 0px 60px;
+  }
+  .tab label {
+    font-size: 13px;
+    position: relative;
+  }
+
+  .option-input {
+    height: 20px;
+    width: 20px;
+    margin: 10px 0px;
+  }
+  .buttons {
+    margin: 20px 135px;
+  }
+  .buttons button {
+    background-color: #343a40;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+  .btnWrapperQues {
+    margin-top: 60px;
+  }
+  .btnWrapperQues .icon {
+    display: none;
+  }
+  .btnWrapperQues button {
+    width: 100px;
+    height: 30px;
+    line-height: 0px;
+  }
+  .thanks-message h3 {
+    font-size: 16px;
+  }
+}

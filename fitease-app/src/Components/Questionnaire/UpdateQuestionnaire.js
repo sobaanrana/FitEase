@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './styles.css'
+import './Questionnaire.css'
 import classNames from 'classnames'
 import { Field, Form, Formik } from 'formik'
 import {
@@ -7,7 +7,7 @@ import {
   getQuesByUser,
   postQuestionnaire,
   updateQuestionnaire,
-} from './services'
+} from './apiCalls'
 import { useNavigate, useRoutes } from 'react-router-dom'
 import { FaTransgenderAlt, FaWeight, FaStarOfLife } from 'react-icons/fa'
 import { GiBodyHeight, GiStairsGoal } from 'react-icons/gi'
