@@ -7,9 +7,11 @@ import { FaUserAlt } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectUser } from '../../features/User/userSlice'
 import { setLoggedInUser } from '../../features/User/userSlice'
+import fiteaseLogo from '../../assets/images/final-logo.png'
 
 const Navbar = () => {
-  const [show, setShow] = useState(false) // for mobile view
+  const [showMobileNav, setShowMobileNav] = useState(false) // for mobile view
+
   const [isLoggedInUser, setIsLoggedInUser] = useState(
     localStorage.getItem('loggedInUser') ? true : false
   )
@@ -64,7 +66,7 @@ const Navbar = () => {
         {/*Logo*/}
         <div className='logo'>
           <NavLink className='nav-link' to='/'>
-            <img src='./final-logo.png' width='100%' />
+            <img src={fiteaseLogo} width='100%' />
           </NavLink>
         </div>
         {/* 2nd menu part  */}
@@ -189,7 +191,7 @@ const Navbar = () => {
         {/* hamburger menu start  */}
         <div className='hamburger-menu'>
           <div className='hamburger-logoDiv'>
-            <img src='./final-logo.png' width='40px' />
+            <img src={fiteaseLogo} width='100px' />
           </div>
           <div className='hamburger-rightDiv'>
             <i class='fa fa-user'></i>
@@ -197,58 +199,91 @@ const Navbar = () => {
             <NavLink
               to='/'
               onClick={() => {
-                setShow(!show)
+                setShowMobileNav(!showMobileNav)
               }}
             >
-              {!show && <i class='fa fa-bars' style={{ color: 'black' }}></i>}
+              {!showMobileNav && (
+                <i class='fa fa-bars' style={{ color: 'black' }}></i>
+              )}
             </NavLink>
           </div>
         </div>
 
         {/*For mobile view */}
-        {show && !isLoggedInUser && (
+        {showMobileNav && !isLoggedInUser && (
           <div className='menu-link mobile-menu-link'>
             <ul>
               <div className='mobileTop'>
                 <i
                   class='fa fa-close'
                   onClick={() => {
-                    setShow(!show)
+                    setShowMobileNav(!showMobileNav)
                   }}
                 ></i>
               </div>
-              <img src='./logo.jpg' className='mb-4 mt-0' width={'20%'}></img>
+
+              {/* <img src={fiteaseLogo} className='mb-4 mt-0' width='100px'></img> */}
 
               <li>
-                <NavLink className='nav-link' to='/features'>
+                <NavLink
+                  className='nav-link'
+                  to='/features'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   FEATURES
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/blogs'>
+                <NavLink
+                  className='nav-link'
+                  to='/blogs'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   BLOGS
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/about'>
+                <NavLink
+                  className='nav-link'
+                  to='/about'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   ABOUT
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/contact'>
+                <NavLink
+                  className='nav-link'
+                  to='/contact'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   CONTACT
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/faqs'>
+                <NavLink
+                  className='nav-link'
+                  to='/faqs'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   FAQs
                 </NavLink>
               </li>
@@ -257,6 +292,9 @@ const Navbar = () => {
               <NavLink
                 className='nav-link mobileAccount'
                 to='/user/account-settings'
+                onClick={() => {
+                  setShowMobileNav(!showMobileNav)
+                }}
               >
                 <i class='fa fa-user'></i>
                 Account
@@ -265,42 +303,66 @@ const Navbar = () => {
           </div>
         )}
 
-        {show && isLoggedInUser && (
+        {showMobileNav && isLoggedInUser && (
           <div className='menu-link mobile-menu-link'>
             <ul>
               <div className='mobileTop'>
                 <i
                   class='fa fa-close'
                   onClick={() => {
-                    setShow(!show)
+                    setShowMobileNav(!showMobileNav)
                   }}
                 ></i>
               </div>
-              <img src='./logo.jpg' className='mb-4 mt-0' width={'20%'}></img>
+              {/* <img src={fiteaseLogo} className='mb-4 mt-0' width='100px'></img> */}
 
               <li>
-                <NavLink className='nav-link' to='/user/dashboard'>
+                <NavLink
+                  className='nav-link'
+                  to='/user/dashboard'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   Dashboard
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/blogs'>
+                <NavLink
+                  className='nav-link'
+                  to='/blogs'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   BLOGS
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/success-stories'>
+                <NavLink
+                  className='nav-link'
+                  to='/success-stories'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   SUCCESS STORIES
                 </NavLink>
               </li>
               <hr />
 
               <li>
-                <NavLink className='nav-link' to='/contact'>
+                <NavLink
+                  className='nav-link'
+                  to='/contact'
+                  onClick={() => {
+                    setShowMobileNav(!showMobileNav)
+                  }}
+                >
                   CONTACT
                 </NavLink>
               </li>
@@ -311,6 +373,7 @@ const Navbar = () => {
                 to='/'
                 onClick={() => {
                   onLogout()
+                  setShowMobileNav(!showMobileNav)
                 }}
               >
                 <i class='fa fa-user'></i>

@@ -1,5 +1,6 @@
 .card {
   margin: 20px;
+  height: 400px;
 }
 .postIMg {
   width: 335px;
@@ -23,14 +24,15 @@
 .cardTitle {
   color: black;
   font-weight: 700;
-  margin-left: 20px;
+  text-align: justify;
+  margin: 0px;
 }
 .max-lines {
   display: block; /* or inline-block */
   text-overflow: ellipsis;
   word-wrap: break-word;
   overflow: hidden;
-  max-height: 3.6em;
+  max-height: 4em;
   line-height: 1.8em;
 }
 

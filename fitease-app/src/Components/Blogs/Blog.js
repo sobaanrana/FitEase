@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import './Blog.css'
 
 function Blog({ post }) {
+  function createMarkup() {
+    return { __html: post.description }
+  }
   return (
     <div class='col-md-6 col-lg-6'>
       <div class='card' style={{ width: ' 24em' }}>
@@ -32,7 +35,10 @@ function Blog({ post }) {
               <i class='fa fa-comment-o' aria-hidden='true'></i>32 Comments
             </li> */}
           </ul>
-          <p className='max-lines'>{post.description}</p>
+          <div
+            className='max-lines'
+            dangerouslySetInnerHTML={createMarkup()}
+          ></div>
           <a href='' class='btn btn_link'>
             Read More
           </a>

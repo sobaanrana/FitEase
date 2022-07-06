@@ -1,8 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import './SuccessStory.css'
 
 const SuccessStory = ({ story }) => {
+  // console.log(story)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (localStorage.getItem('loggedInUser') === null) {
+      navigate('/user/login')
+    }
+  }, [])
+
   return (
     <div class='col-md-12 col-lg-4'>
       <div class='card'>
@@ -18,7 +26,7 @@ const SuccessStory = ({ story }) => {
 
           <div className='cardUpper'>
             <h5 class='cardTitle'>
-              <Link to={`/sucess-story/${story.id}`} class='cardTitle'>
+              <Link to={`/user/success-story/${story.id}`} class='cardTitle'>
                 {story.title}{' '}
               </Link>
             </h5>

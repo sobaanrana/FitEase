@@ -1,5 +1,6 @@
 import React from 'react'
 import './Footer.css'
+import * as yup from 'yup'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -10,6 +11,19 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { Field, Form, Formik } from 'formik'
 import { postContact } from './apiCalls'
+import CustomErrorMsg from './CustomErrMsg'
+
+const re =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Email Required')
+    .matches(re, 'Invalid Email'),
+})
 
 function Footer() {
   const onSubmitContact = (values) => {
@@ -54,6 +68,7 @@ function Footer() {
               email: '',
               message: '',
             }}
+            validationSchema={validationSchema}
             onSubmit={(values) => {
               onSubmitContact(values)
             }}
@@ -67,6 +82,8 @@ function Footer() {
                   placeholder='name@email.com'
                   value={values.email}
                 />
+                <CustomErrorMsg name='email' />
+
                 <Field
                   as='textarea'
                   className='form-control px-5 '
@@ -75,6 +92,8 @@ function Footer() {
                   placeholder='Message'
                   value={values.message}
                 />
+                <CustomErrorMsg name='message' />
+
                 <button
                   className='btn btn-success my-3 footerFormBtn '
                   type='submit'

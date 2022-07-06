@@ -26,7 +26,7 @@ nav a {
 
 .menu-link {
   margin-top: 5%;
-  margin-left: 2%;
+  margin-left: 6%;
 }
 .menu-link-4items {
   margin-top: 5%;
@@ -136,10 +136,10 @@ nav i {
     right: 30px;
   }
 
-  .hamburger-logoDiv {
+  /* .hamburger-logoDiv {
     position: relative;
-    top: 10px;
-  }
+    top: 0px;
+  } */
   .fa-close {
     padding: 10px;
   }
@@ -158,6 +158,7 @@ nav i {
     display: flex;
     position: relative;
     z-index: 99;
+    width: 80%;
   }
   .mobile-logo {
     background-color: #ffac00;
@@ -184,14 +185,14 @@ nav i {
     height: 20rem;
     display: flex;
     flex-direction: column;
-    align-items: start;
-
+    align-items: center;
+    width: 60%;
     padding-right: 2.5em;
     padding-left: 1em;
     margin-top: 80px;
   }
   .mobile-menu-link ul li {
-    margin-top: 30px;
+    margin: 14px 0px;
   }
 
   .mobile-menu-link ul li:first-child {

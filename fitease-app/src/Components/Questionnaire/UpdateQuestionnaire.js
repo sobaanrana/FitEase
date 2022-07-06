@@ -161,7 +161,9 @@ const UpdateQuestionnaire = () => {
   console.log('Questionnaire of Logged In User', questionnaireData)
 
   useEffect(() => {
-    // avoided useEffect on initial render - todo : use with useRef if Possible
+    if (localStorage.getItem('loggedInUser') === null) {
+      navigate('/user/login')
+    }
     if (showDone) {
       setTimeout(() => {
         navigate('/user/dashboard')

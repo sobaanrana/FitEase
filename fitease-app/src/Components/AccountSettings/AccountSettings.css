@@ -20,7 +20,9 @@
 .account-form input {
   width: 300px;
 }
-
+.account-setting-login {
+  color: #ffffff;
+}
 @media screen and (max-width: 700px) {
   .account-form {
     display: flex;

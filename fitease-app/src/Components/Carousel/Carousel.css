@@ -114,6 +114,7 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  cursor: pointer;
 }
 .dot {
   width: 20px;

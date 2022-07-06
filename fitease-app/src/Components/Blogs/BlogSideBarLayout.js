@@ -127,7 +127,7 @@ const BlogSideBarLayout = ({ posts, setPosts }) => {
             ))}
           </ul>
         </div>
-        <div class='widget icon-default archive_post mb_30'>
+        {/* <div class='widget icon-default archive_post mb_30'>
           <h4 class='widget-title color_default mb_15 text-uppercase'>
             Archive Posts
           </h4>
@@ -145,43 +145,20 @@ const BlogSideBarLayout = ({ posts, setPosts }) => {
               <a href='#'>October 2021</a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div class='widget widget_tag d-inline-block'>
           <h4 class='widget-title color_default mb_15 text-uppercase'>Tags</h4>
           <ul>
-            <li>
-              <a href='#'>Fitness</a>
-            </li>
-            <li>
-              <a href='#'>Tips</a>
-            </li>
-            <li>
-              <a href='#'>GYM</a>
-            </li>
-            <li>
-              <a href='#'>Muscles</a>
-            </li>
-            <li>
-              <a href='#'>BodyBuilding</a>
-            </li>
-            <li>
-              <a href='#'>Video</a>
-            </li>
-            <li>
-              <a href='#'>Cardio</a>
-            </li>
-            <li>
-              <a href='#'>Women</a>
-            </li>
-            <li>
-              <a href='#'>Diet</a>
-            </li>
-            <li>
-              <a href='#'>Yoga</a>
-            </li>
-            <li>
-              <a href='#'>Sports</a>
-            </li>
+            {Object.keys(cats).map((catKey) => (
+              <>
+                <li onClick={() => setPosts(cats[catKey])}>
+                  <Link class='color_primary' to=''>
+                    {catKey}
+                    <span class='pull-right'>( {cats[catKey].length})</span>
+                  </Link>
+                </li>
+              </>
+            ))}
           </ul>
         </div>
       </div>

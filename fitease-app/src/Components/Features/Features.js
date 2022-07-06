@@ -10,6 +10,13 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons'
 import HeaderBanner from '../HeaderBanner/HeaderBanner'
+import featureImg1 from '../../assets/images/268-avatar-man-outline.gif'
+import featureImg2 from '../../assets/images/1330-rest-api-outline.gif'
+import featureImg3 from '../../assets/images/334-loader-5.gif'
+import featureImg4 from '../../assets/images/648-victory-success-outline.gif'
+import featureImg5 from '../../assets/images/56-document-outline.gif'
+import featureImg6 from '../../assets/images/icons8-phonelink-ring.gif'
+
 const fadeInUp = keyframes`
   0% {
     opacity: 0;
@@ -52,11 +59,7 @@ const Features = ({ displayBanner }) => (
 <i></i>*/}
             </Reveal>
             <div className='text'>
-              <img
-                src='./268-avatar-man-outline.gif'
-                className='imgFeatureBox'
-                width={'40%'}
-              />
+              <img src={featureImg1} className='imgFeatureBox' width={'40%'} />
               <Reveal
                 className='onStep'
                 keyframes={fadeInUp}
@@ -96,11 +99,7 @@ const Features = ({ displayBanner }) => (
               triggerOnce
             ></Reveal>
             <div className='text'>
-              <img
-                src='./1330-rest-api-outline.gif'
-                width={'40%'}
-                className='imgFeatureBox'
-              />
+              <img src={featureImg2} width={'40%'} className='imgFeatureBox' />
               <Reveal
                 className='onStep'
                 keyframes={fadeInUp}
@@ -138,11 +137,7 @@ const Features = ({ displayBanner }) => (
               triggerOnce
             ></Reveal>
             <div className='text'>
-              <img
-                src='./334-loader-5.gif'
-                width={'40%'}
-                className='imgFeatureBox'
-              />
+              <img src={featureImg3} width={'40%'} className='imgFeatureBox' />
 
               <Reveal
                 className='onStep'
@@ -181,11 +176,7 @@ const Features = ({ displayBanner }) => (
               triggerOnce
             ></Reveal>
             <div className='text'>
-              <img
-                src='./648-victory-success-outline.gif'
-                width={'40%'}
-                className='imgFeatureBox'
-              />
+              <img src={featureImg4} width={'40%'} className='imgFeatureBox' />
 
               <Reveal
                 className='onStep'
@@ -223,11 +214,7 @@ const Features = ({ displayBanner }) => (
               triggerOnce
             ></Reveal>
             <div className='text'>
-              <img
-                src='./56-document-outline.gif'
-                width={'40%'}
-                className='imgFeatureBox'
-              />
+              <img src={featureImg5} width={'40%'} className='imgFeatureBox' />
 
               <Reveal
                 className='onStep'
@@ -266,11 +253,7 @@ const Features = ({ displayBanner }) => (
               triggerOnce
             ></Reveal>
             <div className='text'>
-              <img
-                src='./icons8-phonelink-ring.gif'
-                width={'40%'}
-                className='imgFeatureBox'
-              />
+              <img src={featureImg6} width={'40%'} className='imgFeatureBox' />
 
               <Reveal
                 className='onStep'

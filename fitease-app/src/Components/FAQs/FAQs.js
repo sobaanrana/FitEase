@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './FAQs.css'
-
 import 'antd/dist/antd.min.css'
-
 import { Collapse } from 'antd'
 import HeaderBanner from '../HeaderBanner/HeaderBanner'
+import faqImg from '../../assets/images/questionfaq.png'
+
 const { Panel } = Collapse
+
 const FAQs = ({ displayBanner }) => {
   const [isOpened, setIsOpened] = useState(false)
   return (
@@ -22,7 +23,7 @@ const FAQs = ({ displayBanner }) => {
           <div className='col-lg-1 col-md-12'></div>
           <div className='col-lg-4 faqRightImg'>
             <div>
-              <img src='./questionfaq.png' width={'50%'} alt='images' />{' '}
+              <img src={faqImg} width={'50%'} alt='images' />{' '}
             </div>
           </div>
           <div className='col-lg-7 col-md-12'>

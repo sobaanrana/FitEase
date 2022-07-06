@@ -3,9 +3,10 @@ import './Questionnaire.css'
 import classNames from 'classnames'
 import { Field, Form, Formik } from 'formik'
 import { getLoggedInUser, postQuestionnaire } from './apiCalls'
-import { useNavigate, useRoutes } from 'react-router-dom'
+import { Link, useNavigate, useRoutes } from 'react-router-dom'
 import { FaTransgenderAlt, FaWeight, FaStarOfLife } from 'react-icons/fa'
 import { GiBodyHeight, GiStairsGoal } from 'react-icons/gi'
+import Login from '../LogInSignUp/Login'
 
 const Questionnaire = () => {
   const [showAge, setShowAge] = useState(true)
@@ -167,9 +168,10 @@ const Questionnaire = () => {
   }
 
   console.log('User from state', user)
-
   useEffect(() => {
-    // avoided useEffect on initial render - todo : use with useRef if Possible
+    if (localStorage.getItem('loggedInUser') === null) {
+      navigate('/user/login')
+    }
     if (showDone) {
       setTimeout(() => {
         navigate('/user/login')
@@ -340,7 +342,12 @@ const Questionnaire = () => {
                     !showGoal && (
                       <div class='tab'>
                         <h5>What's your Weight?</h5>
-                        <Field type='number' name='Weight' placeholder='0.0' />
+                        <Field
+                          type='number'
+                          name='Weight'
+                          placeholder='0.0'
+                        />{' '}
+                        <span>Kg(s)</span>
                       </div>
                     )}
                   {!showAge &&
@@ -351,7 +358,12 @@ const Questionnaire = () => {
                     !showGoal && (
                       <div class='tab'>
                         <h5>What's your Height?</h5>
-                        <Field type='number' name='Height' placeholder='0.0' />
+                        <Field
+                          type='number'
+                          name='Height'
+                          placeholder='0.0'
+                        />{' '}
+                        <span>cm(s)</span>
                       </div>
                     )}
                   {!showAge &&

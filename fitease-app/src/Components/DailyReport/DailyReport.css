@@ -33,9 +33,11 @@
 }
 
 .dailyReport-form .btn {
-  padding: 5px;
+  padding: 5px 10px;
   font-size: 12px;
-  margin: 20px 0px;
+  margin: 20px 100px;
+  display: flex;
+  justify-content: center;
 }
 /* Radio Button */
 input[type='checkbox'] {
@@ -93,6 +95,10 @@ input[type='checkbox']::after {
   z-index: 100;
 }
 
+.daily-btn {
+  background-color: #36d7b7;
+}
+
 @media screen and (max-width: 700px) {
   .daily-report .headline {
     font-size: 16px;
@@ -101,11 +107,11 @@ input[type='checkbox']::after {
     left: 40px;
   }
   .daily-report {
-    padding: 10px;
+    padding: 3px;
   }
 
   .dailyReport-form {
-    padding: 50px 0px;
+    padding: 40px 0px;
   }
   .dailyReport-form h3 {
     font-size: 18px;

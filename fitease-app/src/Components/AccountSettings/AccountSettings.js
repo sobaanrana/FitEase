@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import './AccountSettings.css'
 import { getLoggedInUser, updateUser } from './apiCalls'
 import { AiFillEye } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const re =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -24,6 +24,23 @@ const validationSchema = yup.object().shape({
     .max(50, 'Too Long!')
     .required('Email Required')
     .matches(re, 'Invalid Email'),
+
+  password: yup
+    .string()
+    .min(5, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Password Required'),
+  confirmPassword: yup
+    .string()
+    .when('password', {
+      is: (val) => (val && val.length > 0 ? true : false),
+      then: yup
+        .string()
+        .oneOf([yup.ref('password')], 'Passwords Does not Match'),
+    })
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required(''),
 })
 
 const AccountSettings = () => {
@@ -31,22 +48,33 @@ const AccountSettings = () => {
     JSON.parse(localStorage.getItem('loggedInUser'))
   )
   const [showPassword, setShowPassword] = useState(false)
+  const navigate = useNavigate()
 
   const onUserAccountUpdate = (newData) => {
-    console.log(userData.user.id, newData)
+    // console.log(userData.user.id, newData)
 
     if (userData.user.id) {
       updateUser(userData.user.id, newData)
         .then((res) => {
           console.log('Updated user', res)
+          toast.success('Account Settings Updated!', {
+            position: toast.POSITION.TOP_CENTER,
+          })
         })
         .catch((err) => {
           console.log(err)
+          toast.error('Error !', {
+            position: toast.POSITION.TOP_LEFT,
+          })
         })
     }
   }
   console.log('user: ', userData)
-  useEffect(() => {}, [])
+  useEffect(() => {
+    if (localStorage.getItem('loggedInUser') === null) {
+      navigate('/user/login')
+    }
+  }, [])
   return (
     <>
       <HeaderBanner
@@ -134,7 +162,7 @@ const AccountSettings = () => {
           <div>
             <br />
 
-            <Link class='formFooter_a' to='/user/login'>
+            <Link class='account-setting-login' to='/user/login'>
               Login?
             </Link>
           </div>

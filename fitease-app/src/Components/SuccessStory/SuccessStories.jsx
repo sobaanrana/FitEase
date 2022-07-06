@@ -64,7 +64,7 @@ const SuccessStories = () => {
             <div className='ss-heading'>
               <h2>Sucess Stories</h2>
               <Link to='/user/success-story/'>
-                <h6>
+                <h6 className='story-heading'>
                   <BsPencilSquare /> Write your story
                 </h6>
               </Link>

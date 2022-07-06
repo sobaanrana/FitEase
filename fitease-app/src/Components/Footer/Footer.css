@@ -155,7 +155,7 @@ textarea {
     bottom: 2px;
   }
   .socials .social-icons {
-    margin: 0px 50px;
+    padding-right: 82px;
     display: flex;
   }
   .site-footer .social-icons a {
@@ -164,7 +164,7 @@ textarea {
     font-size: 1em;
   }
   .CopyrightText {
-    margin-left: 6%;
+    margin-left: 40px;
     font-size: 13px;
   }
 }

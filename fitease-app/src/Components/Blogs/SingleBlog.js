@@ -22,6 +22,9 @@ export default function SingleBlog() {
       })
       .catch((err) => console.log(err))
   }
+  function createMarkup() {
+    return { __html: post.description }
+  }
   /*
   useEffect(() => {
     const getPost = async () => {
@@ -79,21 +82,25 @@ export default function SingleBlog() {
                 <div class='status'>
                   <ul class='icon-default'>
                     <li>
-                      <i class='fa fa-user' aria-hidden='true'></i>Jonadhan
+                      <i class='fa fa-user' aria-hidden='true'></i>
+                      {post.author}
                     </li>
-                    <li>
-                      <i class='fa fa-eye' aria-hidden='true'></i>79 Views
-                    </li>
+                    {/* <li>
+                      <i class='fa fa-eye' aria-hidden='true'></i>
+                      {post.views}
+                    </li> */}
                     {/* <li>
                       <i class='fa fa-comment-o' aria-hidden='true'></i>09
                       Comments
                     </li> */}
-                    <li>14 April, 2017</li>
+                    <li className='date'>
+                      {' '}
+                      {new Date(post.created_at).toDateString()}
+                    </li>
                   </ul>
                 </div>
                 <div class='mainText'>
-                  <p>{post.description}</p>
-
+                  <div dangerouslySetInnerHTML={createMarkup()} />
                   {/* <h4 class='color_default text-uppercase mb_15'>
                     Keep your body feet with our tips.
                   </h4> */}

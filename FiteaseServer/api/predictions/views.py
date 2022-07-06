@@ -152,12 +152,11 @@ def dietPrediction(request):
 
     #data=json.loads(serialized_newResult) # convert to json obj
 
-    diet = {'breakfast': ['White Bread + Egg + Tea', 'Kebab + Bran Bread + Oats', 'Greek Yogurt + Peach + Strawberry Shake','Rye Bread + Poached Egg + Strawberry + Orange','Oats + Plum + Coconut Milk','Whole Wheat Bread + Fried Egg + Mango Shake + Apple','Aloo Paratha + Yogurt','Paratha + Omelette + Tea'],
-    'lunch': ['Cauliflower + Chicken + Wholewheat Chapati','Fish','Brocolli + Wholewheat Chapati','Spinach + Brown Rice','Boiled Chicken + Wholewheat Chapati','White Rice + Beef','Mutton + Wholewheat Chapati','Fish + Greek Yogurt','Avocado + Mutton + Riceflour Chapati','Egg Mayo Sandwich + Russian Salad'],
-    'dinner': ['Boiled Chicken','Minced Meat','Apple + Salad','BBQ Chicken + Half Chapati','Half Chapati + Daal Chana/Maash','Riceflour Chapati + Mutton','Strawberry + Apple + Carrot + Yogurt','Rice + Chicken + Salad','Veggie loaded frittatas','Salmon Fish + Yogurt'
-
-    ]
+    diet = {'breakfast': [('White Bread + Eggs + Tea (Milk and Sugar)',492),('Aloo Paratha (2) + Yogurt(1 cup)',494),('Milk + Apple (2) + Boiled Eggs',613),('Paratha + Omelette(2) + Tea (Milk and Sugar)',372),('Rye Bread + Poached Eggs (2) + Strawberry (2) + Orange (2)',508),('Bran flakes(with milk) + Pear (2) + Almond Milk',464),('Oats (1 cup) + Plum + Coconut Milk',887),('Whole Wheat Bread + Fried Egg + Mango Shake + Apple',654),('Chicken Kebab + Bran Bread + Oats (1 cup)',1066),('Greek Yogurt + Peach (2)+ Strawberry Shake',445)],
+    'lunch': [('Cauliflower + Chicken + Wholewheat Chapati',710),('Fish',523),('Brocolli + Wholewheat Chapati',418),('Spinach + Brown Rice',550),('Boiled Chicken + Wholewheat Chapati',470),('White Rice + Beef',1053),('Mutton + Wholewheat Chapati',952),('Fish + Greek Yogurt',623),('Avocado + Mutton + Riceflour Chapati',745),('Egg Mayo Sandwich + Russian Salad',694)],
+    'dinner': [('Boiled Chicken',412),('Veggie loaded frittatas',448),('Apple (2) + Boiled Chicken + Mixed Green Salad(big)',632),('BBQ Chicken + Half Chapati',581),('Half Chapati + Daal Chana/Maash',350),('Riceflour Chapati + Mutton',1006),('Strawberry (2) + Apple (2) + Carrot (2) + Yogurt',472),('Rice + Chicken + Salad',949),('Minced Meat',649),('Salmon Fish + Yogurt',924)],
     }
+
     # getting the breakfast prediction
     breakfast =  diet['breakfast']
     breakfastPred = breakfast[round(data['breakfast'])]

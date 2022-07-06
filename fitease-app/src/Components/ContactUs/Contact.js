@@ -5,6 +5,8 @@ import { Field, Form, Formik } from 'formik'
 import CustomErrorMsg from './CustomErrMsg'
 import * as yup from 'yup'
 import { postContact } from './apiCalls'
+import { toast } from 'react-toastify'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 //import emailjs from "emailjs-com";
 //import Footer from "../components/footer";
@@ -45,19 +47,24 @@ const GlobalStyles = createGlobalStyle`
 `;
 */
 
+const re =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 const validationSchema = yup.object().shape({
-  first_name: yup
-    .string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Name Required'),
   email: yup
     .string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Email Required'),
+    .required('Email Required')
+    .matches(re, 'Invalid Email'),
+  phone: yup
+    .number()
+    .min(2, 'Number must be at least 7 digits long')
+    .max(14, 'Too Long!'),
 })
+
 const Contact = function ({ displayBanner }) {
+  const navigate = useNavigate()
   /* function sendEmail(e) {
     const success = document.getElementById("success");
     const button = document.getElementById("buttonsent");
@@ -91,8 +98,17 @@ const Contact = function ({ displayBanner }) {
     postContact(values)
       .then((response) => {
         console.log(response)
+        toast.success('Message Submitted!', {
+          position: toast.POSITION.TOP_CENTER,
+        })
+        window.location.href = '/contact'
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {
+        console.log(error)
+        toast.success('Error!', {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      })
   }
   return (
     <div>
@@ -118,7 +134,7 @@ const Contact = function ({ displayBanner }) {
                 phone: '',
                 message: '',
               }}
-              // validationSchema={validationSchema}
+              validationSchema={validationSchema}
               onSubmit={(values) => {
                 console.log(values)
                 onContactSubmit(values)

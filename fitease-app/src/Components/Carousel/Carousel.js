@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import image from './image.png'
 import './Carousel.css'
 import axios from 'axios'
+import img1 from '../../assets/images/carousel-img-2.png'
+import img2 from '../../assets/images/carousel-img-3.png'
+import img3 from '../../assets/images/carousel-img-1.png'
 /*
 import bg1 from "./bg-1";
 import bg2 from "./bg-2";
@@ -15,11 +18,7 @@ const Carousel = () => {
   }
 
   /* const banners = ['./bg-1.jpg', './bg-2.jpg', './bg-3.jpg']*/
-  const banners = [
-    './carousel-img-2.png',
-    './carousel-img-3.png',
-    './carousel-img-1.png',
-  ]
+  const banners = [img1, img2, img3]
 
   // From Api
   /* const [homepageData, setHomePageData] = useState({});

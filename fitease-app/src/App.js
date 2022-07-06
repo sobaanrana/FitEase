@@ -24,6 +24,9 @@ import NotFound from './Components/NotFound/NotFound'
 import WriteSuccessStory from './Components/SuccessStory/WriteSuccessStory'
 import SuccessStories from './Components/SuccessStory/SuccessStories'
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
+import ResetPassword from './Components/ForgotPassword/ResetPassword'
+import SingleSuccessStory from './Components/SuccessStory/SingleSuccessStory'
 
 function App() {
   const isLoggedIn = localStorage.getItem('loggedInUser') ? true : false
@@ -40,6 +43,8 @@ function App() {
           <Route path='/' element={<Landing />} />
           <Route path='/user/login' element={<Login />} />
           <Route path='/user/signup' element={<Signup />} />
+          <Route path='/user/forgot-password' element={<ForgotPassword />} />
+          <Route path='/user/reset-password' element={<ResetPassword />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blogs/:id' element={<SingleBlog />} />
 
@@ -52,7 +57,6 @@ function App() {
 
           <Route path='/workouts' element={<Workouts />} />
 
-          {isLoggedIn ? <></> : <></>}
           <Route path='/user/questionnaire' element={<Questionnaire />} />
           <Route
             path='/user/questionnaire/update'
@@ -62,6 +66,10 @@ function App() {
           <Route
             path='/user/success-story'
             element={<WriteSuccessStory displayBanner={true} />}
+          />
+          <Route
+            path='/user/success-story/:id'
+            element={<SingleSuccessStory />}
           />
 
           <Route path='/user/account-settings' element={<AccountSettings />} />

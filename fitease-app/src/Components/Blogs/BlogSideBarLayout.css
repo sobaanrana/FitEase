@@ -5,10 +5,19 @@
 }
 .blogForm {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: space-between;
+  align-items: center;
 }
 .blogForm input {
-  width: 60%;
+  width: 80%;
   background-color: white;
+}
+.blogForm button {
+  width: 10%;
+  height: 30px;
+  background-color: white;
+  margin-left: 10px;
 }
 
 .widget {
@@ -57,9 +66,6 @@
   margin-bottom: 0;
 }
 
-.widget_tag {
-  margin-top: 0px;
-}
 .widget_tag li a {
   font-size: 12px;
 }
@@ -83,6 +89,9 @@
 
 .widget ul {
   padding: 0px;
+}
+.widget_tag ul {
+  padding: 0px 30px;
 }
 .widget ul li a {
   color: black;

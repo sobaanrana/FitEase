@@ -15,9 +15,9 @@ import {
   postLoggedInUser,
 } from './apiCalls'
 import DailyReport from '../DailyReport/DailyReport'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Loader from '../Loader/Loader'
-
+import defaultImg from '../../assets/images/default-image.png'
 const UserDashboard = () => {
   const [show, setShow] = useState({
     diet: true,
@@ -31,7 +31,7 @@ const UserDashboard = () => {
   const [user, setUser] = useState(null)
   const [questionnaireData, setQuestionnaireData] = useState(null)
   const [loader, setLoader] = useState(true)
-
+  const navigate = useNavigate()
   //const [exercisesPrediction, setExercisesPrediction] = useState([])
   const onDiet = () => {
     setShow({ diet: true, exercise: false, dailyReport: false })
@@ -100,6 +100,10 @@ const UserDashboard = () => {
   }
   console.log('Questionnaire of Logged In User', questionnaireData)
   useEffect(() => {
+    if (localStorage.getItem('loggedInUser') === null) {
+      navigate('/user/login')
+    }
+
     if (diet === null) {
       return <div>Loading</div>
     }
@@ -118,8 +122,8 @@ const UserDashboard = () => {
           <div className='userInfo'>
             <img
               alt='Image placeholder'
-              // src='./default-image.png'
-              src='https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg'
+              src={defaultImg}
+              // src='https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg'
               width={'200px'}
             />
             <div className='userContent'>
@@ -169,12 +173,13 @@ const UserDashboard = () => {
                 </p>
                 <p id='calorieCount'>
                   <FaWaveSquare />
-                  Calories Required {questionnaireData?.Calorie_Count}
+                  Calories Required{' '}
+                  {Math.floor(questionnaireData?.Calorie_Count)}
                 </p>
               </div>
               <div className='user-edit-btn'>
                 <Link to={'/user/questionnaire/update'}>
-                  <button class='btn btn-primary '>Edit</button>
+                  <button class='btn btn-primary ques-edit'>Edit</button>
                 </Link>
               </div>
             </div>
@@ -195,11 +200,22 @@ const UserDashboard = () => {
                   ) : (
                     <div className='dietPrediction'>
                       <p className='dietName'>Breakfast</p>
-                      <p>{diet?.breakfast}</p>
+                      <div>
+                        <p className='diet'>{diet?.breakfast[0]} </p>
+                        <p>{diet?.breakfast[1]} Calories</p>
+                      </div>
+
                       <p className='dietName'>Lunch</p>
-                      <p>{diet?.lunch}</p>
+                      <div>
+                        <p className='diet'>{diet?.lunch[0]}</p>
+                        <p>{diet?.lunch[1]} Calories</p>
+                      </div>
+
                       <p className='dietName'>Dinner</p>
-                      <p>{diet?.dinner}</p>
+                      <div>
+                        <p className='diet'>{diet?.dinner[0]} </p>
+                        <p>{diet?.dinner[1]} Calories</p>
+                      </div>
                     </div>
                   )}
                 </div>

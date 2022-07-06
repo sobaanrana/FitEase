@@ -133,9 +133,9 @@ function Login() {
             <div id='formFooter'>
               <br />
 
-              <a class='formFooter_a' href='#'>
+              <Link class='formFooter_a' to='/user/forgot-password'>
                 Forgot Password?
-              </a>
+              </Link>
             </div>
           </div>
         </div>

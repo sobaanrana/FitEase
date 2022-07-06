@@ -30,4 +30,3 @@ export const getSuccessStory = (id) => {
     })
     .catch((error) => console.log(error))
 }
-// Todo : Use ${API} stored as variabe for backend as backend variable

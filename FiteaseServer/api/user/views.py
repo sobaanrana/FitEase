@@ -8,8 +8,14 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, logout
 from rest_framework import permissions
 
+
 from django.contrib.auth.hashers import check_password
 
+
+from django.core import serializers
+
+
+import json
 import random
 import re
 
@@ -75,7 +81,23 @@ def signout(request, id):
 
     return JsonResponse({'success' : 'Logout success'})
 
+@csrf_exempt
+def forgotpassword(request):
 
+    #print(request.META.get("email", ""))
+    #print( request.headers['email'])
+
+    # json_data = json.loads(str(request.body, encoding='utf-8'))
+ 
+    #user = CustomUser.objects.latest('id')
+    user = CustomUser.objects.filter(email=json.loads(request.body)['email']) #request.headers['email']
+    #print('user',user)
+    if(user):
+      serializedUser = serializers.serialize('json', [ user[0], ])
+      #print('The serialized obj of a djanogo obj', serializedUser)
+      userData=json.loads(serializedUser)
+      return JsonResponse({'user' : True})
+    return JsonResponse({'user' : False})
 
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes_by_action = { 'create' : [AllowAny]}

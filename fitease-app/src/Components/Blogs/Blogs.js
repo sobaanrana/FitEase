@@ -22,7 +22,6 @@ function Blogs() {
     .map((post, index) => (
       <>
         <Blog key={index} post={post} />
-        <hr />
       </>
     )) // array indexes has this <> </hr></> at each
 
