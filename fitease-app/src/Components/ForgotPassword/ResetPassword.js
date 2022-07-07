@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 //import './LogInSignUp.css'
 import { AiFillEye } from 'react-icons/ai'
 import * as yup from 'yup'
+import './ResetPassword.css'
 
 const validationSchema = yup.object().shape({
   password: yup
@@ -29,27 +30,33 @@ const validationSchema = yup.object().shape({
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const [userData, setUserData] = useState(
-    JSON.parse(localStorage.getItem('loggedInUser'))
-  )
+  // const [userData, setUserData] = useState(
+  //   JSON.parse(localStorage.getItem('loggedInUser'))
+  // )
+  const navigate = useNavigate()
+
   const onSubmitResetPassword = (newData) => {
+    //console.log('newData', newData)
+    // if (userData.user.id) {
+    // newData.email = userData?.user.email
+    const user = JSON.parse(localStorage.getItem('resetPass'))
+    newData.email = user.email
     console.log('newData', newData)
-    if (userData.user.id) {
-      newData.email = userData?.user.email
-      updateUser(userData.user.id, newData)
-        .then((res) => {
-          console.log('Updated user', res)
-          toast.success('Password Reset!', {
-            position: toast.POSITION.TOP_CENTER,
-          })
+    updateUser(user.id, newData)
+      .then((res) => {
+        console.log('Updated user', res)
+        toast.success('Password Reset!', {
+          position: toast.POSITION.TOP_CENETR,
         })
-        .catch((err) => {
-          console.log(err)
-          toast.error('Error !', {
-            position: toast.POSITION.TOP_LEFT,
-          })
+        //navigate('/user/login')
+      })
+      .catch((err) => {
+        console.log(err)
+        toast.error('Error !', {
+          position: toast.POSITION.TOP_LEFT,
         })
-    }
+      })
+    // }
   }
   return (
     <Formik
@@ -57,7 +64,7 @@ const ResetPassword = () => {
         password: '',
         confirmPassword: '',
       }}
-      validationSchema={validationSchema}
+      // validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log(values)
         onSubmitResetPassword(values)

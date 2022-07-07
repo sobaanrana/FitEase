@@ -47,7 +47,7 @@ def msg(request):
         
         if ins[0]['fields']['msg'] == 'Warn':
             msgDict[ins[0]['fields']['msg']] += 1
-        
+        #print('DailyReports',msgDict)
     return JsonResponse({'Message' : msgDict}) # the data need to be serialized to used at frontend/json else tyoe error
 
 

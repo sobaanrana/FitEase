@@ -44,6 +44,7 @@
 .categories ul li {
   padding: 10px;
   border-bottom: 1px solid gray;
+  text-transform: capitalize;
 }
 .categories ul li .pull-right {
   position: absolute;

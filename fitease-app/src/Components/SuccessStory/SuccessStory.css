@@ -1,6 +1,9 @@
-.card {
+.success-story-card {
   margin: 20px;
   width: 24em;
+}
+.success-story-card {
+  height: 240px;
 }
 .postIMg {
   width: 335px;

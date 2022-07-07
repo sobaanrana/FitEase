@@ -13,7 +13,7 @@ const SuccessStory = ({ story }) => {
 
   return (
     <div class='col-md-12 col-lg-4'>
-      <div class='card'>
+      <div class='card success-story-card'>
         <div class=''>
           {/* <a href=''>
             <img src={story.image} className='postIMg' alt='' />

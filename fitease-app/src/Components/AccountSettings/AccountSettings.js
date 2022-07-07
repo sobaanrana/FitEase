@@ -52,7 +52,7 @@ const AccountSettings = () => {
 
   const onUserAccountUpdate = (newData) => {
     // console.log(userData.user.id, newData)
-
+    console.log('newData', newData)
     if (userData.user.id) {
       updateUser(userData.user.id, newData)
         .then((res) => {

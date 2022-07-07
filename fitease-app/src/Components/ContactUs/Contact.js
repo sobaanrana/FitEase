@@ -57,10 +57,8 @@ const validationSchema = yup.object().shape({
     .max(50, 'Too Long!')
     .required('Email Required')
     .matches(re, 'Invalid Email'),
-  phone: yup
-    .number()
-    .min(2, 'Number must be at least 7 digits long')
-    .max(14, 'Too Long!'),
+  phone: yup.number().min(6, 'Number must be at least 7 digits long'),
+  //.max(20, 'Too Long!'),
 })
 
 const Contact = function ({ displayBanner }) {
@@ -127,7 +125,7 @@ const Contact = function ({ displayBanner }) {
             <h3 className='contactHeading'>Do you have any question?</h3>
 
             <Formik
-              enableReinitialize={true}
+              //enableReinitialize={true}
               initialValues={{
                 name: '',
                 email: '',

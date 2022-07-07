@@ -90,13 +90,15 @@ def forgotpassword(request):
     # json_data = json.loads(str(request.body, encoding='utf-8'))
  
     #user = CustomUser.objects.latest('id')
-    user = CustomUser.objects.filter(email=json.loads(request.body)['email']) #request.headers['email']
+    userEmail = json.loads(request.body)['email']
+    user = CustomUser.objects.filter(email=userEmail) #request.headers['email']
     #print('user',user)
     if(user):
       serializedUser = serializers.serialize('json', [ user[0], ])
       #print('The serialized obj of a djanogo obj', serializedUser)
       userData=json.loads(serializedUser)
-      return JsonResponse({'user' : True})
+     # print(userData[0]['pk'])
+      return JsonResponse({'user' : True,'id':userData[0]['pk'],'email':userEmail})
     return JsonResponse({'user' : False})
 
 class UserViewSet(viewsets.ModelViewSet):
